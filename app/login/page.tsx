@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { poppins, workSans } from "../ui/fonts";
 import TopBar from "../ui/Login/TopBar";
+import EmailSignIn from "../ui/Login/EmailSignIn";
+import GoogleSignIn from "../ui/Login/GoogleSignIn";
+import FacebookSignIn from "../ui/Login/FacebookSignin";
 
 export default function Login() {
   return (
@@ -14,28 +17,26 @@ export default function Login() {
       <div className="bg-white shadow-md rounded-xl p-6 border border-gray-200 w-[90%] sm:w-[60%] md:w-[40%] mx-auto -mt-24">
         <div className="flex flex-col gap-6 justify-center items-center">
           {/* Title */}
-          <h1 className={`${poppins.className} text-2xl font-bold text-gray-800`}>
+          <h1
+            className={`${poppins.className} text-2xl font-bold text-gray-800`}
+          >
             Login to Risity
           </h1>
 
-          {/* Login Buttons (placeholder for now) */}
+          {/* Login Buttons */}
           <div className="w-full space-y-3">
-            {/* Add your login buttons/components here */}
-            <button className="w-full py-2 border border-gray-300 rounded hover:bg-gray-100">
-              Continue with Email
-            </button>
-            <button className="w-full py-2 border border-gray-300 rounded hover:bg-gray-100">
-              Continue with Google
-            </button>
-            <button className="w-full py-2 border border-gray-300 rounded hover:bg-gray-100">
-              Continue with Facebook
-            </button>
+            <EmailSignIn />
+            <GoogleSignIn/>
+            <FacebookSignIn/>
           </div>
 
           {/* Signup Prompt */}
           <p className={`${workSans.className} text-sm text-gray-600`}>
             Don't have an account yet?{" "}
-            <Link href="/signup" className="font-bold text-green-600 hover:underline">
+            <Link
+              href="/signup"
+              className="font-bold text-green-600 hover:underline"
+            >
               Create Account
             </Link>
           </p>
