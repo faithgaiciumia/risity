@@ -29,13 +29,13 @@ export default function VerifyRequest() {
             </div>
 
             {/* Signup Prompt */}
-            <p className={`${workSans.className} text-sm text-gray-600`}>
-              Don't have an account yet?{" "}
+            <p className={`${workSans.className} text-sm text-gray-500`}>
+              Didn't receive it yet?{" "}
               <Link
                 href="/signup"
                 className="font-bold text-green-600 hover:underline"
               >
-                Create Account
+                Resend Email
               </Link>
             </p>
           </div>
