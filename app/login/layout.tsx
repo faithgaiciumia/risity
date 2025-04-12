@@ -30,7 +30,7 @@ export default function LoginLayout({
             {children}
 
             {/* Signup Prompt */}
-            <p className={`${workSans.className} text-sm text-gray-600`}>
+            {/* <p className={`${workSans.className} text-sm text-gray-600`}>
               Don't have an account yet?{" "}
               <Link
                 href="/signup"
@@ -38,7 +38,7 @@ export default function LoginLayout({
               >
                 Create Account
               </Link>
-            </p>
+            </p> */}
           </div>
         </div>
       </div>

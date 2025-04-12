@@ -20,13 +20,13 @@ export default function TopBar() {
               Log In
             </button>
           </Link>
-          <Link href={"/signup"}>
+          {/* <Link href={"/signup"}>
             <button
               className={`${poppins.className} hover:underline font-bold text-sm`}
             >
               Sign Up
             </button>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>
