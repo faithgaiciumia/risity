@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { poppins, workSans } from "../ui/fonts";
 import TopBar from "../ui/Login/TopBar";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export default function LoginLayout({
   children,
@@ -8,7 +10,8 @@ export default function LoginLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main>
+    <Suspense fallback={<Loading/>}>
+      <main>
       <div className="min-h-screen bg-gray-50">
         <TopBar />
         {/* Decorative Top Section */}
@@ -40,5 +43,6 @@ export default function LoginLayout({
         </div>
       </div>
     </main>
+    </Suspense>
   );
 }

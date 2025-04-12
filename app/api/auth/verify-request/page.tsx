@@ -32,7 +32,7 @@ export default function VerifyRequest() {
             <p className={`${workSans.className} text-sm text-gray-500`}>
               Didn't receive it yet?{" "}
               <Link
-                href="/signup"
+                href="/"
                 className="font-bold text-green-600 hover:underline"
               >
                 Resend Email
