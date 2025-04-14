@@ -1,11 +1,14 @@
 import NeonAdapter from "@auth/neon-adapter";
 import { Pool } from "@neondatabase/serverless";
+import next from "next";
 import NextAuth from "next-auth";
 import Resend from "next-auth/providers/resend";
+import { getSession } from "./app/lib/getsession";
 
 export const { handlers, auth, signIn, signOut } = NextAuth(() => {
   const pool = new Pool({ connectionString: process.env.DATABASE_URL });
   return {
+    pages: { signIn: "/login" },
     adapter: NeonAdapter(pool),
     providers: [Resend({ from: "Risity@login.gaiciumiafaith.com" })],
     callbacks: {
@@ -18,6 +21,19 @@ export const { handlers, auth, signIn, signOut } = NextAuth(() => {
 
       async session({ session, token }) {
         return session;
+      },
+      async authorized({ request: { nextUrl } }) {
+        const session = await getSession();
+        const isLoggedIn = !!session?.user;
+        const isOnDashboard = nextUrl.pathname.startsWith("/dashboard");
+        if (isOnDashboard && !isLoggedIn) {
+          // Redirect to login if not authenticated, with callback URL
+          return Response.redirect(
+            new URL(`/login?callbackUrl=${nextUrl.pathname}`, nextUrl)
+          );
+        }
+
+        return true; // Allow access to all other pages
       },
     },
     session: {
