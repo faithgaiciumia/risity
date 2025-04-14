@@ -5,11 +5,12 @@ import Link from "next/link";
 import { useState } from "react";
 import { auth } from "@/auth";
 import { getSession } from "@/app/lib/getsession";
+import UserProfile from "./UserProfile";
 
 export default async function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const session = await getSession();
-    return (
+  return (
     <nav className="w-full border-b border-gray-200 fixed top-0 left-0 z-50 bg-white shadow">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -44,7 +45,7 @@ export default async function Navbar() {
             </ul>
             <div className="flex space-x-4">
               {session?.user ? (
-                <p className="text-sm text-gray-600">Welcome back {session.user.email}</p>
+                <UserProfile email={session.user.email || ""} />
               ) : (
                 <Link href={"/login"}>
                   <button className="px-4 py-2 border border-green-500 text-green-500 rounded-lg hover:bg-green-50 transition">
