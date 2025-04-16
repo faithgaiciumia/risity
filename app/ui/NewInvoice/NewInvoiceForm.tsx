@@ -39,7 +39,7 @@ export default function NewInvoiceForm() {
           <input
             type="email"
             required
-            name="clientName"
+            name="clientEmail"
             placeholder="client@example.com"
             className={`w-full border px-2 py-4 mt-2 border-gray-700 text-sm ${poppins.className}`}
           />
