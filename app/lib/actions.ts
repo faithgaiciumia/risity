@@ -50,9 +50,9 @@ export async function createNewInvoice(
       client_email,
       client_name,
     });
-    console.log("invoice created successfully");
+    return "Invoice created successfully.";
   } catch (error) {
     console.error("createNewInvoice error:", error);
-    return "Something went wrong.";
+    return "Error creating invoice. Try again.";
   }
 }

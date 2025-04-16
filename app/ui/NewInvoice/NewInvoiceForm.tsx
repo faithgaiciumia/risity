@@ -5,7 +5,7 @@ import { useActionState } from "react";
 import { createNewInvoice } from "@/app/lib/actions";
 
 export default function NewInvoiceForm() {
-  const [errorMessage, formAction, isPending] = useActionState(
+  const [ message, formAction, isPending] = useActionState(
     createNewInvoice,
     undefined
   );
@@ -115,6 +115,12 @@ export default function NewInvoiceForm() {
             "Create"
           )}
         </button>
+
+        {message && (
+        <p className="text-center text-sm mt-2 font-medium">
+          {message}
+        </p>
+      )}
       </div>
     </form>
   );
