@@ -20,6 +20,13 @@ export async function handleSignOut() {
   await signOut({ redirectTo: "/" });
 }
 
-export async function createNewInvoice(data:FormData){
-  await createInvoice(data);
+export async function createNewInvoice(
+  prevState: string | undefined,
+  formData: FormData
+) {
+  try {
+    console.log(formData);
+  } catch (error) {
+    return "Something went wrong.";
+  }
 }
