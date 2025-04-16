@@ -1,7 +1,7 @@
-import { PrismaClient } from "@prisma/client/extension";
+import { PrismaClient } from "@/generated/prisma";
 
 const prisma = new PrismaClient();
-async function createInvoice(data: {
+export async function createInvoice(data: {
   userEmail: string;
   amount: number;
   status: string;
@@ -9,5 +9,5 @@ async function createInvoice(data: {
   clientEmail: string;
   clientName: string;
 }) {
-  prisma.invoices.create({ data });
+  //prisma.invoices.create({ data });
 }

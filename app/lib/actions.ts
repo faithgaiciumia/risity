@@ -1,6 +1,7 @@
 "use server";
 import { signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
+import { createInvoice } from "./data";
 
 export async function signInWithResend(
   prevState: string | undefined,
@@ -17,4 +18,8 @@ export async function signInWithResend(
 }
 export async function handleSignOut() {
   await signOut({ redirectTo: "/" });
+}
+
+export async function createNewInvoice(data:FormData){
+  await createInvoice(data);
 }

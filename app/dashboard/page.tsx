@@ -1,7 +1,11 @@
-export default function Dashboard(){
-    return(
-        <div>
-            <h1>dashboard</h1>
-        </div>
-    )
+import { Suspense } from "react";
+import DashNav from "../ui/Dashboard/DashNav";
+import Loading from "./loading";
+
+export default function Dashboard() {
+  return (
+    <Suspense fallback={<Loading/>}>
+      <DashNav />
+    </Suspense>
+  );
 }
