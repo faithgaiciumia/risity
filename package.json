@@ -11,8 +11,10 @@
   "dependencies": {
     "@auth/neon-adapter": "^1.8.0",
     "@neondatabase/serverless": "^1.0.0",
+    "@prisma/client": "6.6.0",
     "next": "15.2.4",
     "next-auth": "5.0.0-beta.25",
+    "postgres": "^3.4.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0"
@@ -22,6 +24,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "prisma": "^6.6.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
