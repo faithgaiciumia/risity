@@ -3,14 +3,23 @@ import { FaSpinner } from "react-icons/fa6";
 import { poppins } from "../fonts";
 import { useActionState } from "react";
 import { createNewInvoice } from "@/app/lib/actions";
+import { toast, ToastContainer } from "react-toastify";
+import { useEffect } from "react";
 
 export default function NewInvoiceForm() {
-  const [ message, formAction, isPending] = useActionState(
+  const [message, formAction, isPending] = useActionState(
     createNewInvoice,
     undefined
   );
+  // listen for a message from the action
+  useEffect(() => {
+    if (message) {
+      toast(message);
+    }
+  }, [message]);
   return (
     <form className="space-y-3" action={formAction}>
+      <ToastContainer />
       {/* client name input group */}
       <div>
         <div>
@@ -115,12 +124,6 @@ export default function NewInvoiceForm() {
             "Create"
           )}
         </button>
-
-        {message && (
-        <p className="text-center text-sm mt-2 font-medium">
-          {message}
-        </p>
-      )}
       </div>
     </form>
   );
