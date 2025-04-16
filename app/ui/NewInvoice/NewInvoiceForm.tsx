@@ -85,6 +85,21 @@ export default function NewInvoiceForm() {
           </select>
         </div>
       </div>
+      {/* invoice date input group */}
+      <div>
+        <div>
+          <label className={`mb-4 font-bold ${poppins.className}`}>Date</label>
+        </div>
+        <div>
+          <input
+            type="date"
+            name="date"
+            required
+            defaultValue={new Date().toISOString().split("T")[0]}
+            className={`w-full border px-2 py-4 mt-2 border-gray-700 text-sm ${poppins.className}`}
+          />
+        </div>
+      </div>
       {/* create button */}
       <div className="w-full flex justify-center">
         <button

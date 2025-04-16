@@ -2,12 +2,13 @@ import { PrismaClient } from "@/generated/prisma";
 
 const prisma = new PrismaClient();
 export async function createInvoice(data: {
-  userEmail: string;
+  user_email: string;
   amount: number;
   status: string;
-  invoiceDate: Date;
-  clientEmail: string;
-  clientName: string;
+  invoice_date: Date;
+  client_email: string;
+  client_name: string;
 }) {
-  //prisma.invoices.create({ data });
+  const newInvoice = await prisma.invoices.create({ data });
+  return newInvoice;
 }
