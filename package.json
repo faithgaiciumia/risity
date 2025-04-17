@@ -29,5 +29,11 @@
     "prisma": "^6.6.0",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "prisma": {
+    "binaryTargets": [
+      "native",
+      "rhel-openssl-3.0.x"
+    ]
   }
 }
