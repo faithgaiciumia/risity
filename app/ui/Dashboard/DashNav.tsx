@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function DashNav() {
   return (
-    <nav className="w-full border-b border-gray-200 fixed top-0 left-0 z-50 bg-white shadow">
+    <nav className="w-full border-b border-gray-200 bg-white shadow">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href={"/"} className="hover:underline">
