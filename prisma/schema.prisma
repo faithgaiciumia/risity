@@ -1,6 +1,7 @@
 generator client {
   provider = "prisma-client-js"
   output   = "../generated/prisma"
+   previewFeatures = ["dataProxy"]
   binaryTargets = ["native", "rhel-openssl-3.0.x"]
 }
 
