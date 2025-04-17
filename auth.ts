@@ -4,10 +4,12 @@ import next from "next";
 import NextAuth from "next-auth";
 import Resend from "next-auth/providers/resend";
 import { getSession } from "./app/lib/getsession";
+import { authConfig } from "./auth.config";
 
 export const { handlers, auth, signIn, signOut } = NextAuth(() => {
   const pool = new Pool({ connectionString: process.env.DATABASE_URL });
   return {
+    ...authConfig,
     pages: { signIn: "/login" },
     adapter: NeonAdapter(pool),
     providers: [Resend({ from: "Risity@login.gaiciumiafaith.com" })],
