@@ -6,13 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "postinstall": "prisma generate"
+    "lint": "next lint"
   },
   "dependencies": {
     "@auth/neon-adapter": "^1.8.0",
     "@neondatabase/serverless": "^1.0.0",
-    "@prisma/client": "6.6.0",
     "next": "15.2.4",
     "next-auth": "5.0.0-beta.25",
     "postgres": "^3.4.5",
@@ -26,14 +24,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "prisma": "^6.6.0",
     "tailwindcss": "^4",
     "typescript": "^5"
-  },
-  "prisma": {
-    "binaryTargets": [
-      "native",
-      "rhel-openssl-3.0.x"
-    ]
   }
 }
