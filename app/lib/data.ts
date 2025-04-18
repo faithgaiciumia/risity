@@ -49,3 +49,18 @@ export async function getInvoices(limit?: number) {
     }`;
   return result;
 }
+
+export async function getStatsOverviewData() {
+  try {
+    const avgResult = await sql`SELECT AVG(amount) AS average FROM invoices`;
+    const sumResult = await sql`SELECT SUM(amount) AS total FROM invoices`;
+
+    const monthlyAverageRevenue = avgResult[0]?.average ?? 0;
+    const totalAmount = sumResult[0]?.total ?? 0;
+
+    return { monthlyAverageRevenue, totalAmount };
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch card data.");
+  }
+}

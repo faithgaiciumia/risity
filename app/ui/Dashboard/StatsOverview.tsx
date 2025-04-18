@@ -1,8 +1,10 @@
 import { FaChartLine, FaMoneyBillWave, FaUsers } from "react-icons/fa6";
 import { workSans } from "../fonts";
 import StatItem from "./StatItem";
+import { getStatsOverviewData } from "@/app/lib/data";
 
-export default function StatsOverview() {
+export default async function StatsOverview() {
+  const {monthlyAverageRevenue, totalAmount}=await getStatsOverviewData();
   return (
     <div className="bg-white border border-gray-300 p-4 w-full md:w-1/2">
       {/* heading */}
@@ -16,17 +18,17 @@ export default function StatsOverview() {
         <StatItem
           icon={<FaChartLine className="text-green-600" />}
           label="Monthly Average Revenue"
-          value="12,000 KES"
+          value={monthlyAverageRevenue}
         />
         <StatItem
           icon={<FaMoneyBillWave className="text-green-600" />}
           label="Total Amount Received"
-          value="12,000 KES"
+          value={totalAmount}
         />
         <StatItem
           icon={<FaUsers className="text-green-600" />}
           label="Total Clients"
-          value="12,000 KES"
+          value={"20"}
         />
       </div>
     </div>
