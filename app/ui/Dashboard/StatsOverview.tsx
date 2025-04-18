@@ -4,7 +4,13 @@ import StatItem from "./StatItem";
 import { getStatsOverviewData } from "@/app/lib/data";
 
 export default async function StatsOverview() {
-  const {monthlyAverageRevenue, totalAmount}=await getStatsOverviewData();
+  //get computed values
+  const { monthlyAverageRevenue, totalAmount } = await getStatsOverviewData();
+  //function to format the currency amounts
+  const formatter = new Intl.NumberFormat("en-KE", {
+    style: "currency",
+    currency: "KES",
+  });
   return (
     <div className="bg-white border border-gray-300 p-4 w-full md:w-1/2">
       {/* heading */}
@@ -18,12 +24,12 @@ export default async function StatsOverview() {
         <StatItem
           icon={<FaChartLine className="text-green-600" />}
           label="Monthly Average Revenue"
-          value={monthlyAverageRevenue}
+          value={formatter.format(monthlyAverageRevenue)}
         />
         <StatItem
           icon={<FaMoneyBillWave className="text-green-600" />}
           label="Total Amount Received"
-          value={totalAmount}
+          value={formatter.format(totalAmount)}
         />
         <StatItem
           icon={<FaUsers className="text-green-600" />}
