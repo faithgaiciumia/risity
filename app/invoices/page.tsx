@@ -8,6 +8,7 @@ import { getInvoices } from "../lib/data";
 
 export default async function Invoices() {
   const invoices = await getInvoices(10);
+  
   return (
     <>
       <DashNav />
@@ -22,6 +23,9 @@ export default async function Invoices() {
               key={index}
               clientName={invoice.client_name}
               invoiceDate={invoice.invoice_date}
+              amount={invoice.amount}
+              status={invoice.status}
+              id={invoice.id}
             />
           ))
         )}
