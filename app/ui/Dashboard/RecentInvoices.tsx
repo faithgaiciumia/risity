@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { workSans } from "../fonts";
+import Recent from "./Recent";
+import { getInvoices } from "@/app/lib/data";
 
-export default function RecentInvoices() {
+export default async function RecentInvoices() {
+  const invoices = await getInvoices(3);
   return (
     <div className="bg-white border border-gray-300 p-4 w-full md:w-1/2">
       {/* header */}
@@ -16,12 +19,13 @@ export default function RecentInvoices() {
         </Link>
       </div>
       {/* recents list */}
-      <div className="my-2">
-        <p className="text-sm">
-          <span className="font-bold">2 days ago </span>- invoice created for
-          Faith Gaiciumia
-        </p>
-      </div>
+      {invoices.map((invoice, index) => (
+        <Recent
+          key={index}
+          invoice_date={invoice.invoice_date}
+          client_name={invoice.client_name}
+        />
+      ))}
     </div>
   );
 }
