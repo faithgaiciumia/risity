@@ -4,15 +4,27 @@ import { poppins, workSans } from "../ui/fonts";
 import { FaThLarge } from "react-icons/fa";
 import InvoiceHeader from "../ui/Invoices/InvoiceHeader";
 import InvoiceCard from "../ui/Invoices/InvoiceCard";
+import { getInvoices } from "../lib/data";
 
-export default function Invoices() {
+export default async function Invoices() {
+  const invoices = await getInvoices(10);
   return (
     <>
       <DashNav />
-      <InvoiceHeader/>
+      <InvoiceHeader />
       <div className="space-y-2 p-4">
         {/* invoice cards */}
-        <InvoiceCard/>
+        {invoices.length === 0 ? (
+          <p>You have no invoices yet.</p>
+        ) : (
+          invoices.map((invoice, index) => (
+            <InvoiceCard
+              key={index}
+              clientName={invoice.client_name}
+              invoiceDate={invoice.invoice_date}
+            />
+          ))
+        )}
       </div>
     </>
   );
