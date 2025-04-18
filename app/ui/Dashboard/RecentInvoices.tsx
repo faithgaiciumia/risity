@@ -19,13 +19,17 @@ export default async function RecentInvoices() {
         </Link>
       </div>
       {/* recents list */}
-      {invoices.map((invoice, index) => (
-        <Recent
-          key={index}
-          invoice_date={invoice.invoice_date}
-          client_name={invoice.client_name}
-        />
-      ))}
+      {invoices.length === 0 ? (
+        <p className="my-2 text-sm text-gray-500">You have no invoices yet.</p>
+      ) : (
+        invoices.map((invoice, index) => (
+          <Recent
+            key={index}
+            invoice_date={invoice.invoice_date}
+            client_name={invoice.client_name}
+          />
+        ))
+      )}
     </div>
   );
 }
