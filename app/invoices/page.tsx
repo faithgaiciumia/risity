@@ -8,10 +8,10 @@ import { getInvoices } from "../lib/data";
 export default async function Invoices({
   searchParams,
 }: {
-  searchParams?: { status?: string };
+  searchParams?: Promise<{ status?: string }>;
 }) {
   // Determine selected status or default to "all"
-  const status = searchParams?.status?.toLowerCase() || "all";
+  const status = (await searchParams)?.status?.toLowerCase() || "all";
 
   // Fetch all invoices
   const invoices = await getInvoices(10);
