@@ -25,7 +25,7 @@ export default async function InvoiceCard({
     .replace(/-/g, "")}-${id.slice(0, 4)}`;
 
   return (
-    <div className="grid grid-cols-6 items-center justify-between gap-4 p-4 bg-white shadow rounded-lg border border-gray-100">
+    <div className="grid grid-cols-6 items-center justify-between gap-4 p-4 bg-white shadow rounded-lg border border-gray-100 hover:border-green-600 hover:scale-[1.02] transition-transform duration-200 ease-in-out cursor-pointer">
       {/* Invoice ID */}
       <p className={`text-sm font-semibold ${poppins.className} col-span-1`}>
         INV-{formattedID}

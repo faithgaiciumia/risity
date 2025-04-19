@@ -3,6 +3,7 @@ import { poppins, workSans } from "../ui/fonts";
 import InvoiceHeader from "../ui/Invoices/InvoiceHeader";
 import InvoiceCard from "../ui/Invoices/InvoiceCard";
 import { getInvoices } from "../lib/data";
+import Link from "next/link";
 
 // Server Component with searchParams support
 export default async function Invoices({
@@ -33,6 +34,7 @@ export default async function Invoices({
           </p>
         ) : (
           filteredInvoices.map((invoice, index) => (
+            <Link key={index} href={`/invoices/${invoice.id}`}>
             <InvoiceCard
               key={index}
               clientName={invoice.client_name}
@@ -41,6 +43,7 @@ export default async function Invoices({
               status={invoice.status}
               id={invoice.id}
             />
+            </Link>
           ))
         )}
       </div>
