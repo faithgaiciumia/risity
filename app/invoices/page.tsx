@@ -4,6 +4,8 @@ import InvoiceHeader from "../ui/Invoices/InvoiceHeader";
 import InvoiceCard from "../ui/Invoices/InvoiceCard";
 import { getInvoices } from "../lib/data";
 import Link from "next/link";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 // Server Component with searchParams support
 export default async function Invoices({
@@ -24,7 +26,7 @@ export default async function Invoices({
   });
 
   return (
-    <>
+    <Suspense fallback={<Loading/>}>
       <DashNav />
       <InvoiceHeader />
       <div className="space-y-2 p-4">
@@ -47,6 +49,6 @@ export default async function Invoices({
           ))
         )}
       </div>
-    </>
+    </Suspense>
   );
 }
