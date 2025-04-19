@@ -24,7 +24,7 @@ export default function InvoiceHeader() {
           {statuses.map((status) => (
             <li key={status}>
               <Link
-                href={""}
+                href={`/invoices?status=${status}`}
                 className={`${
                   workSans.className
                 } px-3 py-1 rounded-md hover:bg-green-100 ${
