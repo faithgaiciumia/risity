@@ -64,3 +64,17 @@ export async function getStatsOverviewData() {
     throw new Error("Failed to fetch card data.");
   }
 }
+
+export async function getInvoiceById(id: string) {
+  //get email
+  const session = await auth();
+  if (!session || !session.user?.email) {
+    throw new Error("User is not logged in");
+  }
+  const user_email = session.user.email;
+
+  const result =
+    await sql`SELECT * FROM invoices WHERE id=${id} AND user_email=${user_email} LIMIT 1`;
+
+  return result[0] ?? null;
+}
