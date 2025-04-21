@@ -4,6 +4,13 @@ import { useClientStore } from "@/app/store/clientStore";
 import { useEffect, useState } from "react";
 import { poppins } from "../fonts";
 import NewClient from "./NewClient";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export default function ClientsSelect() {
   const { clients, loading, error, fetchClients } = useClientStore();
@@ -33,16 +40,25 @@ export default function ClientsSelect() {
           </option>
         ))}
       </select>
-      <div className="w-full flex justify-end">
-        <button
-          type="button"
-          onClick={() => setShowNewClientForm(!showNewClientForm)}
-          className="mt-2 border border-green-600 text-green-600 px-2 py-2 rounded text-sm"
-        >
-          Add New Client
-        </button>
-      </div>
-      {showNewClientForm && <NewClient/>}
+
+      <Dialog>
+        <DialogTrigger asChild>
+          <div className="w-full flex justify-end">
+            <button
+              type="button"
+              className="mt-2 border border-green-600 text-green-600 px-2 py-2 rounded text-sm"
+            >
+              Add New Client
+            </button>
+          </div>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Add Client</DialogTitle>
+          </DialogHeader>
+          <NewClient/>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
