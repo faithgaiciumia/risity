@@ -95,3 +95,25 @@ export async function getClients(limit?: number) {
     }`;
   return result as Client[];
 }
+
+export async function createNewClient(data: {
+  user_email: string;
+  name: string;
+  email: string;
+}) {
+  const result = await sql`
+    INSERT INTO invoices (
+      user_email,
+      name,
+      email,      
+    )
+    VALUES (
+      ${data.user_email},
+      ${data.name},
+      ${data.email},      
+    )
+    RETURNING *;
+  `;
+
+  return result[0]; // Returns the inserted invoice
+}

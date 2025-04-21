@@ -2,9 +2,12 @@ import { getClients } from "@/app/lib/data";
 import { Client } from "@/app/lib/definitions";
 import { useClientStore } from "@/app/store/clientStore";
 import { useEffect, useState } from "react";
+import { poppins } from "../fonts";
+import NewClient from "./NewClient";
 
 export default function ClientsSelect() {
   const { clients, loading, error, fetchClients } = useClientStore();
+  const [showNewClientForm, setShowNewClientForm] = useState(false);
 
   useEffect(() => {
     fetchClients();
@@ -15,11 +18,31 @@ export default function ClientsSelect() {
 
   return (
     <>
-      {clients.map((client) => (
-        <option key={client.id} value={client.email}>
-          {client.name} - {client.email}
+      <select
+        required
+        name="client"
+        className={`w-full border px-2 py-4 mt-2 border-gray-700 text-sm ${poppins.className}`}
+        defaultValue={""}
+      >
+        <option value="" disabled>
+          Select client
         </option>
-      ))}
+        {clients.map((client) => (
+          <option key={client.id} value={client.email}>
+            {client.name} - {client.email}
+          </option>
+        ))}
+      </select>
+      <div className="w-full flex justify-end">
+        <button
+          type="button"
+          onClick={() => setShowNewClientForm(!showNewClientForm)}
+          className="mt-2 border border-green-600 text-green-600 px-2 py-2 rounded text-sm"
+        >
+          Add New Client
+        </button>
+      </div>
+      {showNewClientForm && <NewClient/>}
     </>
   );
 }

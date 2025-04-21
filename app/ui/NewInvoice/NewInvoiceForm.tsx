@@ -47,19 +47,9 @@ export default function NewInvoiceForm() {
           </label>
         </div>
         <div>
-          <select
-            required
-            name="client"
-            className={`w-full border px-2 py-4 mt-2 border-gray-700 text-sm ${poppins.className}`}
-            defaultValue={""}
-          >
-            <option value="" disabled>
-              Select client
-            </option>
-            <Suspense>
-              <ClientsSelect />
-            </Suspense>
-          </select>
+          <Suspense>
+            <ClientsSelect />
+          </Suspense>
         </div>
       </div>
       {/* invoice amount input group */}
