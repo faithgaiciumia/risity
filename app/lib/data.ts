@@ -1,6 +1,7 @@
 "use server";
 import { auth } from "@/auth";
 import { neon } from "@neondatabase/serverless";
+import { Client } from "./definitions";
 
 // Initialize Neon SQL client
 const sql = neon(process.env.DATABASE_URL!);
@@ -52,8 +53,10 @@ export async function getInvoices(limit?: number) {
 
 export async function getStatsOverviewData() {
   try {
-    const avgResult = await sql`SELECT AVG(total_amount) AS average FROM invoices`;
-    const sumResult = await sql`SELECT SUM(total_amount) AS total FROM invoices`;
+    const avgResult =
+      await sql`SELECT AVG(total_amount) AS average FROM invoices`;
+    const sumResult =
+      await sql`SELECT SUM(total_amount) AS total FROM invoices`;
 
     const monthlyAverageRevenue = avgResult[0]?.average ?? 0;
     const totalAmount = sumResult[0]?.total ?? 0;
@@ -90,8 +93,5 @@ export async function getClients(limit?: number) {
     await sql`SELECT * FROM clients WHERE user_email = ${user_email} ORDER BY name DESC ${
       limit ? sql`LIMIT ${limit}` : sql``
     }`;
-  return result;
+  return result as Client[];
 }
-
-
-

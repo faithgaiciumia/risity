@@ -1,11 +1,10 @@
 "use client";
 import { FaSpinner } from "react-icons/fa6";
 import { poppins } from "../fonts";
-import { useActionState } from "react";
+import { Suspense, useActionState } from "react";
 import { createNewInvoice } from "@/app/lib/actions";
 import { toast, ToastContainer } from "react-toastify";
 import { useEffect } from "react";
-import { getClients } from "@/app/lib/data";
 import ClientsSelect from "./ClientsSelect";
 
 export default function NewInvoiceForm() {
@@ -13,7 +12,7 @@ export default function NewInvoiceForm() {
     createNewInvoice,
     undefined
   );
-  
+
   // listen for a message from the action
   useEffect(() => {
     if (message) {
@@ -57,7 +56,9 @@ export default function NewInvoiceForm() {
             <option value="" disabled>
               Select client
             </option>
-            <ClientsSelect/>            
+            <Suspense>
+              <ClientsSelect />
+            </Suspense>
           </select>
         </div>
       </div>
