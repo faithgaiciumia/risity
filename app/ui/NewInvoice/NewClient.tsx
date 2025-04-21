@@ -6,7 +6,7 @@ export default function NewClient() {
       {/* client name */}
       <div>
         <div>
-          <label className={`mb-4 font-bold ${poppins.className}`}>
+          <label className={`mb-4 font-bold ${poppins.className} text-sm`}>
             Client Name
           </label>
         </div>
@@ -16,14 +16,14 @@ export default function NewClient() {
             required
             name="name"
             placeholder="eg. Tom Baraka"
-            className={`w-full border px-2 py-4 mt-2 border-gray-700 text-sm ${poppins.className}`}
+            className={`w-full border p-2 mt-2 border-gray-700 text-sm ${poppins.className}`}
           />
         </div>
       </div>
       {/* client email */}
       <div>
         <div>
-          <label className={`mb-4 font-bold ${poppins.className}`}>
+          <label className={`mb-4 font-bold ${poppins.className} text-sm`}>
             Client Email
           </label>
         </div>
@@ -33,9 +33,14 @@ export default function NewClient() {
             required
             name="email"
             placeholder="eg. baraka@gmail.com"
-            className={`w-full border px-2 py-4 mt-2 border-gray-700 text-sm ${poppins.className}`}
+            className={`w-full border p-2 mt-2 border-gray-700 text-sm ${poppins.className}`}
           />
         </div>
+      </div>
+      <div className="w-full flex justify-end">
+        <button className="mt-2 border bg-green-400 text-white px-2 py-2 rounded text-sm">
+          Save
+        </button>
       </div>
     </div>
   );
