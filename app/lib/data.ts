@@ -52,8 +52,8 @@ export async function getInvoices(limit?: number) {
 
 export async function getStatsOverviewData() {
   try {
-    const avgResult = await sql`SELECT AVG(amount) AS average FROM invoices`;
-    const sumResult = await sql`SELECT SUM(amount) AS total FROM invoices`;
+    const avgResult = await sql`SELECT AVG(total_amount) AS average FROM invoices`;
+    const sumResult = await sql`SELECT SUM(total_amount) AS total FROM invoices`;
 
     const monthlyAverageRevenue = avgResult[0]?.average ?? 0;
     const totalAmount = sumResult[0]?.total ?? 0;
@@ -78,3 +78,20 @@ export async function getInvoiceById(id: string) {
 
   return result[0] ?? null;
 }
+
+export async function getClients(limit?: number) {
+  //get email
+  const session = await auth();
+  if (!session || !session.user?.email) {
+    throw new Error("User is not logged in");
+  }
+  const user_email = session.user.email;
+  const result =
+    await sql`SELECT * FROM clients WHERE user_email = ${user_email} ORDER BY name DESC ${
+      limit ? sql`LIMIT ${limit}` : sql``
+    }`;
+  return result;
+}
+
+
+

@@ -5,12 +5,15 @@ import { useActionState } from "react";
 import { createNewInvoice } from "@/app/lib/actions";
 import { toast, ToastContainer } from "react-toastify";
 import { useEffect } from "react";
+import { getClients } from "@/app/lib/data";
+import ClientsSelect from "./ClientsSelect";
 
 export default function NewInvoiceForm() {
   const [message, formAction, isPending] = useActionState(
     createNewInvoice,
     undefined
   );
+  
   // listen for a message from the action
   useEffect(() => {
     if (message) {
@@ -20,38 +23,42 @@ export default function NewInvoiceForm() {
   return (
     <form className="space-y-3" action={formAction}>
       <ToastContainer />
-      {/* client name input group */}
+      {/* task title */}
       <div>
         <div>
           <label className={`mb-4 font-bold ${poppins.className}`}>
-            Client Name
+            Task Title
           </label>
         </div>
         <div>
           <input
             type="text"
             required
-            name="clientName"
-            placeholder="Tom Baraka"
+            name="title"
+            placeholder="eg. Baraka Website"
             className={`w-full border px-2 py-4 mt-2 border-gray-700 text-sm ${poppins.className}`}
           />
         </div>
       </div>
-      {/* client email input group */}
+      {/* client name and email input group */}
       <div>
         <div>
           <label className={`mb-4 font-bold ${poppins.className}`}>
-            Client Email
+            Client
           </label>
         </div>
         <div>
-          <input
-            type="email"
+          <select
             required
-            name="clientEmail"
-            placeholder="client@example.com"
+            name="client"
             className={`w-full border px-2 py-4 mt-2 border-gray-700 text-sm ${poppins.className}`}
-          />
+            defaultValue={""}
+          >
+            <option value="" disabled>
+              Select client
+            </option>
+            <ClientsSelect/>            
+          </select>
         </div>
       </div>
       {/* invoice amount input group */}
