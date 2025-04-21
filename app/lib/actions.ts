@@ -1,7 +1,7 @@
 "use server";
 import { signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
-import { createInvoice } from "./data";
+import { createClient, createInvoice } from "./data";
 import { getSession } from "./getsession";
 
 export async function signInWithResend(
@@ -54,5 +54,33 @@ export async function createNewInvoice(
   } catch (error) {
     console.error("createNewInvoice error:", error);
     return "Error creating invoice. Try again.";
+  }
+}
+
+export async function createNewClient(
+  prevState: string | undefined,
+  formData: FormData
+) {
+  try {
+    //check if user is logged in and extract email
+    const session = await getSession();
+    if (!session || !session.user?.email) {
+      throw new Error("user not logged in");
+    }
+
+    // get the rest of the fields
+    const user_email = session.user.email;
+    const name = formData.get("clientName") as string;
+    const email = formData.get("clientEmail") as string;
+
+    await createClient({
+      user_email,
+      name,
+      email,
+    });
+    return "Client created successfully.";
+  } catch (error) {
+    console.error("createNewClient error:", error);
+    return "Error creating client. Try again.";
   }
 }

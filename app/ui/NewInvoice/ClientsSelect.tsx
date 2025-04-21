@@ -14,7 +14,6 @@ import {
 
 export default function ClientsSelect() {
   const { clients, loading, error, fetchClients } = useClientStore();
-  const [showNewClientForm, setShowNewClientForm] = useState(false);
 
   useEffect(() => {
     fetchClients();
@@ -56,7 +55,7 @@ export default function ClientsSelect() {
           <DialogHeader>
             <DialogTitle>Add Client</DialogTitle>
           </DialogHeader>
-          <NewClient/>
+          <NewClient />
         </DialogContent>
       </Dialog>
     </>
