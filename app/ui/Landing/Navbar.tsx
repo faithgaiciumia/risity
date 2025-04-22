@@ -34,7 +34,7 @@ export default async function Navbar() {
               </li>
               <li>
                 <Link
-                  href="https://github.com/your-repo"
+                  href="https://github.com/faithgaiciumia/risity"
                   target="_blank"
                   className="hover:text-green-500 transition"
                 >
