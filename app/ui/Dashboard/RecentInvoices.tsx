@@ -8,7 +8,7 @@ export default async function RecentInvoices() {
   return (
     <div className="bg-white border border-gray-300 p-4 w-full md:w-1/2">
       {/* header */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mb-4">
         <h1 className={`text-md font-bold ${workSans.className}`}>
           Recent Invoices
         </h1>
@@ -18,6 +18,7 @@ export default async function RecentInvoices() {
           </span>
         </Link>
       </div>
+      <hr/>
       {/* recents list */}
       {invoices.length === 0 ? (
         <p className="my-2 text-sm text-gray-500">You have no invoices yet.</p>
