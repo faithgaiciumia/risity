@@ -19,8 +19,8 @@ export default function ClientsSelect() {
     fetchClients();
   }, [fetchClients]);
 
-  if (loading) return <option>Loading clients...</option>;
-  if (error) return <option>Error loading clients</option>;
+  if (loading) return <option className="text-sm text-green-600">Loading clients...</option>;
+  if (error) return <option className="text-sm text-red-600">Error loading clients</option>;
 
   return (
     <>
