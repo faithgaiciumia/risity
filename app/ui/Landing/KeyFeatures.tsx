@@ -3,7 +3,7 @@ import { BiFile, BiFilterAlt, BiMoon } from "react-icons/bi";
 
 export default function KeyFeatures() {
   return (
-    <section className="py-16 px-4 bg-gray-50">
+    <section className="py-16 px-4 bg-gray-50" id="features">
       <div className="max-w-6xl mx-auto text-center">
         <h2
           className={`text-2xl sm:text-3xl font-bold text-gray-800 mb-12 ${poppins.className}`}
