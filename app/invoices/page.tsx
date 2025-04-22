@@ -39,9 +39,9 @@ export default async function Invoices({
             <Link key={index} href={`/invoices/${invoice.id}`}>
             <InvoiceCard
               key={index}
-              clientName={invoice.client_name}
+              clientEmail={invoice.client_email}
               invoiceDate={invoice.invoice_date}
-              amount={invoice.amount}
+              totalAmount={invoice.total_amount}
               status={invoice.status}
               id={invoice.id}
             />

@@ -1,15 +1,15 @@
 import { poppins } from "../fonts";
 
 export default async function InvoiceCard({
-  clientName,
+  clientEmail,
   invoiceDate,
-  amount,
+  totalAmount,
   status,
   id,
 }: {
-  clientName: string;
+  clientEmail: string;
   invoiceDate: string;
-  amount: number;
+  totalAmount: number;
   status: string;
   id: string;
 }) {
@@ -35,7 +35,7 @@ export default async function InvoiceCard({
       <p
         className={`text-sm font-semibold text-gray-700 ${poppins.className} col-span-1`}
       >
-        {clientName}
+        {clientEmail}
       </p>
 
       {/* Project Title */}
@@ -61,7 +61,7 @@ export default async function InvoiceCard({
 
       {/* Amount */}
       <p className={`col-span-1 text-sm font-semibold ${poppins.className}`}>
-        {formatter.format(amount)}
+        {formatter.format(totalAmount)}
       </p>
     </div>
   );
