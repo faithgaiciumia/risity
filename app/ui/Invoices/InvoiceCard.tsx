@@ -35,7 +35,7 @@ export default async function InvoiceCard({
 
       {/* Client Name */}
       <p
-        className={`text-sm font-semibold text-gray-700 ${poppins.className} col-span-1 text-wrap`}
+        className={`text-sm font-semibold text-gray-700 ${poppins.className} col-span-1 break-words`}
       >
         {clientEmail}
       </p>
