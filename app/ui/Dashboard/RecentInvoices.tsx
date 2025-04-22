@@ -26,7 +26,7 @@ export default async function RecentInvoices() {
           <Recent
             key={index}
             invoice_date={invoice.invoice_date}
-            client_name={invoice.client_name}
+            client_email={invoice.client_email}
           />
         ))
       )}
