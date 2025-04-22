@@ -21,6 +21,12 @@ export default async function InvoiceDetail(props: {
           currentInvoice.invoice_date,
           currentInvoice.id
         )}
+        status={currentInvoice.status}
+        dueDate={formatDate(currentInvoice.due_date)}
+        taskTitle={currentInvoice.task_title}
+        userEmail={currentInvoice.user_email}
+        clientEmail={currentInvoice.client_email}
+        totalAmount={currentInvoice.total_amount}
       />
     </>
   );
