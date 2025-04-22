@@ -8,28 +8,28 @@ const sql = neon(process.env.DATABASE_URL!);
 
 export async function createInvoice(data: {
   user_email: string;
-  amount: number;
   status: string;
   invoice_date: Date;
+  due_date: Date;
   client_email: string;
-  client_name: string;
+  total_amount: number;
 }) {
   const result = await sql`
     INSERT INTO invoices (
-      user_email,
-      amount,
+      user_email,      
       status,
       invoice_date,
+      due_date,
       client_email,
-      client_name
+      total_amount
     )
     VALUES (
-      ${data.user_email},
-      ${data.amount},
+      ${data.user_email},      
       ${data.status},
       ${data.invoice_date},
+      ${data.due_date},
       ${data.client_email},
-      ${data.client_name}
+      ${data.total_amount}
     )
     RETURNING *;
   `;

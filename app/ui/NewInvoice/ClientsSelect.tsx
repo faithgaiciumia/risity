@@ -26,7 +26,7 @@ export default function ClientsSelect() {
     <>
       <select
         required
-        name="client"
+        name="clientEmail"
         className={`w-full border px-2 py-4 mt-2 border-gray-700 text-sm ${poppins.className}`}
         defaultValue={""}
       >

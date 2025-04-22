@@ -34,21 +34,24 @@ export async function createNewInvoice(
 
     // get the rest of the fields
     const user_email = session.user.email;
-    const client_name = formData.get("clientName") as string;
+    // const client_name = formData.get("clientName") as string;
     const client_email = formData.get("clientEmail") as string;
-    const amount = parseInt(formData.get("amount") as string);
+    const total_amount = parseInt(formData.get("amount") as string);
     const status = formData.get("status") as string;
 
-    const invoiceDateStr = formData.get("date") as string;
+    const invoiceDateStr = formData.get("invoiceDate") as string;
     const invoice_date = new Date(invoiceDateStr);
+
+    const dueDateStr = formData.get("dueDate") as string;
+    const due_date = new Date(dueDateStr);
 
     await createInvoice({
       user_email,
-      amount,
       status,
       invoice_date,
+      due_date,
       client_email,
-      client_name,
+      total_amount,
     });
     return "Invoice created successfully.";
   } catch (error) {

@@ -100,7 +100,7 @@ export default function NewInvoiceForm() {
         <div>
           <input
             type="date"
-            name="date"
+            name="invoiceDate"
             required
             defaultValue={new Date().toISOString().split("T")[0]}
             className={`w-full border px-2 py-4 mt-2 border-gray-700 text-sm ${poppins.className}`}
@@ -115,7 +115,7 @@ export default function NewInvoiceForm() {
         <div>
           <input
             type="date"
-            name="date"
+            name="dueDate"
             required            
             className={`w-full border px-2 py-4 mt-2 border-gray-700 text-sm ${poppins.className}`}
           />
