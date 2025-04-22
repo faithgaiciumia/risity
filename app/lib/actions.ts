@@ -45,6 +45,8 @@ export async function createNewInvoice(
     const dueDateStr = formData.get("dueDate") as string;
     const due_date = new Date(dueDateStr);
 
+    const task_title = formData.get("title") as string;
+
     await createInvoice({
       user_email,
       status,
@@ -52,6 +54,7 @@ export async function createNewInvoice(
       due_date,
       client_email,
       total_amount,
+      task_title
     });
     return "Invoice created successfully.";
   } catch (error) {

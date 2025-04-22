@@ -6,12 +6,14 @@ export default async function InvoiceCard({
   totalAmount,
   status,
   id,
+  taskTitle
 }: {
   clientEmail: string;
   invoiceDate: string;
   totalAmount: number;
   status: string;
   id: string;
+  taskTitle:string;
 }) {
   //function to format the currency amounts
   const formatter = new Intl.NumberFormat("en-KE", {
@@ -33,14 +35,14 @@ export default async function InvoiceCard({
 
       {/* Client Name */}
       <p
-        className={`text-sm font-semibold text-gray-700 ${poppins.className} col-span-1`}
+        className={`text-sm font-semibold text-gray-700 ${poppins.className} col-span-1 text-wrap`}
       >
         {clientEmail}
       </p>
 
       {/* Project Title */}
       <p className={`text-sm text-gray-600 ${poppins.className} col-span-1`}>
-        Website Redesign
+        {taskTitle}
       </p>
 
       {/* Status Badge */}

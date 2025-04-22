@@ -44,6 +44,7 @@ export default async function Invoices({
               totalAmount={invoice.total_amount}
               status={invoice.status}
               id={invoice.id}
+              taskTitle={invoice.task_title}
             />
             </Link>
           ))

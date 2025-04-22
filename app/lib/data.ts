@@ -13,6 +13,7 @@ export async function createInvoice(data: {
   due_date: Date;
   client_email: string;
   total_amount: number;
+  task_title:string;
 }) {
   const result = await sql`
     INSERT INTO invoices (
@@ -21,7 +22,8 @@ export async function createInvoice(data: {
       invoice_date,
       due_date,
       client_email,
-      total_amount
+      total_amount,
+      task_title
     )
     VALUES (
       ${data.user_email},      
@@ -29,7 +31,8 @@ export async function createInvoice(data: {
       ${data.invoice_date},
       ${data.due_date},
       ${data.client_email},
-      ${data.total_amount}
+      ${data.total_amount},
+      ${data.task_title}
     )
     RETURNING *;
   `;
