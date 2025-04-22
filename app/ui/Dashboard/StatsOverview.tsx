@@ -5,7 +5,7 @@ import { getStatsOverviewData } from "@/app/lib/data";
 
 export default async function StatsOverview() {
   //get computed values
-  const { monthlyAverageRevenue, totalAmount } = await getStatsOverviewData();
+  const { monthlyAverageRevenue, totalAmount, totalClients } = await getStatsOverviewData();
   //function to format the currency amounts
   const formatter = new Intl.NumberFormat("en-KE", {
     style: "currency",
@@ -34,7 +34,7 @@ export default async function StatsOverview() {
         <StatItem
           icon={<FaUsers className="text-green-600" />}
           label="Total Clients"
-          value={"20"}
+          value={totalClients}
         />
       </div>
     </div>

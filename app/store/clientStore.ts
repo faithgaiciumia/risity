@@ -16,7 +16,7 @@ export const useClientStore = create<clientStore>((set) => ({
   fetchClients: async () => {
     try {
       set({ loading: true, error: null });
-      const data = await getClients(20);
+      const data = await getClients(50);
       set({ clients: data, loading: false });
     } catch (err: any) {
       set({ error: err.message, loading: false });

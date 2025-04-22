@@ -57,11 +57,14 @@ export async function getStatsOverviewData() {
       await sql`SELECT AVG(total_amount) AS average FROM invoices`;
     const sumResult =
       await sql`SELECT SUM(total_amount) AS total FROM invoices`;
+    const clientCountResult =
+      await sql`SELECT COUNT(*) AS total_clients FROM clients`;
 
     const monthlyAverageRevenue = avgResult[0]?.average ?? 0;
     const totalAmount = sumResult[0]?.total ?? 0;
+    const totalClients = clientCountResult[0]?.total_clients ?? 0;
 
-    return { monthlyAverageRevenue, totalAmount };
+    return { monthlyAverageRevenue, totalAmount, totalClients };
   } catch (error) {
     console.error("Database Error:", error);
     throw new Error("Failed to fetch card data.");
