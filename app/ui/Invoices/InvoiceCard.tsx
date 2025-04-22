@@ -1,4 +1,5 @@
 import { poppins } from "../fonts";
+import StatusBadge from "./StatusBadge";
 
 export default async function InvoiceCard({
   clientEmail,
@@ -6,14 +7,14 @@ export default async function InvoiceCard({
   totalAmount,
   status,
   id,
-  taskTitle
+  taskTitle,
 }: {
   clientEmail: string;
   invoiceDate: string;
   totalAmount: number;
   status: string;
   id: string;
-  taskTitle:string;
+  taskTitle: string;
 }) {
   //function to format the currency amounts
   const formatter = new Intl.NumberFormat("en-KE", {
@@ -47,9 +48,7 @@ export default async function InvoiceCard({
 
       {/* Status Badge */}
       <div className="col-span-1">
-        <div className="w-[80px] text-center px-3 py-1 rounded-xl bg-red-100 text-red-600 border border-red-200 text-sm font-medium">
-          {status}
-        </div>
+        <StatusBadge status={status} />
       </div>
 
       {/* Invoice Date */}
