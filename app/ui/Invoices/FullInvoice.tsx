@@ -1,4 +1,5 @@
 import { poppins, workSans } from "../fonts";
+import StatusBadge from "./StatusBadge";
 
 export default function FullInvoice({
   dateIssued,
@@ -24,9 +25,7 @@ export default function FullInvoice({
       <div className="p-4 bg-white shadow rounded-lg border border-gray-100 space-y-4">
         {/* Status and Title */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-y-2">
-          <div className="w-fit text-center px-3 py-1 rounded-xl bg-red-100 text-red-600 border border-red-200 text-sm font-medium">
-            <p>{status}</p>
-          </div>
+          <StatusBadge status={status} />
           <p className={`text-sm font-semibold ${poppins.className}`}>
             {taskTitle}
           </p>
