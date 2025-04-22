@@ -17,7 +17,7 @@ export default function FullInvoice({
   taskTitle: string;
   userEmail: string;
   clientEmail: string;
-  totalAmount: number;
+  totalAmount: string;
 }) {
   return (
     <div className="p-4 max-w-screen-md mx-auto">

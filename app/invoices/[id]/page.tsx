@@ -1,5 +1,5 @@
 import { getInvoiceById } from "@/app/lib/data";
-import { formatDate, formatInvoiceID } from "@/app/lib/helpers";
+import { formatAmount, formatDate, formatInvoiceID } from "@/app/lib/helpers";
 import DashNav from "@/app/ui/Dashboard/DashNav";
 import { poppins, workSans } from "@/app/ui/fonts";
 import FullInvoice from "@/app/ui/Invoices/FullInvoice";
@@ -26,7 +26,7 @@ export default async function InvoiceDetail(props: {
         taskTitle={currentInvoice.task_title}
         userEmail={currentInvoice.user_email}
         clientEmail={currentInvoice.client_email}
-        totalAmount={currentInvoice.total_amount}
+        totalAmount={formatAmount(currentInvoice.total_amount)}
       />
     </>
   );

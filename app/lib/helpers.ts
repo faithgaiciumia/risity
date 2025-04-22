@@ -12,9 +12,17 @@ export function formatInvoiceID(invoiceDate: Date | string, id: string) {
   const dateStr = new Date(invoiceDate)
     .toISOString()
     .slice(0, 10)
-    .replace(/-/g, ""); 
+    .replace(/-/g, "");
 
-  const idSegment = id.slice(0, 4).toUpperCase(); 
+  const idSegment = id.slice(0, 4).toUpperCase();
 
   return `INV-${dateStr}-${idSegment}`;
+}
+
+export function formatAmount(amount: number) {
+  const formatter = new Intl.NumberFormat("en-KE", {
+    style: "currency",
+    currency: "KES",
+  });
+  return formatter.format(amount);
 }
