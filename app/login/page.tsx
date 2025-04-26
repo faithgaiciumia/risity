@@ -14,10 +14,10 @@ export default function Login() {
         <Link href={"/login/email"}>
           <button
             type="submit"
-            className="mt-6 w-[90%] mx-auto flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-6 py-4 text-sm font-medium text-gray-700 shadow-sm hover:border-green-400 transition"
+            className="mt-6 w-[90%] mx-auto flex items-center justify-center gap-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-6 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 shadow-sm hover:border-green-400 dark:hover:border-green-500 transition"
           >
-            <FaEnvelope className="text-black  text-lg transition" /> Continue
-            with Email
+            <FaEnvelope className="text-black dark:text-gray-200 text-lg transition" />
+            Continue with Email
           </button>
         </Link>
         <GoogleSignIn />

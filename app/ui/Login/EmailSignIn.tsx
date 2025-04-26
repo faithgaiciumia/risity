@@ -9,6 +9,7 @@ export default function EmailSignIn() {
     signInWithResend,
     undefined
   );
+
   return (
     <form action={formAction}>
       <div>
@@ -21,13 +22,13 @@ export default function EmailSignIn() {
           type="text"
           name="email"
           placeholder="yourname@example.com"
-          className={`w-full border px-2 py-4 mt-2 border-gray-700 text-sm ${poppins.className}`}
+          className={`w-full border px-2 py-4 mt-2 border-gray-700 dark:border-gray-600 text-sm ${poppins.className} bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200`}
         />
       </div>
       <button
         type="submit"
         aria-disabled={isPending}
-        className="mt-6 w-[300px] flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-green-600 text-white px-6 py-4 text-sm font-medium shadow-sm hover:bg-green-900 hover:text-white transition"
+        className="mt-6 w-[300px] flex items-center justify-center gap-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-green-600 text-white px-6 py-4 text-sm font-medium shadow-sm hover:bg-green-900 dark:hover:bg-green-700 hover:text-white transition"
       >
         {isPending ? (
           <span className="flex items-center gap-2">
