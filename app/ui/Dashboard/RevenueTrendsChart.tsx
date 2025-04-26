@@ -30,7 +30,7 @@ export default function RevenueTrendsChart() {
           margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
         >
           <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
-          <XAxis dataKey="month" tick={{ fontSize: 12 }} />
+          <XAxis dataKey="month" tick={{ fontSize: 12 }} label={"Year-Month"} />
           <YAxis
             tickFormatter={(value) => `KES ${value / 1000}k`}
             tick={{ fontSize: 12 }}
