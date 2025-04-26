@@ -1,6 +1,7 @@
 import { BiCalculator } from "react-icons/bi";
 import { poppins } from "../fonts";
 import Link from "next/link";
+import LightDarkModeToggle from "./LightDarkModeToggle";
 
 export default function DashNav() {
   return (
@@ -16,6 +17,7 @@ export default function DashNav() {
             </div>
           </Link>
           <div className="flex space-x-4">
+            <LightDarkModeToggle/>
             <Link href={"/invoices/new"}>
               <button
                 className={`${poppins.className}  font-bold text-sm px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-600 transition`}
