@@ -32,8 +32,9 @@ export function generateLastSixMonths() {
   const today = new Date();
 
   for (let i = 5; i >= 0; i--) {
-    const date = new Date(today.getFullYear(), today.getMonth() - i, 1);
-    const yearMonth = date.toISOString().slice(0, 7); // format "YYYY-MM"
+    const date = new Date(today);
+    date.setMonth(date.getMonth() - i);
+    const yearMonth = date.toISOString().slice(0, 7);
     months.push(yearMonth);
   }
 
