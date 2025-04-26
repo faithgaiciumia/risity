@@ -6,6 +6,7 @@ import { workSans } from "../ui/fonts";
 import { FaAnchor } from "react-icons/fa6";
 import RecentInvoices from "../ui/Dashboard/RecentInvoices";
 import StatsOverview from "../ui/Dashboard/StatsOverview";
+import RevenueTrendsChart from "../ui/Dashboard/RevenueTrendsChart";
 
 export default function Dashboard() {
   return (
@@ -16,7 +17,10 @@ export default function Dashboard() {
         <RecentInvoices/>
 
         {/* stats div */}
-        <StatsOverview/>
+        <StatsOverview/>        
+      </div>
+      <div>
+        <RevenueTrendsChart/>
       </div>
     </Suspense>
   );
