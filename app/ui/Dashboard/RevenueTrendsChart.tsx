@@ -17,9 +17,9 @@ export default function RevenueTrendsChart() {
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
-          <XAxis dataKey="month" />
-          <YAxis tickFormatter={(value) => `KES ${value / 1000}k`} />
-          <Tooltip formatter={(value) => `KES ${value.toLocaleString()}`} />
+          <XAxis dataKey="month" tick={{fontSize:12}} />
+          <YAxis tickFormatter={(value) => `KES ${value / 1000}k`} tick={{fontSize:12}} />
+          <Tooltip formatter={(value) => `KES ${value.toLocaleString()}`} contentStyle={{ fontSize: 12 }} />
           <Line type="monotone" dataKey="revenue" stroke="#34D399" strokeWidth={3} dot={{ r: 4 }} />
         </LineChart>
       </ResponsiveContainer>
