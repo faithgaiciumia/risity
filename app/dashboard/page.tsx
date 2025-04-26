@@ -19,7 +19,7 @@ export default function Dashboard() {
         {/* stats div */}
         <StatsOverview/>        
       </div>
-      <div>
+      <div className="my-2 p-4">
         <RevenueTrendsChart/>
       </div>
     </Suspense>

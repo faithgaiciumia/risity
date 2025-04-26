@@ -23,7 +23,7 @@ export default function RevenueTrendsChart() {
     fetchRevenueTrends();
   }, []);
   return (
-    <div className="w-full h-[300px]">
+    <div className="w-full h-[300px] bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 p-4 rounded-lg shadow-sm">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={data}
