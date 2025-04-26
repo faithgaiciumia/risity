@@ -13,7 +13,7 @@ export async function createInvoice(data: {
   due_date: Date;
   client_email: string;
   total_amount: number;
-  task_title:string;
+  task_title: string;
 }) {
   const result = await sql`
     INSERT INTO invoices (
@@ -122,4 +122,27 @@ export async function createClient(data: {
   `;
 
   return result[0]; // Returns the inserted invoice
+}
+
+// get amounts by month for dashboard chart
+export async function getRevenueTrends() {
+  //get email
+  const session = await auth();
+  if (!session || !session.user?.email) {
+    throw new Error("User is not logged in");
+  }
+  const user_email = session.user.email;
+
+  const result = await sql`SELECT 
+      TO_CHAR(invoice_date, 'YYYY-MM') AS month, 
+      SUM(total_amount) AS revenue
+    FROM invoices
+    WHERE invoice_date >= (CURRENT_DATE - INTERVAL '6 months') AND user_email= ${user_email}
+    GROUP BY month
+    ORDER BY month ASC`;
+
+  return result.map((row) => ({
+    month: row.month,
+    revenue: Number(row.revenue),
+  }));
 }
