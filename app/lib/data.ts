@@ -2,6 +2,7 @@
 import { auth } from "@/auth";
 import { neon } from "@neondatabase/serverless";
 import { Client } from "./definitions";
+import { generateLastSixMonths } from "./helpers";
 
 // Initialize Neon SQL client
 const sql = neon(process.env.DATABASE_URL!);
@@ -141,8 +142,17 @@ export async function getRevenueTrends() {
     GROUP BY month
     ORDER BY month ASC`;
 
-  return result.map((row) => ({
-    month: row.month,
-    revenue: Number(row.revenue),
+  const initialData = new Map<string, number>();
+  result.forEach((row) => {
+    initialData.set(row.month, Number(row.revenue));
+  });
+
+  //get last 6 months from helper function
+  const months = generateLastSixMonths();
+  console.log("last 6 months", months);
+  const withCompleteMonths = months.map((month) => ({
+    month,
+    revenue: initialData.get(month) || 0,
   }));
+  return withCompleteMonths;
 }
