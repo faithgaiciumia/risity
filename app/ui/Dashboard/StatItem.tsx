@@ -7,7 +7,7 @@ export default function StatItem({icon, label, value}:{icon:ReactNode, label:str
         <span className="text-sm">{icon}</span>
         <p className="text-sm">{label}</p>
       </div>
-      <p className="text-sm text-gray-500">{value}</p>
+      <p className="text-sm text-gray-500 dark:text-gray-300">{value}</p>
     </div>
   );
 }
