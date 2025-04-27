@@ -148,8 +148,7 @@ export async function getRevenueTrends() {
   });
 
   //get last 6 months from helper function
-  const months = generateLastSixMonths();
-  console.log("last 6 months", months);
+  const months = generateLastSixMonths();  
   const withCompleteMonths = months.map((month) => ({
     month,
     revenue: initialData.get(month) || 0,
