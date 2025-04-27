@@ -11,6 +11,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { workSans } from "../fonts";
 
 export default function RevenueTrendsChart() {
   // get the data
@@ -24,6 +25,14 @@ export default function RevenueTrendsChart() {
   }, []);
   return (
     <div className="w-full h-[300px] bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 p-4 rounded-lg shadow-sm">
+      <div>
+        <h1
+          className={`text-md font-bold ${workSans.className} text-gray-800 dark:text-white mb-4`}
+        >
+          Last 6 months revenue
+        </h1>
+        <hr className="border-gray-300 dark:border-gray-700" />
+      </div>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={data}
