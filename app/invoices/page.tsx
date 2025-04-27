@@ -6,6 +6,7 @@ import { getInvoices } from "../lib/data";
 import Link from "next/link";
 import { Suspense } from "react";
 import Loading from "./loading";
+import { useViewStore } from "../store/viewStore";
 
 // Server Component with searchParams support
 export default async function Invoices({
@@ -26,10 +27,10 @@ export default async function Invoices({
   });
 
   return (
-    <Suspense fallback={<Loading/>}>
+    <Suspense fallback={<Loading />}>
       <DashNav />
       <InvoiceHeader />
-      <div className="space-y-2 p-4">
+      <div className={`space-y-2 p-4 flex items-center space-x-2 flex-wrap`}>
         {filteredInvoices.length === 0 ? (
           <p className={workSans.className}>
             You have no <strong>{status}</strong> invoices yet.
@@ -37,15 +38,15 @@ export default async function Invoices({
         ) : (
           filteredInvoices.map((invoice, index) => (
             <Link key={index} href={`/invoices/${invoice.id}`}>
-            <InvoiceCard
-              key={index}
-              clientEmail={invoice.client_email}
-              invoiceDate={invoice.invoice_date}
-              totalAmount={invoice.total_amount}
-              status={invoice.status}
-              id={invoice.id}
-              taskTitle={invoice.task_title}
-            />
+              <InvoiceCard
+                key={index}
+                clientEmail={invoice.client_email}
+                invoiceDate={invoice.invoice_date}
+                totalAmount={invoice.total_amount}
+                status={invoice.status}
+                id={invoice.id}
+                taskTitle={invoice.task_title}
+              />
             </Link>
           ))
         )}
