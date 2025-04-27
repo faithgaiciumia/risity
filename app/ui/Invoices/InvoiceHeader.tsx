@@ -6,10 +6,11 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";
 import GridListToggle from "./GridListToggle";
+import { useViewStore } from "@/app/store/viewStore";
 
 export default function InvoiceHeader() {
-  //initialize view type - either list or grid
-  const [viewType, setViewType] = useState<"list" | "grid">("list");
+  //get view type - either list or grid
+  const { viewType, setViewType } = useViewStore();
   // query param to change filters on click
   const searchParams = useSearchParams();
   const currentStatus = searchParams.get("status") || "all";
@@ -49,7 +50,7 @@ export default function InvoiceHeader() {
       </div>
 
       {/* toggle view buttons */}
-      <GridListToggle viewType={viewType} setViewType={setViewType}/>
+      <GridListToggle viewType={viewType} setViewType={setViewType} />
     </div>
   );
 }

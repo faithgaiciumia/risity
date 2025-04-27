@@ -5,7 +5,7 @@ import { workSans } from "../fonts";
 
 type ViewToggleProps = {
   viewType: "list" | "grid";
-  setViewType: (type: "list" | "grid") => void;
+  setViewType: (view: "list" | "grid") => void;
 };
 
 export default function GridListToggle({
