@@ -28,7 +28,7 @@ export default function InvoiceCardGrid({
     .slice(0, 10)
     .replace(/-/g, "")}-${id.slice(0, 4)}`;
   return (
-    <div className="my-2 p-4 bg-white dark:bg-gray-900 shadow rounded-lg border border-gray-100 dark:border-gray-700 hover:border-green-600 hover:scale=[1/02] transition-transform duration-200 ease-in-out cursor-pointer w-1/2">
+    <div className="h-full my-2 p-4 bg-white dark:bg-gray-900 shadow rounded-lg border border-gray-100 dark:border-gray-700 hover:border-green-600 hover:scale=[1/02] transition-transform duration-200 ease-in-out cursor-pointer">
       <div className="flex items-center justify-between">
         <div>
           <StatusBadge status={status} />

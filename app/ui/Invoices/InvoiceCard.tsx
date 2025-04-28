@@ -36,7 +36,7 @@ export default function InvoiceCard({
   return (
     <>
       {viewType === "grid" ? (
-        <InvoiceCardGrid
+          <InvoiceCardGrid
           clientEmail={clientEmail}
           invoiceDate={invoiceDate}
           totalAmount={totalAmount}
