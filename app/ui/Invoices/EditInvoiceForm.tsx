@@ -1,0 +1,155 @@
+import { poppins, workSans } from "../fonts";
+import StatusBadge from "./StatusBadge";
+
+export default function EditInvoiceForm({
+  dateIssued,
+  invoiceID,
+  status,
+  dueDate,
+  taskTitle,
+  userEmail,
+  clientEmail,
+  totalAmount,
+  onChange,
+}: {
+  dateIssued: string;
+  invoiceID: string;
+  status: string;
+  dueDate: string;
+  taskTitle: string;
+  userEmail: string;
+  clientEmail: string;
+  totalAmount: string;
+  onChange: (field: string, value: string) => void;
+}) {
+  return (
+    <div className="p-4 max-w-screen-md mx-auto">
+      <div className="p-4 bg-white dark:bg-gray-800 shadow rounded-lg border border-gray-100 dark:border-gray-700 space-y-4">
+        
+        {/* Status and Title */}
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-y-2">
+          <StatusBadge status={status} />
+          <input
+            type="text"
+            className={`text-sm font-semibold ${poppins.className} dark:text-white bg-transparent border-b border-gray-300 focus:outline-none`}
+            value={taskTitle}
+            onChange={(e) => onChange("taskTitle", e.target.value)}
+          />
+        </div>
+
+        {/* Invoice Info */}
+        <div className="flex flex-col md:flex-row justify-between gap-y-4">
+          <div>
+            <input
+              type="text"
+              className={`text-xl font-bold ${poppins.className} dark:text-white bg-transparent border-b border-gray-300 focus:outline-none`}
+              value={invoiceID}
+              onChange={(e) => onChange("invoiceID", e.target.value)}
+            />
+          </div>
+          <div className="space-y-1">
+            <h2 className={`text-sm font-semibold text-gray-700 dark:text-gray-300 ${poppins.className}`}>
+              Date Issued
+            </h2>
+            <input
+              type="date"
+              className="text-sm font-semibold bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
+              value={dateIssued}
+              onChange={(e) => onChange("dateIssued", e.target.value)}
+            />
+          </div>
+          <div className="space-y-1">
+            <h2 className={`text-sm font-semibold text-gray-700 dark:text-gray-300 ${poppins.className}`}>
+              Due Date
+            </h2>
+            <input
+              type="date"
+              className="text-sm font-semibold bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
+              value={dueDate}
+              onChange={(e) => onChange("dueDate", e.target.value)}
+            />
+          </div>
+        </div>
+
+        <hr className="border-dotted border-t-2 border-gray-300 dark:border-gray-600 mb-4" />
+
+        {/* From / To */}
+        <div className="flex flex-col md:flex-row justify-between gap-y-6 my-6">
+          <div>
+            <p className={`text-sm text-gray-700 dark:text-gray-300 font-semibold mb-2 ${workSans.className}`}>
+              FROM
+            </p>
+            <h2 className={`text-md ${poppins.className} dark:text-white`}>Faith Gaiciumia</h2>
+            <input
+              type="email"
+              className="text-sm bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
+              value={userEmail}
+              onChange={(e) => onChange("userEmail", e.target.value)}
+            />
+          </div>
+          <div>
+            <p className={`text-sm text-gray-700 dark:text-gray-300 font-semibold mb-2 ${workSans.className}`}>
+              TO
+            </p>
+            <h2 className={`text-md ${poppins.className} dark:text-white`}>Tom Baraka</h2>
+            <input
+              type="email"
+              className="text-sm bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
+              value={clientEmail}
+              onChange={(e) => onChange("clientEmail", e.target.value)}
+            />
+          </div>
+        </div>
+
+        {/* Service Section - You could also make these editable lists */}
+        <div className="space-y-2">
+          <div className="flex items-center justify-between">
+            <input
+              type="text"
+              placeholder="Service Name"
+              className="text-sm font-semibold bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
+              value="Website Design"
+              readOnly
+            />
+            <input
+              type="text"
+              placeholder="Service Amount"
+              className="text-sm font-semibold bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
+              value="Ksh 10,000"
+              readOnly
+            />
+          </div>
+          <div className="flex items-center justify-between">
+            <input
+              type="text"
+              placeholder="Service Name"
+              className="text-sm font-semibold bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
+              value="Website Hosting"
+              readOnly
+            />
+            <input
+              type="text"
+              placeholder="Service Amount"
+              className="text-sm font-semibold bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
+              value="Ksh 15,000"
+              readOnly
+            />
+          </div>
+        </div>
+
+        {/* Total */}
+        <div className="flex items-center justify-between bg-green-600 my-4 p-4 text-white rounded-md">
+          <h2 className={`${poppins.className} text-md font-semibold`}>
+            Total
+          </h2>
+          <input
+            type="text"
+            className="text-md font-semibold bg-transparent focus:outline-none text-right"
+            value={totalAmount}
+            onChange={(e) => onChange("totalAmount", e.target.value)}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
