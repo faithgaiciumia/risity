@@ -2,8 +2,11 @@ import { FaPen, FaTrash, FaFilePdf, FaShare } from "react-icons/fa6";
 import { poppins, workSans } from "../fonts";
 import Link from "next/link";
 
-export default function FullInvoiceHeader() {
-  const invoiceID = "cc4207d8-7476-4f80-89a1-e569e4975da4";
+export default function FullInvoiceHeader({
+  invoiceID,
+}: {
+  invoiceID: string;
+}) {
   return (
     <div className="flex flex-col md:flex-row md:justify-between md:items-center p-4 bg-white dark:bg-gray-900 rounded-md shadow-sm">
       {/* heading */}
