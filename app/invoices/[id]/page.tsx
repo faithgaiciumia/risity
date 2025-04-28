@@ -16,7 +16,7 @@ export default async function InvoiceDetail(props: {
   return (
     <>
       <DashNav /> 
-      <FullInvoiceHeader/>
+      <div className="p-2"><FullInvoiceHeader/></div>
       <FullInvoice
         dateIssued={formatDate(currentInvoice.invoice_date)}
         invoiceID={formatInvoiceID(
