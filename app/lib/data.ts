@@ -41,7 +41,7 @@ export async function createInvoice(data: {
   return result[0]; // Returns the inserted invoice
 }
 
-export async function updateInvoice(
+export async function updateInvoiceSQL(
   invoiceID: string,
   data: {
     user_email: string;

@@ -1,7 +1,7 @@
 "use server";
 import { signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
-import { createClient, createInvoice } from "./data";
+import { createClient, createInvoice, updateInvoiceSQL } from "./data";
 import { getSession } from "./getsession";
 
 export async function signInWithResend(
@@ -60,6 +60,51 @@ export async function createNewInvoice(
   } catch (error) {
     console.error("createNewInvoice error:", error);
     return "Error creating invoice. Try again.";
+  }
+}
+
+export async function updateInvoice(
+  prevState: string | undefined,
+  invoiceID:string,
+  formData: FormData
+) {
+  try {
+    //check if user is logged in and extract email
+    const session = await getSession();
+    if (!session || !session.user?.email) {
+      throw new Error("user not logged in");
+    }
+
+    // get the rest of the fields
+    const user_email = session.user.email;
+    // const client_name = formData.get("clientName") as string;
+    const client_email = formData.get("clientEmail") as string;
+    const total_amount = parseInt(formData.get("amount") as string);
+    const status = formData.get("status") as string;
+
+    const invoiceDateStr = formData.get("invoiceDate") as string;
+    const invoice_date = new Date(invoiceDateStr);
+
+    const dueDateStr = formData.get("dueDate") as string;
+    const due_date = new Date(dueDateStr);
+
+    const task_title = formData.get("title") as string;
+
+    
+
+    await updateInvoiceSQL(invoiceID, {
+      user_email,
+      status,
+      invoice_date,
+      due_date,
+      client_email,
+      total_amount,
+      task_title
+    });
+    return "Invoice updated successfully.";
+  } catch (error) {
+    console.error("updateInvoice error:", error);
+    return "Error updating invoice. Try again.";
   }
 }
 
