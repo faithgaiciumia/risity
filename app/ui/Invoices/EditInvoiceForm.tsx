@@ -15,6 +15,7 @@ export default function EditInvoiceForm({
   userEmail,
   clientEmail,
   totalAmount,
+  rawTotalAmount,
 }: {
   rawInvoiceID: string;
   dateIssued: string;
@@ -25,6 +26,7 @@ export default function EditInvoiceForm({
   userEmail: string;
   clientEmail: string;
   totalAmount: string;
+  rawTotalAmount: number;
 }) {
   //format dates into date format to display on inputs
   const formattedDateIssued = new Date(dateIssued).toISOString().split("T")[0];
@@ -60,11 +62,7 @@ export default function EditInvoiceForm({
           {/* Status and Title */}
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-y-2">
             <StatusBadge status={status} />
-            <input
-                type="hidden"
-                name="status"
-                defaultValue={status}
-              />
+            <input type="hidden" name="status" defaultValue={status} />
             <input
               type="text"
               placeholder="Task Title"
@@ -128,7 +126,9 @@ export default function EditInvoiceForm({
               <h2 className={`text-md ${poppins.className} dark:text-white`}>
                 Faith Gaiciumia
               </h2>
-              <p className={`text-sm ${workSans.className} dark:text-gray-400`}>{userEmail}</p>
+              <p className={`text-sm ${workSans.className} dark:text-gray-400`}>
+                {userEmail}
+              </p>
             </div>
             <div>
               <p
@@ -234,12 +234,18 @@ export default function EditInvoiceForm({
             <h2 className={`${poppins.className} text-md font-semibold`}>
               Total
             </h2>
-            <input
-              type="text"
-              name="amount"
-              className="text-md font-semibold bg-transparent focus:outline-none text-right"
-              defaultValue={totalAmount}
-            />
+            <div>
+              <h2 className={`${poppins.className} text-md font-semibold`}>
+                {totalAmount}
+              </h2>
+              <input
+                type="number"
+                name="amount"
+                defaultValue={rawTotalAmount}
+                placeholder="Total Amount"
+                className="text-sm font-semibold bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
+              />
+            </div>
           </div>
         </div>
       </div>

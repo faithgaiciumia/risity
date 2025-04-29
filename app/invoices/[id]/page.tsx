@@ -29,6 +29,7 @@ export default async function InvoiceDetail(props: {
         userEmail={currentInvoice.user_email}
         clientEmail={currentInvoice.client_email}
         totalAmount={formatAmount(currentInvoice.total_amount)}
+        rawTotalAmount={currentInvoice.total_amount}
       />
     </>
   );
