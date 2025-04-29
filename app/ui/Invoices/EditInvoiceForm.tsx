@@ -128,12 +128,7 @@ export default function EditInvoiceForm({
               <h2 className={`text-md ${poppins.className} dark:text-white`}>
                 Faith Gaiciumia
               </h2>
-              <input
-                type="email"
-                placeholder="youremail@example.com"
-                className="text-sm bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
-                defaultValue={userEmail}
-              />
+              <p className={`text-sm ${workSans.className} dark:text-gray-400`}>{userEmail}</p>
             </div>
             <div>
               <p
