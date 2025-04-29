@@ -41,6 +41,27 @@ export async function createInvoice(data: {
   return result[0]; // Returns the inserted invoice
 }
 
+export async function updateInvoice(
+  invoiceID: string,
+  data: {
+    user_email: string;
+    status: string;
+    invoice_date: Date;
+    due_date: Date;
+    client_email: string;
+    total_amount: number;
+    task_title: string;
+  }
+) {
+  const result = await sql`UPDATE invoices SET user_email = ${data.user_email},
+      status = ${data.status},
+      invoice_date = ${data.invoice_date},
+      due_date = ${data.due_date},
+      client_email = ${data.client_email},
+      total_amount = ${data.total_amount},
+      task_title = ${data.task_title} WHERE invoice_id=${invoiceID} RETURNING *;`;
+  return result[0];
+}
 export async function getInvoices(limit?: number) {
   //get email
   const session = await auth();
@@ -148,7 +169,7 @@ export async function getRevenueTrends() {
   });
 
   //get last 6 months from helper function
-  const months = generateLastSixMonths();  
+  const months = generateLastSixMonths();
   const withCompleteMonths = months.map((month) => ({
     month,
     revenue: initialData.get(month) || 0,

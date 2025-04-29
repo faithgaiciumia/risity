@@ -16,7 +16,7 @@ export default function NewInvoiceForm() {
   // listen for a message from the action
   useEffect(() => {
     if (message) {
-      toast(message);
+      toast(message); 
     }
   }, [message]);
   
