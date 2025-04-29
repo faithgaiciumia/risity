@@ -59,7 +59,7 @@ export async function updateInvoiceSQL(
       due_date = ${data.due_date},
       client_email = ${data.client_email},
       total_amount = ${data.total_amount},
-      task_title = ${data.task_title} WHERE invoice_id=${invoiceID} RETURNING *;`;
+      task_title = ${data.task_title} WHERE id=${invoiceID} RETURNING *;`;
   return result[0];
 }
 export async function getInvoices(limit?: number) {

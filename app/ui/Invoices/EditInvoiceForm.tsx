@@ -2,7 +2,8 @@
 import { updateInvoice } from "@/app/lib/actions";
 import { poppins, workSans } from "../fonts";
 import StatusBadge from "./StatusBadge";
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function EditInvoiceForm({
   rawInvoiceID,
@@ -33,21 +34,37 @@ export default function EditInvoiceForm({
     updateInvoice,
     undefined
   );
+  // listen for a message from the action
+  useEffect(() => {
+    if (message) {
+      toast(message);
+    }
+  }, [message]);
 
   return (
     <form action={formAction}>
+      <ToastContainer />
       <div className="p-4 max-w-screen-md mx-auto">
         <div className="p-4 bg-white dark:bg-gray-800 shadow rounded-lg border border-gray-100 dark:border-gray-700 space-y-4">
           {/* cancel and submit/save buttons */}
           <div className="flex justify-end space-x-2">
             <button type="button">Cancel</button>
-            <button type="submit" disabled={isPending} className="rounded-lg border border-gray-300 dark:border-gray-500 bg-green-600 text-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-green-900 hover:text-white transition">
+            <button
+              type="submit"
+              disabled={isPending}
+              className="rounded-lg border border-gray-300 dark:border-gray-500 bg-green-600 text-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-green-900 hover:text-white transition"
+            >
               {isPending ? "Saving..." : "Save"}
             </button>
           </div>
           {/* Status and Title */}
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-y-2">
             <StatusBadge status={status} />
+            <input
+                type="hidden"
+                name="status"
+                defaultValue={status}
+              />
             <input
               type="text"
               placeholder="Task Title"
