@@ -65,7 +65,6 @@ export async function createNewInvoice(
 
 export async function updateInvoice(
   prevState: string | undefined,
-  invoiceID:string,
   formData: FormData
 ) {
   try {
@@ -89,6 +88,8 @@ export async function updateInvoice(
     const due_date = new Date(dueDateStr);
 
     const task_title = formData.get("title") as string;
+
+    const invoiceID = formData.get("rawInvoiceID") as string;
 
     
 

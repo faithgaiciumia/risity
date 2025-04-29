@@ -15,9 +15,9 @@ export default async function InvoiceDetail(props: {
   const currentInvoice = await getInvoiceById(id);
   return (
     <>
-      <DashNav /> 
-      
+      <DashNav />       
       <FullInvoice
+        rawInvoiceID={id}
         dateIssued={formatDate(currentInvoice.invoice_date)}
         invoiceID={formatInvoiceID(
           currentInvoice.invoice_date,

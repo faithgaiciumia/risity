@@ -7,6 +7,7 @@ import StatusBadge from "./StatusBadge";
 import EditInvoiceForm from "./EditInvoiceForm";
 
 export default function FullInvoice({
+  rawInvoiceID,
   dateIssued,
   invoiceID,
   status,
@@ -16,6 +17,7 @@ export default function FullInvoice({
   clientEmail,
   totalAmount,
 }: {
+  rawInvoiceID: string;
   dateIssued: string;
   invoiceID: string;
   status: string;
@@ -36,6 +38,7 @@ export default function FullInvoice({
       <div>
         {isEditing ? (
           <EditInvoiceForm
+          rawInvoiceID={rawInvoiceID}
             dateIssued={dateIssued}
             invoiceID={invoiceID}
             status={status}
