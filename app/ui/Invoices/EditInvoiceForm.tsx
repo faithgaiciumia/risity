@@ -29,6 +29,7 @@ export default function EditInvoiceForm({
     updateInvoice,
     undefined
   );
+  console.log("date issued is", dateIssued);
   return (
     <form action={formAction}>
       <div className="p-4 max-w-screen-md mx-auto">
@@ -39,7 +40,7 @@ export default function EditInvoiceForm({
             <input
               type="text"
               className={`text-sm font-semibold ${poppins.className} dark:text-white bg-transparent border-b border-gray-300 focus:outline-none`}
-              value={taskTitle}
+              defaultValue={taskTitle}
             />
           </div>
 
@@ -51,7 +52,7 @@ export default function EditInvoiceForm({
               >
                 {invoiceID}
               </h1>
-              <input type="hidden" name="rawInvoiceID" value={rawInvoiceID} />
+              <input type="hidden" name="rawInvoiceID" defaultValue={rawInvoiceID} />
             </div>
             <div className="space-y-1">
               <h2
@@ -63,7 +64,7 @@ export default function EditInvoiceForm({
                 type="date"
                 name="invoiceDate"
                 className="text-sm font-semibold bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
-                value={dateIssued}
+                defaultValue={dateIssued}
               />
             </div>
             <div className="space-y-1">
@@ -76,7 +77,7 @@ export default function EditInvoiceForm({
                 type="date"
                 name="dueDate"
                 className="text-sm font-semibold bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
-                value={dueDate}
+                defaultValue={dueDate}
               />
             </div>
           </div>
@@ -97,7 +98,7 @@ export default function EditInvoiceForm({
               <input
                 type="email"
                 className="text-sm bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
-                value={userEmail}
+                defaultValue={userEmail}
               />
             </div>
             <div>
@@ -113,7 +114,7 @@ export default function EditInvoiceForm({
                 type="email"
                 name="clientEmail"
                 className="text-sm bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
-                value={clientEmail}
+                defaultValue={clientEmail}
               />
             </div>
           </div>
@@ -141,14 +142,14 @@ export default function EditInvoiceForm({
                 type="text"
                 placeholder="Service Name"
                 className="text-sm font-semibold bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
-                value="Website Design"
+                defaultValue="Website Design"
                 readOnly
               />
               <input
                 type="text"
                 placeholder="Service Amount"
                 className="text-sm font-semibold bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
-                value="Ksh 10,000"
+                defaultValue="Ksh 10,000"
                 readOnly
               />
             </div>
@@ -157,14 +158,14 @@ export default function EditInvoiceForm({
                 type="text"
                 placeholder="Service Name"
                 className="text-sm font-semibold bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
-                value="Website Hosting"
+                defaultValue="Website Hosting"
                 readOnly
               />
               <input
                 type="text"
                 placeholder="Service Amount"
                 className="text-sm font-semibold bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
-                value="Ksh 15,000"
+                defaultValue="Ksh 15,000"
                 readOnly
               />
             </div>
@@ -207,7 +208,7 @@ export default function EditInvoiceForm({
               type="text"
               name="amount"
               className="text-md font-semibold bg-transparent focus:outline-none text-right"
-              value={totalAmount}
+              defaultValue={totalAmount}
             />
           </div>
         </div>
