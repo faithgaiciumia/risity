@@ -25,20 +25,32 @@ export default function EditInvoiceForm({
   clientEmail: string;
   totalAmount: string;
 }) {
+  //format dates into date format to display on inputs
+  const formattedDateIssued = new Date(dateIssued).toISOString().split("T")[0];
+  const formattedDueDate = new Date(dueDate).toISOString().split("T")[0];
+  //use action state to handle form submission and feedback
   const [message, formAction, isPending] = useActionState(
     updateInvoice,
     undefined
   );
-  console.log("date issued is", dateIssued);
+
   return (
     <form action={formAction}>
       <div className="p-4 max-w-screen-md mx-auto">
         <div className="p-4 bg-white dark:bg-gray-800 shadow rounded-lg border border-gray-100 dark:border-gray-700 space-y-4">
+          {/* cancel and submit/save buttons */}
+          <div className="flex justify-end space-x-2">
+            <button type="button">Cancel</button>
+            <button type="submit" disabled={isPending} className="rounded-lg border border-gray-300 dark:border-gray-500 bg-green-600 text-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-green-900 hover:text-white transition">
+              {isPending ? "Saving..." : "Save"}
+            </button>
+          </div>
           {/* Status and Title */}
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-y-2">
             <StatusBadge status={status} />
             <input
               type="text"
+              placeholder="Task Title"
               className={`text-sm font-semibold ${poppins.className} dark:text-white bg-transparent border-b border-gray-300 focus:outline-none`}
               defaultValue={taskTitle}
             />
@@ -52,7 +64,11 @@ export default function EditInvoiceForm({
               >
                 {invoiceID}
               </h1>
-              <input type="hidden" name="rawInvoiceID" defaultValue={rawInvoiceID} />
+              <input
+                type="hidden"
+                name="rawInvoiceID"
+                defaultValue={rawInvoiceID}
+              />
             </div>
             <div className="space-y-1">
               <h2
@@ -64,7 +80,7 @@ export default function EditInvoiceForm({
                 type="date"
                 name="invoiceDate"
                 className="text-sm font-semibold bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
-                defaultValue={dateIssued}
+                defaultValue={formattedDateIssued}
               />
             </div>
             <div className="space-y-1">
@@ -77,7 +93,7 @@ export default function EditInvoiceForm({
                 type="date"
                 name="dueDate"
                 className="text-sm font-semibold bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
-                defaultValue={dueDate}
+                defaultValue={formattedDueDate}
               />
             </div>
           </div>
@@ -97,6 +113,7 @@ export default function EditInvoiceForm({
               </h2>
               <input
                 type="email"
+                placeholder="youremail@example.com"
                 className="text-sm bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
                 defaultValue={userEmail}
               />
@@ -113,6 +130,7 @@ export default function EditInvoiceForm({
               <input
                 type="email"
                 name="clientEmail"
+                placeholder="clientemail@example.com"
                 className="text-sm bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
                 defaultValue={clientEmail}
               />
