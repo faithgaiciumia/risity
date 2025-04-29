@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { poppins, workSans } from "../fonts";
 import FullInvoiceHeader from "./FullInvoiceHeader";
@@ -25,6 +26,7 @@ export default function FullInvoice({
 }) {
   //state to toggle between edit and save mode
   const [isEditing, setIsEditing] = useState(false);
+
   return (
     <>
       <div className="p-2">
