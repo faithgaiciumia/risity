@@ -4,8 +4,10 @@ import Link from "next/link";
 
 export default function FullInvoiceHeader({
   invoiceID,
+  setIsEditing,
 }: {
   invoiceID: string;
+  setIsEditing: (value: boolean) => void;
 }) {
   return (
     <div className="flex flex-col md:flex-row md:justify-between md:items-center p-4 bg-white dark:bg-gray-900 rounded-md shadow-sm">
@@ -33,13 +35,12 @@ export default function FullInvoiceHeader({
         </button>
 
         {/* CRUD actions */}
-        <Link href={`/invoices/${invoiceID}/edit`}>
-          <button
-            className={`${workSans.className} flex items-center gap-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm`}
-          >
-            <FaPen /> Edit
-          </button>
-        </Link>
+        <button
+          className={`${workSans.className} flex items-center gap-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm`}
+          onClick={() => setIsEditing(true)}
+        >
+          <FaPen /> Edit
+        </button>
         <button
           className={`${workSans.className} flex items-center gap-1 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm`}
         >

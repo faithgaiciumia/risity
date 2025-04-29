@@ -31,7 +31,7 @@ export default function FullInvoice({
   return (
     <>
       <div className="p-2">
-        <FullInvoiceHeader invoiceID={invoiceID} />
+        <FullInvoiceHeader invoiceID={invoiceID} setIsEditing={setIsEditing} />
       </div>
       <div>
         {isEditing ? (
