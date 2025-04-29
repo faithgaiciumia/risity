@@ -10,7 +10,6 @@ export default function EditInvoiceForm({
   userEmail,
   clientEmail,
   totalAmount,
-  onChange,
 }: {
   dateIssued: string;
   invoiceID: string;
@@ -20,12 +19,10 @@ export default function EditInvoiceForm({
   userEmail: string;
   clientEmail: string;
   totalAmount: string;
-  onChange: (field: string, value: string) => void;
 }) {
   return (
     <div className="p-4 max-w-screen-md mx-auto">
       <div className="p-4 bg-white dark:bg-gray-800 shadow rounded-lg border border-gray-100 dark:border-gray-700 space-y-4">
-        
         {/* Status and Title */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-y-2">
           <StatusBadge status={status} />
@@ -33,7 +30,6 @@ export default function EditInvoiceForm({
             type="text"
             className={`text-sm font-semibold ${poppins.className} dark:text-white bg-transparent border-b border-gray-300 focus:outline-none`}
             value={taskTitle}
-            onChange={(e) => onChange("taskTitle", e.target.value)}
           />
         </div>
 
@@ -44,29 +40,30 @@ export default function EditInvoiceForm({
               type="text"
               className={`text-xl font-bold ${poppins.className} dark:text-white bg-transparent border-b border-gray-300 focus:outline-none`}
               value={invoiceID}
-              onChange={(e) => onChange("invoiceID", e.target.value)}
             />
           </div>
           <div className="space-y-1">
-            <h2 className={`text-sm font-semibold text-gray-700 dark:text-gray-300 ${poppins.className}`}>
+            <h2
+              className={`text-sm font-semibold text-gray-700 dark:text-gray-300 ${poppins.className}`}
+            >
               Date Issued
             </h2>
             <input
               type="date"
               className="text-sm font-semibold bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
               value={dateIssued}
-              onChange={(e) => onChange("dateIssued", e.target.value)}
             />
           </div>
           <div className="space-y-1">
-            <h2 className={`text-sm font-semibold text-gray-700 dark:text-gray-300 ${poppins.className}`}>
+            <h2
+              className={`text-sm font-semibold text-gray-700 dark:text-gray-300 ${poppins.className}`}
+            >
               Due Date
             </h2>
             <input
               type="date"
               className="text-sm font-semibold bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
               value={dueDate}
-              onChange={(e) => onChange("dueDate", e.target.value)}
             />
           </div>
         </div>
@@ -76,27 +73,33 @@ export default function EditInvoiceForm({
         {/* From / To */}
         <div className="flex flex-col md:flex-row justify-between gap-y-6 my-6">
           <div>
-            <p className={`text-sm text-gray-700 dark:text-gray-300 font-semibold mb-2 ${workSans.className}`}>
+            <p
+              className={`text-sm text-gray-700 dark:text-gray-300 font-semibold mb-2 ${workSans.className}`}
+            >
               FROM
             </p>
-            <h2 className={`text-md ${poppins.className} dark:text-white`}>Faith Gaiciumia</h2>
+            <h2 className={`text-md ${poppins.className} dark:text-white`}>
+              Faith Gaiciumia
+            </h2>
             <input
               type="email"
               className="text-sm bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
               value={userEmail}
-              onChange={(e) => onChange("userEmail", e.target.value)}
             />
           </div>
           <div>
-            <p className={`text-sm text-gray-700 dark:text-gray-300 font-semibold mb-2 ${workSans.className}`}>
+            <p
+              className={`text-sm text-gray-700 dark:text-gray-300 font-semibold mb-2 ${workSans.className}`}
+            >
               TO
             </p>
-            <h2 className={`text-md ${poppins.className} dark:text-white`}>Tom Baraka</h2>
+            <h2 className={`text-md ${poppins.className} dark:text-white`}>
+              Tom Baraka
+            </h2>
             <input
               type="email"
               className="text-sm bg-transparent border-b border-gray-300 focus:outline-none dark:text-white"
               value={clientEmail}
-              onChange={(e) => onChange("clientEmail", e.target.value)}
             />
           </div>
         </div>
@@ -146,7 +149,6 @@ export default function EditInvoiceForm({
             type="text"
             className="text-md font-semibold bg-transparent focus:outline-none text-right"
             value={totalAmount}
-            onChange={(e) => onChange("totalAmount", e.target.value)}
           />
         </div>
       </div>

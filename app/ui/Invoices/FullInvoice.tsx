@@ -4,6 +4,7 @@ import { poppins, workSans } from "../fonts";
 import FullInvoiceHeader from "./FullInvoiceHeader";
 import FullInvoiceSaved from "./FullInvoiceSaved";
 import StatusBadge from "./StatusBadge";
+import EditInvoiceForm from "./EditInvoiceForm";
 
 export default function FullInvoice({
   dateIssued,
@@ -33,16 +34,29 @@ export default function FullInvoice({
         <FullInvoiceHeader invoiceID={invoiceID} />
       </div>
       <div>
-        <FullInvoiceSaved
-          dateIssued={dateIssued}
-          invoiceID={invoiceID}
-          status={status}
-          dueDate={dueDate}
-          taskTitle={taskTitle}
-          userEmail={userEmail}
-          clientEmail={clientEmail}
-          totalAmount={totalAmount}
-        />
+        {isEditing ? (
+          <EditInvoiceForm
+            dateIssued={dateIssued}
+            invoiceID={invoiceID}
+            status={status}
+            dueDate={dueDate}
+            taskTitle={taskTitle}
+            userEmail={userEmail}
+            clientEmail={clientEmail}
+            totalAmount={totalAmount}
+          />
+        ) : (
+          <FullInvoiceSaved
+            dateIssued={dateIssued}
+            invoiceID={invoiceID}
+            status={status}
+            dueDate={dueDate}
+            taskTitle={taskTitle}
+            userEmail={userEmail}
+            clientEmail={clientEmail}
+            totalAmount={totalAmount}
+          />
+        )}
       </div>
     </>
   );
