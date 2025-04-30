@@ -176,3 +176,8 @@ export async function getRevenueTrends() {
   }));
   return withCompleteMonths;
 }
+
+export async function deleteInvoice(id: string) {
+  const result = await sql`DELETE FROM invoices WHERE id=${id}`;
+  return result[0] ?? null;
+}
