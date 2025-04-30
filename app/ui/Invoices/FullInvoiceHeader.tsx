@@ -28,10 +28,10 @@ export default function FullInvoiceHeader({
   useEffect(() => {
     if (message === "Invoice Deleted Successfully") {
       toast.success(message);
-      //redirect to invoices page after 15seconds
+      //redirect to invoices page after 10seconds
       setTimeout(() => {
         router.push("/invoices");
-      }, 1500);
+      }, 1000);
     } else if (message) {
       toast.error(message);
     }
@@ -53,7 +53,11 @@ export default function FullInvoiceHeader({
         {/* User actions */}
         <button
           disabled={isEditing}
-          className={`${workSans.className} flex items-center gap-1 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200 text-sm`}
+          className={`${
+            workSans.className
+          } flex items-center gap-1 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200 text-sm ${
+            isEditing ? "opacity-50 cursor-not-allowed hover:bg-blue-600" : ""
+          }`}
         >
           <FaFilePdf /> Pdf
         </button>
