@@ -4,6 +4,7 @@ import { poppins, workSans } from "../fonts";
 import StatusBadge from "./StatusBadge";
 import { useActionState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 export default function EditInvoiceForm({
   rawInvoiceID,
@@ -16,6 +17,7 @@ export default function EditInvoiceForm({
   clientEmail,
   totalAmount,
   rawTotalAmount,
+  setIsEditing,
 }: {
   rawInvoiceID: string;
   dateIssued: string;
@@ -27,7 +29,10 @@ export default function EditInvoiceForm({
   clientEmail: string;
   totalAmount: string;
   rawTotalAmount: number;
+  setIsEditing: (value: boolean) => void;
 }) {
+  //router for rerouting after successful delete
+  const router = useRouter();
   //format dates into date format to display on inputs
   const formattedDateIssued = new Date(dateIssued).toISOString().split("T")[0];
   const formattedDueDate = new Date(dueDate).toISOString().split("T")[0];
@@ -38,8 +43,14 @@ export default function EditInvoiceForm({
   );
   // listen for a message from the action
   useEffect(() => {
-    if (message) {
-      toast(message);
+    if (message === "Invoice updated successfully.") {
+      toast.success(message);
+      //redirect to invoices page after 10seconds
+      setTimeout(() => {
+        setIsEditing(false);
+      }, 1500);
+    } else if (message) {
+      toast.error(message);
     }
   }, [message]);
 

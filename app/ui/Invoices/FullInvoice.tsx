@@ -40,6 +40,7 @@ export default function FullInvoice({
       <div>
         {isEditing ? (
           <EditInvoiceForm
+          setIsEditing={setIsEditing}
           rawInvoiceID={rawInvoiceID}
             dateIssued={dateIssued}
             invoiceID={invoiceID}
