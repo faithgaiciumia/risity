@@ -4,3 +4,11 @@ export type Client = {
   name: string;
   email: string;
 };
+export type Invoice = {
+  id: string;
+  client_email: string;
+  invoice_date: string;
+  total_amount: number;
+  status: string;
+  task_title: string;
+};
