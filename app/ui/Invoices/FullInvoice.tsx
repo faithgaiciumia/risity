@@ -35,7 +35,7 @@ export default function FullInvoice({
   return (
     <>
       <div className="p-2">
-        <FullInvoiceHeader invoiceID={invoiceID} setIsEditing={setIsEditing} isEditing={isEditing} />
+        <FullInvoiceHeader invoiceID={rawInvoiceID} setIsEditing={setIsEditing} isEditing={isEditing} />
       </div>
       <div>
         {isEditing ? (

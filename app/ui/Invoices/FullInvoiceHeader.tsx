@@ -1,6 +1,10 @@
+"use client";
 import { FaPen, FaTrash, FaFilePdf, FaShare } from "react-icons/fa6";
 import { poppins, workSans } from "../fonts";
 import Link from "next/link";
+import { useActionState, useEffect } from "react";
+import { deleteInvoiceAction } from "@/app/lib/actions";
+import { toast } from "react-toastify";
 
 export default function FullInvoiceHeader({
   invoiceID,
@@ -11,6 +15,16 @@ export default function FullInvoiceHeader({
   setIsEditing: (value: boolean) => void;
   isEditing: boolean;
 }) {
+  const [message, formAction, isPending] = useActionState(
+    deleteInvoiceAction,
+    undefined
+  );
+  // listen for a message from the action
+  useEffect(() => {
+    if (message) {
+      toast(message);
+    }
+  }, [message]);
   return (
     <div className="flex flex-col md:flex-row md:justify-between md:items-center p-4 bg-white dark:bg-gray-900 rounded-md shadow-sm">
       {/* heading */}
@@ -46,11 +60,12 @@ export default function FullInvoiceHeader({
         >
           <FaPen /> Edit
         </button>
-        <form>
+        <form action={formAction}>
+          <input name="invoiceID" type="hidden" defaultValue={invoiceID} />
           <button
             className={`${workSans.className} flex items-center gap-1 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm`}
           >
-            <FaTrash /> Delete
+            <FaTrash /> {isPending ? "Deleting..." : "Delete"}
           </button>
         </form>
       </div>
