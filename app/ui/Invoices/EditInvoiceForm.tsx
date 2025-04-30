@@ -81,6 +81,7 @@ export default function EditInvoiceForm({
             <input
               type="text"
               placeholder="Task Title"
+              name="title"
               className={`text-sm font-semibold ${poppins.className} dark:text-white bg-transparent border-b border-gray-300 focus:outline-none`}
               defaultValue={taskTitle}
             />
