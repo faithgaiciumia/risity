@@ -45,6 +45,8 @@ export default function EditInvoiceForm({
   useEffect(() => {
     if (message === "Invoice updated successfully.") {
       toast.success(message);
+      // refresh the page to refetch added data
+      router.refresh();
       //redirect to invoices page after 10seconds
       setTimeout(() => {
         setIsEditing(false);
@@ -61,7 +63,9 @@ export default function EditInvoiceForm({
         <div className="p-4 bg-white dark:bg-gray-800 shadow rounded-lg border border-gray-100 dark:border-gray-700 space-y-4">
           {/* cancel and submit/save buttons */}
           <div className="flex justify-end space-x-2">
-            <button type="button">Cancel</button>
+            <button type="button" onClick={() => setIsEditing(false)}>
+              Cancel
+            </button>
             <button
               type="submit"
               disabled={isPending}
