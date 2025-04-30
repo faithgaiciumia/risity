@@ -1,9 +1,7 @@
 import { getInvoiceById } from "@/app/lib/data";
 import { formatAmount, formatDate, formatInvoiceID } from "@/app/lib/helpers";
 import DashNav from "@/app/ui/Dashboard/DashNav";
-import { poppins, workSans } from "@/app/ui/fonts";
 import FullInvoice from "@/app/ui/Invoices/FullInvoice";
-import FullInvoiceHeader from "@/app/ui/Invoices/FullInvoiceHeader";
 
 export default async function InvoiceDetail(props: {
   params: Promise<{ id: string }>;

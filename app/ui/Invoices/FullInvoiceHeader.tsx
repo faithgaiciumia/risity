@@ -46,11 +46,13 @@ export default function FullInvoiceHeader({
         >
           <FaPen /> Edit
         </button>
-        <button
-          className={`${workSans.className} flex items-center gap-1 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm`}
-        >
-          <FaTrash /> Delete
-        </button>
+        <form>
+          <button
+            className={`${workSans.className} flex items-center gap-1 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm`}
+          >
+            <FaTrash /> Delete
+          </button>
+        </form>
       </div>
     </div>
   );
