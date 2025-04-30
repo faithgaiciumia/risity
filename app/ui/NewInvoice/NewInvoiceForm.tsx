@@ -6,8 +6,12 @@ import { createNewInvoice } from "@/app/lib/actions";
 import { toast, ToastContainer } from "react-toastify";
 import { useEffect } from "react";
 import ClientsSelect from "./ClientsSelect";
+import { useRouter } from "next/navigation";
 
 export default function NewInvoiceForm() {
+  //router for rerouting after successful delete
+  const router = useRouter();
+  //handle form submission
   const [message, formAction, isPending] = useActionState(
     createNewInvoice,
     undefined
@@ -15,15 +19,21 @@ export default function NewInvoiceForm() {
 
   // listen for a message from the action
   useEffect(() => {
-    if (message) {
-      toast(message); 
+    if (message === "Invoice created successfully.") {
+      toast.success(message);
+      //redirect to invoices page after 10seconds
+      setTimeout(() => {
+        router.push("/invoices");
+      }, 1000);
+    } else if (message) {
+      toast.error(message);
     }
   }, [message]);
-  
+
   return (
     <form className="space-y-3" action={formAction}>
       <ToastContainer />
-      
+
       {/* task title */}
       <div>
         <div>
@@ -41,7 +51,7 @@ export default function NewInvoiceForm() {
           />
         </div>
       </div>
-      
+
       {/* client name and email input group */}
       <div>
         <div>
@@ -55,7 +65,7 @@ export default function NewInvoiceForm() {
           </Suspense>
         </div>
       </div>
-      
+
       {/* invoice amount input group */}
       <div>
         <div>
@@ -73,7 +83,7 @@ export default function NewInvoiceForm() {
           />
         </div>
       </div>
-      
+
       {/* invoice status input group */}
       <div>
         <div>
@@ -97,13 +107,11 @@ export default function NewInvoiceForm() {
           </select>
         </div>
       </div>
-      
+
       {/* invoice date input group */}
       <div>
         <div>
-          <label className={`mb-4 font-bold ${poppins.className}`}>
-            Date
-          </label>
+          <label className={`mb-4 font-bold ${poppins.className}`}>Date</label>
         </div>
         <div>
           <input
@@ -115,7 +123,7 @@ export default function NewInvoiceForm() {
           />
         </div>
       </div>
-      
+
       {/* due date input group */}
       <div>
         <div>
@@ -132,7 +140,7 @@ export default function NewInvoiceForm() {
           />
         </div>
       </div>
-      
+
       {/* create button */}
       <div className="w-full flex justify-center">
         <button
