@@ -1,7 +1,12 @@
 "use server";
 import { signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
-import { createClient, createInvoice, updateInvoiceSQL } from "./data";
+import {
+  createClient,
+  createInvoice,
+  deleteInvoice,
+  updateInvoiceSQL,
+} from "./data";
 import { getSession } from "./getsession";
 
 export async function signInWithResend(
@@ -54,7 +59,7 @@ export async function createNewInvoice(
       due_date,
       client_email,
       total_amount,
-      task_title
+      task_title,
     });
     return "Invoice created successfully.";
   } catch (error) {
@@ -91,8 +96,6 @@ export async function updateInvoice(
 
     const invoiceID = formData.get("rawInvoiceID") as string;
 
-    
-
     await updateInvoiceSQL(invoiceID, {
       user_email,
       status,
@@ -100,7 +103,7 @@ export async function updateInvoice(
       due_date,
       client_email,
       total_amount,
-      task_title
+      task_title,
     });
     return "Invoice updated successfully.";
   } catch (error) {
@@ -134,5 +137,19 @@ export async function createNewClient(
   } catch (error) {
     console.error("createNewClient error:", error);
     return "Error creating client. Try again.";
+  }
+}
+
+export async function deleteInvoiceAction(
+  prevState: string | undefined,
+  formData: FormData
+) {
+  try {
+    const id = formData.get("invoiceID") as string;
+    await deleteInvoice(id);
+    return "Invoice Deleted Successfully";
+  } catch (error) {
+    console.error("DeleteInvoice error:", error);
+    return "Error deleting invoice. Try again";
   }
 }
