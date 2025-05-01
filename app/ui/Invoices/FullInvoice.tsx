@@ -5,6 +5,7 @@ import FullInvoiceHeader from "./FullInvoiceHeader";
 import FullInvoiceSaved from "./FullInvoiceSaved";
 import StatusBadge from "./StatusBadge";
 import EditInvoiceForm from "./EditInvoiceForm";
+import FullInvoiceSavedPDF from "./FullInvoiceSavedPDF";
 
 export default function FullInvoice({
   rawInvoiceID,
@@ -64,6 +65,7 @@ export default function FullInvoice({
             totalAmount={totalAmount}
           />
         )}
+        <FullInvoiceSavedPDF/>
       </div>
     </>
   );

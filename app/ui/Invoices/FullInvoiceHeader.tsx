@@ -6,8 +6,6 @@ import { useActionState, useEffect } from "react";
 import { deleteInvoiceAction } from "@/app/lib/actions";
 import { toast, ToastContainer } from "react-toastify";
 import { useRouter } from "next/navigation";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
 
 export default function FullInvoiceHeader({
   invoiceID,
@@ -27,23 +25,30 @@ export default function FullInvoiceHeader({
     undefined
   );
   //function to handle pdf export
-  const exportPDF = async () => {
-    const input = document.getElementById("invoice-content");
-    if (!input) {
-      toast.error("Invoice not found");
-      return;
-    }
-    const canvas = await html2canvas(input, { scale: 2 });
-    const imgData = canvas.toDataURL("image/png");
+  // const exportPDF = async () => {
+  //   // const input = document.getElementById("invoice-content");
+  //   // if (!input) {
+  //   //   toast.error("Invoice not found");
+  //   //   return;
+  //   // }
 
-    const pdf = new jsPDF("p", "mm", "a4");
-    const imgProps = pdf.getImageProperties(imgData);
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = pdf.internal.pageSize.getHeight();
+  //   // const opt = {
+  //   //   margin: 0,
+  //   //   filename: `invoice-${invoiceID}.pdf`,
+  //   //   image: { type: "jpeg", quality: 0.98 },
+  //   //   html2canvas: { scale: 2 },
+  //   //   jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+  //   // };
 
-    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-    pdf.save(`invoice-${invoiceID}.pdf`);
-  };
+  //   // await html2pdf().from(input).set(opt).save();
+  //   const doc = new jsPDF();
+  //   doc.html(document.getElementById("invoice-content")!, {
+  //     callback: function (doc) {
+  //       doc.save(`invoice-${invoiceID}.pdf`);
+  //     },
+  //   });
+  // };
+
   // listen for a message from the action
   useEffect(() => {
     if (message === "Invoice Deleted Successfully") {
@@ -73,17 +78,17 @@ export default function FullInvoiceHeader({
         {/* User actions */}
         <button
           disabled={isEditing}
+          onClick={() => window.print()}
           className={`${
             workSans.className
           } flex items-center gap-1 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200 text-sm ${
             isEditing ? "opacity-50 cursor-not-allowed hover:bg-blue-600" : ""
           }`}
         >
-          <FaFilePdf /> Pdf
+          <FaFilePdf /> Print
         </button>
         <button
           disabled={isEditing}
-          onClick={exportPDF}
           className={`${
             workSans.className
           } flex items-center gap-1 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200 text-sm ${

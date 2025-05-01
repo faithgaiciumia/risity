@@ -3,6 +3,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
+.invoice-export * {
+  color: black !important;
+  background-color: white !important;
+  /* or other fallback colors instead of oklch() */
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
