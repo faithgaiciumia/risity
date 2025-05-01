@@ -6,6 +6,8 @@ import { useActionState, useEffect } from "react";
 import { deleteInvoiceAction } from "@/app/lib/actions";
 import { toast, ToastContainer } from "react-toastify";
 import { useRouter } from "next/navigation";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 export default function FullInvoiceHeader({
   invoiceID,
@@ -24,6 +26,24 @@ export default function FullInvoiceHeader({
     deleteInvoiceAction,
     undefined
   );
+  //function to handle pdf export
+  const exportPDF = async () => {
+    const input = document.getElementById("invoice-content");
+    if (!input) {
+      toast.error("Invoice not found");
+      return;
+    }
+    const canvas = await html2canvas(input, { scale: 2 });
+    const imgData = canvas.toDataURL("image/png");
+
+    const pdf = new jsPDF("p", "mm", "a4");
+    const imgProps = pdf.getImageProperties(imgData);
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = pdf.internal.pageSize.getHeight();
+
+    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+    pdf.save(`invoice-${invoiceID}.pdf`);
+  };
   // listen for a message from the action
   useEffect(() => {
     if (message === "Invoice Deleted Successfully") {
@@ -63,7 +83,10 @@ export default function FullInvoiceHeader({
         </button>
         <button
           disabled={isEditing}
-          className={`${workSans.className} flex items-center gap-1 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200 text-sm ${
+          onClick={exportPDF}
+          className={`${
+            workSans.className
+          } flex items-center gap-1 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200 text-sm ${
             isEditing ? "opacity-50 cursor-not-allowed hover:bg-blue-600" : ""
           }`}
         >
@@ -73,7 +96,9 @@ export default function FullInvoiceHeader({
         {/* CRUD actions */}
         <button
           disabled={isEditing}
-          className={`${workSans.className} flex items-center gap-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm ${
+          className={`${
+            workSans.className
+          } flex items-center gap-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm ${
             isEditing ? "opacity-50 cursor-not-allowed hover:bg-blue-600" : ""
           }`}
           onClick={() => setIsEditing(true)}
@@ -83,7 +108,9 @@ export default function FullInvoiceHeader({
         <form action={formAction}>
           <input name="invoiceID" type="hidden" defaultValue={invoiceID} />
           <button
-            className={`${workSans.className} flex items-center gap-1 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm ${
+            className={`${
+              workSans.className
+            } flex items-center gap-1 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm ${
               isEditing ? "opacity-50 cursor-not-allowed hover:bg-blue-600" : ""
             }`}
           >
