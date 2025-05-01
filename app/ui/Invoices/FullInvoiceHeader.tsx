@@ -1,5 +1,5 @@
 "use client";
-import { FaPen, FaTrash, FaFilePdf, FaShare } from "react-icons/fa6";
+import { FaPen, FaTrash, FaShare, FaPrint } from "react-icons/fa6";
 import { poppins, workSans } from "../fonts";
 import Link from "next/link";
 import { useActionState, useEffect } from "react";
@@ -85,7 +85,7 @@ export default function FullInvoiceHeader({
             isEditing ? "opacity-50 cursor-not-allowed hover:bg-blue-600" : ""
           }`}
         >
-          <FaFilePdf /> Print
+          <FaPrint /> Print
         </button>
         <button
           disabled={isEditing}
