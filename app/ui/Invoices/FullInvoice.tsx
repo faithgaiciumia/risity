@@ -5,7 +5,6 @@ import FullInvoiceHeader from "./FullInvoiceHeader";
 import FullInvoiceSaved from "./FullInvoiceSaved";
 import StatusBadge from "./StatusBadge";
 import EditInvoiceForm from "./EditInvoiceForm";
-import FullInvoiceSavedPDF from "./FullInvoiceSavedPDF";
 
 export default function FullInvoice({
   rawInvoiceID,
@@ -17,7 +16,7 @@ export default function FullInvoice({
   userEmail,
   clientEmail,
   totalAmount,
-  rawTotalAmount
+  rawTotalAmount,
 }: {
   rawInvoiceID: string;
   dateIssued: string;
@@ -28,7 +27,7 @@ export default function FullInvoice({
   userEmail: string;
   clientEmail: string;
   totalAmount: string;
-  rawTotalAmount:number;
+  rawTotalAmount: number;
 }) {
   //state to toggle between edit and save mode
   const [isEditing, setIsEditing] = useState(false);
@@ -36,13 +35,17 @@ export default function FullInvoice({
   return (
     <>
       <div className="p-2">
-        <FullInvoiceHeader invoiceID={rawInvoiceID} setIsEditing={setIsEditing} isEditing={isEditing} />
+        <FullInvoiceHeader
+          invoiceID={rawInvoiceID}
+          setIsEditing={setIsEditing}
+          isEditing={isEditing}
+        />
       </div>
       <div>
         {isEditing ? (
           <EditInvoiceForm
-          setIsEditing={setIsEditing}
-          rawInvoiceID={rawInvoiceID}
+            setIsEditing={setIsEditing}
+            rawInvoiceID={rawInvoiceID}
             dateIssued={dateIssued}
             invoiceID={invoiceID}
             status={status}
@@ -65,7 +68,6 @@ export default function FullInvoice({
             totalAmount={totalAmount}
           />
         )}
-        <FullInvoiceSavedPDF/>
       </div>
     </>
   );

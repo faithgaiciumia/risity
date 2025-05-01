@@ -21,7 +21,7 @@ export default function FullInvoiceSaved({
   totalAmount: string;
 }) {
   return (
-    <div className="p-4 max-w-screen-md mx-auto" >
+    <div className="p-4 max-w-screen-md mx-auto" id="invoice-content">
       <div className="p-4 bg-white dark:bg-gray-800 shadow rounded-lg border border-gray-100 dark:border-gray-700 space-y-4">
         {/* Status and Title */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-y-2">

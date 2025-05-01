@@ -3,11 +3,23 @@
 
 @custom-variant dark (&:is(.dark *));
 
-.invoice-export * {
-  color: black !important;
-  background-color: white !important;
-  /* or other fallback colors instead of oklch() */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #invoice-content, #invoice-content * {
+    visibility: visible;
+  }
+  #invoice-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    max-width: 800px; 
+    margin: auto; 
+  }
 }
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
