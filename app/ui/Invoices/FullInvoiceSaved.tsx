@@ -1,31 +1,34 @@
 import { poppins, workSans } from "../fonts";
 import StatusBadge from "./StatusBadge";
 
-export default function FullInvoiceSaved({dateIssued,
-    invoiceID,
-    status,
-    dueDate,
-    taskTitle,
-    userEmail,
-    clientEmail,
-    totalAmount,
-  }: {
-    dateIssued: string;
-    invoiceID: string;
-    status: string;
-    dueDate: string;
-    taskTitle: string;
-    userEmail: string;
-    clientEmail: string;
-    totalAmount: string;
-  }){
-    return(
-        <div className="p-4 max-w-screen-md mx-auto">
+export default function FullInvoiceSaved({
+  dateIssued,
+  invoiceID,
+  status,
+  dueDate,
+  taskTitle,
+  userEmail,
+  clientEmail,
+  totalAmount,
+}: {
+  dateIssued: string;
+  invoiceID: string;
+  status: string;
+  dueDate: string;
+  taskTitle: string;
+  userEmail: string;
+  clientEmail: string;
+  totalAmount: string;
+}) {
+  return (
+    <div className="p-4 max-w-screen-md mx-auto" id="invoice-content">
       <div className="p-4 bg-white dark:bg-gray-800 shadow rounded-lg border border-gray-100 dark:border-gray-700 space-y-4">
         {/* Status and Title */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-y-2">
           <StatusBadge status={status} />
-          <p className={`text-sm font-semibold ${poppins.className} dark:text-white`}>
+          <p
+            className={`text-sm font-semibold ${poppins.className} dark:text-white`}
+          >
             {taskTitle}
           </p>
         </div>
@@ -33,23 +36,33 @@ export default function FullInvoiceSaved({dateIssued,
         {/* Invoice Info */}
         <div className="flex flex-col md:flex-row justify-between gap-y-4">
           <div>
-            <h1 className={`text-xl font-bold ${poppins.className} dark:text-white`}>
+            <h1
+              className={`text-xl font-bold ${poppins.className} dark:text-white`}
+            >
               {invoiceID}
             </h1>
           </div>
           <div className="space-y-1">
-            <h2 className={`text-sm font-semibold text-gray-700 dark:text-gray-300 ${poppins.className}`}>
+            <h2
+              className={`text-sm font-semibold text-gray-700 dark:text-gray-300 ${poppins.className}`}
+            >
               Date Issued
             </h2>
-            <p className={`text-sm font-semibold ${workSans.className} dark:text-gray-400`}>
+            <p
+              className={`text-sm font-semibold ${workSans.className} dark:text-gray-400`}
+            >
               {dateIssued}
             </p>
           </div>
           <div className="space-y-1">
-            <h2 className={`text-sm font-semibold text-gray-700 dark:text-gray-300 ${poppins.className}`}>
+            <h2
+              className={`text-sm font-semibold text-gray-700 dark:text-gray-300 ${poppins.className}`}
+            >
               Due Date
             </h2>
-            <p className={`text-sm font-semibold ${workSans.className} dark:text-gray-400`}>
+            <p
+              className={`text-sm font-semibold ${workSans.className} dark:text-gray-400`}
+            >
               {dueDate}
             </p>
           </div>
@@ -60,28 +73,44 @@ export default function FullInvoiceSaved({dateIssued,
         {/* From / To */}
         <div className="flex flex-col md:flex-row justify-between gap-y-6 my-6">
           <div>
-            <p className={`text-sm text-gray-700 dark:text-gray-300 font-semibold mb-2 ${workSans.className}`}>
+            <p
+              className={`text-sm text-gray-700 dark:text-gray-300 font-semibold mb-2 ${workSans.className}`}
+            >
               FROM
             </p>
-            <h2 className={`text-md ${poppins.className} dark:text-white`}>Faith Gaiciumia</h2>
-            <p className={`text-sm ${workSans.className} dark:text-gray-400`}>{userEmail}</p>
+            <h2 className={`text-md ${poppins.className} dark:text-white`}>
+              Faith Gaiciumia
+            </h2>
+            <p className={`text-sm ${workSans.className} dark:text-gray-400`}>
+              {userEmail}
+            </p>
           </div>
           <div>
-            <p className={`text-sm text-gray-700 dark:text-gray-300 font-semibold mb-2 ${workSans.className}`}>
+            <p
+              className={`text-sm text-gray-700 dark:text-gray-300 font-semibold mb-2 ${workSans.className}`}
+            >
               TO
             </p>
-            <h2 className={`text-md ${poppins.className} dark:text-white`}>Tom Baraka</h2>
-            <p className={`text-sm ${workSans.className} dark:text-gray-400`}>{clientEmail}</p>
+            <h2 className={`text-md ${poppins.className} dark:text-white`}>
+              Tom Baraka
+            </h2>
+            <p className={`text-sm ${workSans.className} dark:text-gray-400`}>
+              {clientEmail}
+            </p>
           </div>
         </div>
 
         {/* Service Header */}
         <hr className="dark:border-gray-600" />
         <div className="flex items-center justify-between mt-4">
-          <h2 className={`${poppins.className} text-sm font-bold text-gray-700 dark:text-gray-300`}>
+          <h2
+            className={`${poppins.className} text-sm font-bold text-gray-700 dark:text-gray-300`}
+          >
             Service
           </h2>
-          <h2 className={`${poppins.className} text-sm font-bold text-gray-700 dark:text-gray-300`}>
+          <h2
+            className={`${poppins.className} text-sm font-bold text-gray-700 dark:text-gray-300`}
+          >
             Total
           </h2>
         </div>
@@ -91,18 +120,26 @@ export default function FullInvoiceSaved({dateIssued,
         {/* Services List */}
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <h2 className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}>
+            <h2
+              className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}
+            >
               Website Design
             </h2>
-            <h2 className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}>
+            <h2
+              className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}
+            >
               Ksh 10,000
             </h2>
           </div>
           <div className="flex items-center justify-between">
-            <h2 className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}>
+            <h2
+              className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}
+            >
               Website Hosting
             </h2>
-            <h2 className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}>
+            <h2
+              className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}
+            >
               Ksh 15,000
             </h2>
           </div>
@@ -111,18 +148,26 @@ export default function FullInvoiceSaved({dateIssued,
         {/* Totals */}
         <div className="space-y-1">
           <div className="flex items-center justify-between">
-            <h2 className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}>
+            <h2
+              className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}
+            >
               Sub-total
             </h2>
-            <h2 className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}>
+            <h2
+              className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}
+            >
               Ksh. 25,000
             </h2>
           </div>
           <div className="flex items-center justify-between">
-            <h2 className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}>
+            <h2
+              className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}
+            >
               10% tax
             </h2>
-            <h2 className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}>
+            <h2
+              className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}
+            >
               Ksh. 2,500
             </h2>
           </div>
@@ -139,5 +184,5 @@ export default function FullInvoiceSaved({dateIssued,
         </div>
       </div>
     </div>
-    )
+  );
 }
