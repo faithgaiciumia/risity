@@ -1,8 +1,10 @@
 import {
+    FaCopy,
   FaFacebook,
   FaLink,
   FaReddit,
   FaShare,
+  FaWhatsapp,
   FaX,
   FaXTwitter,
 } from "react-icons/fa6";
@@ -21,6 +23,9 @@ export default function InvoiceShareButton({
 }: {
   isEditing: boolean;
 }) {
+    const handleCopyLink = () => {
+        console.log("handle copy");
+    }
   return (
     <>
       <DropdownMenu>
