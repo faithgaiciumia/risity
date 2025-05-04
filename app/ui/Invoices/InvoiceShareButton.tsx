@@ -1,11 +1,10 @@
+"use client";
 import {
   FaCopy,
   FaFacebook,
-  FaLink,
   FaReddit,
   FaShare,
   FaWhatsapp,
-  FaX,
   FaXTwitter,
 } from "react-icons/fa6";
 import { workSans } from "../fonts";
