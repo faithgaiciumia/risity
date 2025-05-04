@@ -1,5 +1,5 @@
 import {
-    FaCopy,
+  FaCopy,
   FaFacebook,
   FaLink,
   FaReddit,
@@ -17,15 +17,21 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useState } from "react";
 
 export default function InvoiceShareButton({
   isEditing,
 }: {
   isEditing: boolean;
 }) {
-    const handleCopyLink = () => {
-        console.log("handle copy");
-    }
+  const [copied, setCopied] = useState(false);
+  const handleCopyLink = () => {
+    //copy the link to clipboard
+    navigator.clipboard.writeText(window.location.href);
+    setCopied(true);
+    //after 20 seconds set copied back to false, user can copy again
+    setTimeout(() => setCopied(false), 2000);
+  };
   return (
     <>
       <DropdownMenu>
@@ -43,7 +49,7 @@ export default function InvoiceShareButton({
           <DropdownMenuLabel>Share via</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={handleCopyLink}>
-            <FaCopy className="mr-2" /> Copy Link
+            <FaCopy className="mr-2" /> {copied ? "Link Copied!" : "Copy Link"}
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
             <a
