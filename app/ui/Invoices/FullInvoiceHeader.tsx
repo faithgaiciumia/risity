@@ -88,7 +88,7 @@ export default function FullInvoiceHeader({
         >
           <FaPrint /> Print
         </button>
-        <InvoiceShareButton isEditing={isEditing} />
+        <InvoiceShareButton isEditing={isEditing} invoiceID={invoiceID} />
 
         {/* CRUD actions */}
         <button

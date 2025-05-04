@@ -20,13 +20,20 @@ import { useState } from "react";
 
 export default function InvoiceShareButton({
   isEditing,
+  invoiceID,
 }: {
   isEditing: boolean;
+  invoiceID: string;
 }) {
   const [copied, setCopied] = useState(false);
+  const publicUrl = new URL(
+    `/invoices/public/${invoiceID}`,
+    process.env.NEXT_PUBLIC_SITE_URL
+  ).toString();
+
   const handleCopyLink = () => {
     //copy the link to clipboard
-    navigator.clipboard.writeText(window.location.href);
+    navigator.clipboard.writeText(publicUrl);
     setCopied(true);
     //after 20 seconds set copied back to false, user can copy again
     setTimeout(() => setCopied(false), 2000);
@@ -58,7 +65,7 @@ export default function InvoiceShareButton({
           <DropdownMenuItem asChild>
             <a
               href={`https://wa.me/?text=${encodeURIComponent(
-                window.location.href
+                publicUrl
               )}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -69,7 +76,7 @@ export default function InvoiceShareButton({
           <DropdownMenuItem asChild>
             <a
               href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
-                window.location.href
+                publicUrl
               )}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -80,7 +87,7 @@ export default function InvoiceShareButton({
           <DropdownMenuItem asChild>
             <a
               href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                window.location.href
+                publicUrl
               )}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -91,7 +98,7 @@ export default function InvoiceShareButton({
           <DropdownMenuItem asChild>
             <a
               href={`https://www.reddit.com/submit?url=${encodeURIComponent(
-                window.location.href
+                publicUrl
               )}`}
               target="_blank"
               rel="noopener noreferrer"
