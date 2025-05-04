@@ -110,6 +110,12 @@ export async function getInvoiceById(id: string) {
   return result[0] ?? null;
 }
 
+export async function getInvoiceByIdPublic(id: string) {
+  const result = await sql`SELECT * FROM invoices WHERE id=${id}  LIMIT 1`;
+
+  return result[0] ?? null;
+}
+
 export async function getClients(limit?: number) {
   //get email
   const session = await auth();
