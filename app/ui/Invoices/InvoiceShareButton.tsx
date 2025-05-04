@@ -48,7 +48,12 @@ export default function InvoiceShareButton({
         <DropdownMenuContent className={workSans.className}>
           <DropdownMenuLabel>Share via</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={handleCopyLink}>
+          <DropdownMenuItem
+            onClick={(e) => {
+              e.preventDefault(); //prevent menu from closing onclick
+              handleCopyLink();
+            }}
+          >
             <FaCopy className="mr-2" /> {copied ? "Link Copied!" : "Copy Link"}
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
