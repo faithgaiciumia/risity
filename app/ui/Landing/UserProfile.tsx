@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { workSans } from "../fonts";
-import { FaUser } from "react-icons/fa6";
+import { FaUser, FaUserCheck, FaUserNinja } from "react-icons/fa6";
 import LogoutButton from "./LogoutButton";
 export default function UserProfile() {
   return (
@@ -21,6 +21,9 @@ export default function UserProfile() {
         <DropdownMenuContent className={workSans.className}>
           <DropdownMenuLabel>Your Profile</DropdownMenuLabel>
           <DropdownMenuSeparator />
+          <DropdownMenuItem>
+            <FaUserNinja/> Your Profile
+          </DropdownMenuItem>
           <DropdownMenuItem>
             <LogoutButton />
           </DropdownMenuItem>
