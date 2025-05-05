@@ -62,6 +62,20 @@ export async function updateInvoiceSQL(
       task_title = ${data.task_title} WHERE id=${invoiceID} RETURNING *;`;
   return result[0];
 }
+
+export async function updateUserSQL(data: {
+  email: string;
+  firstName: string;
+  lastName: string;
+  company: string;
+}) {
+  const fullName = data.firstName + " " + data.lastName;
+  const result =
+    await sql`UPDATE users SET  name = ${fullName}, company = ${data.company}
+       WHERE email=${data.email} RETURNING *;`;
+  return result[0];
+}
+
 export async function getInvoices(limit?: number) {
   //get email
   const session = await auth();

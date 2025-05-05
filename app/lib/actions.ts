@@ -6,6 +6,7 @@ import {
   createInvoice,
   deleteInvoice,
   updateInvoiceSQL,
+  updateUserSQL,
 } from "./data";
 import { getSession } from "./getsession";
 
@@ -109,6 +110,37 @@ export async function updateInvoice(
   } catch (error) {
     console.error("updateInvoice error:", error);
     return "Error updating invoice. Try again.";
+  }
+}
+
+export async function updateUser(
+  prevState: string | undefined,
+  formData: FormData
+) {
+  try {
+    //check if user is logged in and extract email
+    const session = await getSession();
+    if (!session || !session.user?.email) {
+      throw new Error("user not logged in");
+    }
+
+    // get the rest of the fields
+    const email = session.user.email;
+
+    const firstName = formData.get("firstName") as string;
+    const lastName = formData.get("lastName") as string;
+    const company = formData.get("company") as string;
+
+    await updateUserSQL({
+      email,
+      firstName,
+      lastName,
+      company,
+    });
+    return "User updated successfully.";
+  } catch (error) {
+    console.error("updateUser error:", error);
+    return "Error updating user. Try again.";
   }
 }
 
