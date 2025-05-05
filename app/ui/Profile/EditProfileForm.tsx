@@ -5,6 +5,7 @@ import UserProfileCircle from "./UserProfileCircle";
 import { updateUser } from "@/app/lib/actions";
 import { toast, ToastContainer } from "react-toastify";
 import { FaSpinner } from "react-icons/fa6";
+import { useRouter } from "next/navigation";
 
 export default function EditProfileForm({
   firstName,
@@ -17,15 +18,22 @@ export default function EditProfileForm({
   email: string;
   company: string;
 }) {
+  //router for refreshing after successful delete
+  const router = useRouter();
   //handle form submission
   const [message, formAction, isPending] = useActionState(
     updateUser,
     undefined
   );
   // listen for a message from the action
+  // listen for a message from the action
   useEffect(() => {
-    if (message) {
-      toast(message);
+    if (message === "User updated successfully.") {
+      toast.success(message);
+      // refresh the page to refetch added data
+      router.refresh();
+    } else if (message) {
+      toast.error(message);
     }
   }, [message]);
   return (
