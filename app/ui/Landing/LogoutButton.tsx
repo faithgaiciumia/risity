@@ -1,13 +1,14 @@
 "use client";
 import { handleSignOut } from "@/app/lib/actions";
 import { useActionState } from "react";
+import { FaSpinner } from "react-icons/fa6";
 
 export default function LogoutButton() {
   const [errorMessage, logoutAction, isPending] = useActionState(
     handleSignOut,
     undefined
   );
-  
+
   return (
     <form action={logoutAction}>
       <button
@@ -17,7 +18,7 @@ export default function LogoutButton() {
       >
         {isPending ? (
           <>
-            <span className="animate-spin border-2 border-white border-t-transparent rounded-full h-5 w-5 mr-2"></span>
+            <FaSpinner />
             Logging out...
           </>
         ) : (
