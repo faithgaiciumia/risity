@@ -9,6 +9,7 @@ import {
 import { workSans } from "../fonts";
 import { FaUser, FaUserCheck, FaUserNinja } from "react-icons/fa6";
 import LogoutButton from "./LogoutButton";
+import Link from "next/link";
 export default function UserProfile() {
   return (
     <>
@@ -19,11 +20,14 @@ export default function UserProfile() {
           <FaUser />
         </DropdownMenuTrigger>
         <DropdownMenuContent className={workSans.className}>
-          <DropdownMenuLabel>Your Profile</DropdownMenuLabel>
+          <DropdownMenuLabel>Profile Menu</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <FaUserNinja/> Your Profile
+          <DropdownMenuItem asChild>
+            <Link href="/profile" className="flex items-center gap-2">
+              <FaUserNinja /> Your Profile
+            </Link>
           </DropdownMenuItem>
+
           <DropdownMenuItem>
             <LogoutButton />
           </DropdownMenuItem>
