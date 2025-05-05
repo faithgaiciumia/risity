@@ -1,5 +1,5 @@
 import DashNav from "../ui/Dashboard/DashNav";
-import { poppins } from "../ui/fonts";
+import { poppins, workSans } from "../ui/fonts";
 import UserProfileCircle from "../ui/Profile/UserProfileCircle";
 
 export default function Profile() {
@@ -17,9 +17,78 @@ export default function Profile() {
           Save Changes
         </button>
       </div>
-      {/* user profile circle */}
+
       <div className="p-4">
-      <UserProfileCircle />
+        <hr className="border-gray-300 dark:border-gray-700 mb-4" />
+
+        {/* user profile circle */}
+        <div className="flex justify-center">
+          <UserProfileCircle />
+        </div>
+
+        <hr className="border-gray-300 dark:border-gray-700 my-4" />
+
+        <form className="max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* First Name */}
+            <div className="flex flex-col">
+              <label
+                className={`${workSans.className} font-bold text-sm mb-1 text-gray-800 dark:text-gray-200`}
+              >
+                First Name
+              </label>
+              <input
+                type="text"
+                className="border border-black dark:border-gray-500 dark:bg-gray-800 dark:text-white rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+                placeholder="Enter first name"
+              />
+            </div>
+
+            {/* Last Name */}
+            <div className="flex flex-col">
+              <label
+                className={`${workSans.className} font-bold text-sm mb-1 text-gray-800 dark:text-gray-200`}
+              >
+                Last Name
+              </label>
+              <input
+                type="text"
+                className="border border-black dark:border-gray-500 dark:bg-gray-800 dark:text-white rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+                placeholder="Enter last name"
+              />
+            </div>
+
+            {/* Email */}
+            <div className="flex flex-col">
+              <label
+                className={`${workSans.className} font-bold text-sm mb-1 text-gray-800 dark:text-gray-200`}
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                className="border border-black dark:border-gray-500 dark:bg-gray-800 dark:text-white rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+                placeholder="Enter email address"
+              />
+            </div>
+
+            {/* Company Name */}
+            <div className="flex flex-col">
+              <label
+                className={`${workSans.className} font-bold text-sm mb-1 text-gray-800 dark:text-gray-200`}
+              >
+                Company Name
+              </label>
+              <input
+                type="text"
+                className="border border-black dark:border-gray-500 dark:bg-gray-800 dark:text-white rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+                placeholder="Enter company name"
+              />
+            </div>
+          </div>
+
+          <hr className="border-gray-300 dark:border-gray-700 my-6" />
+        </form>
       </div>
     </>
   );
