@@ -3,6 +3,7 @@ import { poppins } from "../fonts";
 import Link from "next/link";
 import LightDarkModeToggle from "./LightDarkModeToggle";
 import LogoutButton from "../Landing/LogoutButton";
+import { FaPlus } from "react-icons/fa6";
 
 export default function DashNav() {
   return (
@@ -23,8 +24,9 @@ export default function DashNav() {
             <LightDarkModeToggle />
             <Link href={"/invoices/new"}>
               <button
-                className={`${poppins.className} font-bold text-sm px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition`}
+                className={`${poppins.className} flex items-center gap-2 font-bold text-sm px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition`}
               >
+                <FaPlus/>
                 New
               </button>
             </Link>
