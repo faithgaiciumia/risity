@@ -1,9 +1,12 @@
+import { getUserByEmail } from "../lib/data";
 import DashNav from "../ui/Dashboard/DashNav";
 import { poppins, workSans } from "../ui/fonts";
 import DeleteAccountCard from "../ui/Profile/DeleteAccountCard";
 import UserProfileCircle from "../ui/Profile/UserProfileCircle";
 
-export default function Profile() {
+export default async function Profile() {
+  //get the current user
+  const currentUser = await getUserByEmail();
   return (
     <>
       <DashNav />
