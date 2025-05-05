@@ -20,8 +20,7 @@ export default function DashNav() {
               </h1>
             </div>
           </Link>
-          <div className="flex space-x-4">
-            <LightDarkModeToggle />
+          <div className="flex space-x-4">            
             <Link href={"/invoices/new"}>
               <button
                 className={`${poppins.className} flex items-center gap-2 font-bold text-sm px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition`}
@@ -30,6 +29,7 @@ export default function DashNav() {
                 New
               </button>
             </Link>
+            <LightDarkModeToggle />
             <LogoutButton/>
           </div>
         </div>
