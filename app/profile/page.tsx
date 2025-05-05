@@ -58,6 +58,7 @@ export default async function Profile() {
                 className="border border-black dark:border-gray-500 dark:bg-gray-800 dark:text-white rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder="Enter first name"
                 defaultValue={firstName}
+                name="firstName"
               />
             </div>
 
@@ -73,6 +74,7 @@ export default async function Profile() {
                 className="border border-black dark:border-gray-500 dark:bg-gray-800 dark:text-white rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder="Enter last name"
                 defaultValue={lastName}
+                name="lastName"
               />
             </div>
 
@@ -88,6 +90,7 @@ export default async function Profile() {
                 className="border border-black dark:border-gray-500 dark:bg-gray-800 dark:text-white rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder="Enter email address"
                 defaultValue={currentUser?.email ?? ""}
+                name="email"
               />
             </div>
 
@@ -103,6 +106,7 @@ export default async function Profile() {
                 className="border border-black dark:border-gray-500 dark:bg-gray-800 dark:text-white rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder="Enter company name"
                 defaultValue={currentUser?.company ?? ""}
+                name="company"
               />
             </div>
           </div>
