@@ -1,5 +1,6 @@
 import DashNav from "../ui/Dashboard/DashNav";
 import { poppins, workSans } from "../ui/fonts";
+import DeleteAccountCard from "../ui/Profile/DeleteAccountCard";
 import UserProfileCircle from "../ui/Profile/UserProfileCircle";
 
 export default function Profile() {
@@ -26,9 +27,8 @@ export default function Profile() {
           <UserProfileCircle />
         </div>
 
-        <hr className="border-gray-300 dark:border-gray-700 my-4" />
-
         <form className="max-w-2xl mx-auto">
+          <hr className="border-gray-300 dark:border-gray-700 my-4" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* First Name */}
             <div className="flex flex-col">
@@ -89,6 +89,10 @@ export default function Profile() {
 
           <hr className="border-gray-300 dark:border-gray-700 my-6" />
         </form>
+      </div>
+      {/* delete account card */}
+      <div className="p-4">
+        <DeleteAccountCard />
       </div>
     </>
   );
