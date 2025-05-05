@@ -7,6 +7,19 @@ import UserProfileCircle from "../ui/Profile/UserProfileCircle";
 export default async function Profile() {
   //get the current user
   const currentUser = await getUserByEmail();
+
+  //separate first and last name
+  const fullName = currentUser.name;
+
+  let firstName = "";
+  let lastName = "";
+
+  if (fullName) {
+    const [first, ...rest] = fullName.split(" ");
+    firstName = first;
+    lastName = rest.join(" ");
+  }
+
   return (
     <>
       <DashNav />
@@ -44,6 +57,7 @@ export default async function Profile() {
                 type="text"
                 className="border border-black dark:border-gray-500 dark:bg-gray-800 dark:text-white rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder="Enter first name"
+                defaultValue={firstName}
               />
             </div>
 
@@ -58,6 +72,7 @@ export default async function Profile() {
                 type="text"
                 className="border border-black dark:border-gray-500 dark:bg-gray-800 dark:text-white rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder="Enter last name"
+                defaultValue={lastName}
               />
             </div>
 
@@ -72,6 +87,7 @@ export default async function Profile() {
                 type="email"
                 className="border border-black dark:border-gray-500 dark:bg-gray-800 dark:text-white rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder="Enter email address"
+                defaultValue={currentUser?.email ?? ""}
               />
             </div>
 
@@ -86,6 +102,7 @@ export default async function Profile() {
                 type="text"
                 className="border border-black dark:border-gray-500 dark:bg-gray-800 dark:text-white rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder="Enter company name"
+                defaultValue={currentUser?.company ?? ""}
               />
             </div>
           </div>
