@@ -70,11 +70,12 @@ export function AppSidebar() {
                   <SidebarMenuButton asChild>
                     <Link
                       href={item.url}
-                      className={`${
+                      className={`${poppins.className} hover:text-green-600 ${
                         currentPath === item.url ||
-                        (currentPath.startsWith(item.url + "/") &&
-                          "text-green-600")
-                      } ${poppins.className}`}
+                        currentPath.startsWith(item.url + "/")
+                          ? "text-green-600"
+                          : ""
+                      }`}
                     >
                       <item.icon />
                       <span>{item.title}</span>
