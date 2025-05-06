@@ -12,11 +12,13 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
+import { BiCalculator } from "react-icons/bi";
 
 // Menu items.
 const items = [
@@ -50,8 +52,13 @@ const items = [
 export function AppSidebar() {
   return (
     <Sidebar>
+      <SidebarHeader className="my-6 flex flex-col items-center justify-center">
+        <div className="flex items-center justify-center bg-blue-100">
+          <BiCalculator className="text-green-500 text-2xl hidden" />
+        </div>
+      </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup>          
+        <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
