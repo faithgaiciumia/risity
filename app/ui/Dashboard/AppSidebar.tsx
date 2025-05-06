@@ -51,8 +51,7 @@ export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+        <SidebarGroup>          
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
