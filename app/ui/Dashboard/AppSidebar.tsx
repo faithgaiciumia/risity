@@ -21,6 +21,7 @@ import {
 import Link from "next/link";
 import { BiCalculator } from "react-icons/bi";
 import { usePathname } from "next/navigation";
+import { poppins } from "../fonts";
 
 // Menu items.
 const items = [
@@ -70,8 +71,10 @@ export function AppSidebar() {
                     <Link
                       href={item.url}
                       className={`${
-                        currentPath === item.url && "text-green-600"
-                      }`}
+                        currentPath === item.url ||
+                        (currentPath.startsWith(item.url + "/") &&
+                          "text-green-600")
+                      } ${poppins.className}`}
                     >
                       <item.icon />
                       <span>{item.title}</span>
