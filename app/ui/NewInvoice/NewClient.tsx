@@ -1,3 +1,4 @@
+"use client";
 import { poppins } from "../fonts";
 import { useActionState, useEffect } from "react";
 import { createNewClient } from "@/app/lib/actions";
