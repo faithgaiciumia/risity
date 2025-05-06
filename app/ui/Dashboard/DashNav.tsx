@@ -6,6 +6,7 @@ import LogoutButton from "../Landing/LogoutButton";
 import { FaPlus } from "react-icons/fa6";
 import UserProfile from "../Landing/UserProfile";
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import AddNewBtn from "./AddNewBtn";
 
 export default function DashNav() {
   return (
@@ -26,16 +27,8 @@ export default function DashNav() {
               </div>
             </Link>
           </div>
-
           <div className="flex space-x-4">
-            <Link href={"/invoices/new"}>
-              <button
-                className={`${poppins.className} flex items-center gap-2 font-bold text-sm px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition`}
-              >
-                <FaPlus />
-                New
-              </button>
-            </Link>
+            <AddNewBtn />
             <LightDarkModeToggle />
             <UserProfile />
           </div>
