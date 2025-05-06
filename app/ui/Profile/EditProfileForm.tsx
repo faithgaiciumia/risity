@@ -25,7 +25,7 @@ export default function EditProfileForm({
     updateUser,
     undefined
   );
-  // listen for a message from the action
+  
   // listen for a message from the action
   useEffect(() => {
     if (message === "User updated successfully.") {

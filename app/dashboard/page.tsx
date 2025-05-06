@@ -15,7 +15,6 @@ export default function Dashboard() {
       <div className="my-2 p-4 flex flex-col md:flex-row gap-6">
         {/* recent invoices div */}
         <RecentInvoices/>
-
         {/* stats div */}
         <StatsOverview/>        
       </div>
