@@ -1,3 +1,4 @@
+"use client";
 import {
   FileText,
   LayoutDashboard,
@@ -19,6 +20,7 @@ import {
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import { BiCalculator } from "react-icons/bi";
+import { usePathname } from "next/navigation";
 
 // Menu items.
 const items = [
@@ -50,6 +52,7 @@ const items = [
 ];
 
 export function AppSidebar() {
+  const currentPath = usePathname();
   return (
     <Sidebar>
       <SidebarHeader className="my-6 flex flex-col items-center justify-center">
@@ -64,7 +67,12 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <Link href={item.url}>
+                    <Link
+                      href={item.url}
+                      className={`${
+                        currentPath === item.url && "text-green-600"
+                      }`}
+                    >
                       <item.icon />
                       <span>{item.title}</span>
                     </Link>
