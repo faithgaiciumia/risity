@@ -13,11 +13,16 @@ export default function ClientCardGrid({
 }) {
   return (
     <div className="min-h-[180px] h-full flex flex-col justify-between p-4 bg-white dark:bg-gray-900 shadow rounded-lg border border-gray-100 dark:border-gray-700 hover:border-green-600 hover:scale-[1.02] transition-transform duration-200 ease-in-out cursor-pointer">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center gap-4">
+        <div className="bg-blue-600 w-[30px] h-[30px] flex items-center justify-center rounded-[50%]">
+          <p className={`${poppins.className} text-sm text-white`}>
+            {name?.charAt(0).toUpperCase() ?? ""}
+          </p>
+        </div>
         <p
           className={`text-sm font-semibold text-gray-800 dark:text-white ${poppins.className}`}
         >
-          {companyName}
+          {name}
         </p>
       </div>
 
@@ -27,12 +32,12 @@ export default function ClientCardGrid({
         <p
           className={`text-sm text-gray-600 dark:text-gray-400 ${poppins.className}`}
         >
-          {name}
+          {email}
         </p>
         <p
-          className={`text-md font-semibold text-gray-800 dark:text-white ${poppins.className}`}
+          className={`text-sm font-semibold text-gray-800 dark:text-white ${poppins.className}`}
         >
-          {email}
+          {companyName?? "No company added yet."}
         </p>
       </div>
     </div>
