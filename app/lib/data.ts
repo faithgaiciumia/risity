@@ -63,6 +63,21 @@ export async function updateInvoiceSQL(
   return result[0];
 }
 
+export async function updateClientSQL(data: {
+  id: string;
+  user_email: string;
+  name: string;
+  email: string;
+  company_name: string;
+}) {
+  const result = await sql`UPDATE clients SET user_email = ${data.user_email},
+      name = ${data.name},
+      email = ${data.email},
+      company_name = ${data.company_name}
+       WHERE id=${data.id} RETURNING *;`;
+  return result[0];
+}
+
 export async function updateUserSQL(data: {
   email: string;
   firstName: string;

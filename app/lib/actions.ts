@@ -6,6 +6,7 @@ import {
   createInvoice,
   deleteClient,
   deleteInvoice,
+  updateClientSQL,
   updateInvoiceSQL,
   updateUserSQL,
 } from "./data";
@@ -67,6 +68,38 @@ export async function createNewInvoice(
   } catch (error) {
     console.error("createNewInvoice error:", error);
     return "Error creating invoice. Try again.";
+  }
+}
+
+export async function updateClient(
+  prevState: string | undefined,
+  formData: FormData
+) {
+  try {
+    //check if user is logged in and extract email
+    const session = await getSession();
+    if (!session || !session.user?.email) {
+      throw new Error("user not logged in");
+    }
+
+    // get the rest of the fields
+    const user_email = session.user.email;
+    const name = formData.get("clientName") as string;
+    const email = formData.get("clientEmail") as string;
+    const company_name = formData.get("clientCompanyName") as string;
+    const id = formData.get("clientID") as string;
+
+    await updateClientSQL({
+      user_email,
+      name,
+      email,
+      company_name,
+      id,
+    });
+    return "Invoice updated successfully.";
+  } catch (error) {
+    console.error("updateInvoice error:", error);
+    return "Error updating invoice. Try again.";
   }
 }
 

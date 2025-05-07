@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { FaEdit } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa6";
 import ClientDelete from "./ClientDelete";
+import ClientEdit from "./ClientEdit";
 
 export default function ClientCard({
   id,
@@ -62,14 +63,7 @@ export default function ClientCard({
             </p>
             {/* edit/delete buttons */}
             <div className="flex gap-2 justify-end col-span-1">
-              <Button
-                variant="outline"
-                size="icon"
-                className="text-blue-600 hover:text-blue-800"
-                title="Edit"
-              >
-                <FaEdit />
-              </Button>
+              <ClientEdit id={id} clientName={name} clientEmail={email} clientCompanyName={companyName} />
               <ClientDelete id={id}/>
             </div>
           </div>
