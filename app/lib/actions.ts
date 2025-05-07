@@ -4,6 +4,7 @@ import { AuthError } from "next-auth";
 import {
   createClient,
   createInvoice,
+  deleteClient,
   deleteInvoice,
   updateInvoiceSQL,
   updateUserSQL,
@@ -183,5 +184,19 @@ export async function deleteInvoiceAction(
   } catch (error) {
     console.error("DeleteInvoice error:", error);
     return "Error deleting invoice. Try again";
+  }
+}
+
+export async function deleteClientAction(
+  prevState: string | undefined,
+  formData: FormData
+) {
+  try {
+    const id = formData.get("clientID") as string;
+    await deleteClient(id);
+    return "Client Deleted Successfully";
+  } catch (error) {
+    console.error("DeleteClient error:", error);
+    return "Error deleting client. Try again";
   }
 }

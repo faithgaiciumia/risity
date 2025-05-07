@@ -229,3 +229,8 @@ export async function deleteInvoice(id: string) {
   const result = await sql`DELETE FROM invoices WHERE id=${id}`;
   return result[0] ?? null;
 }
+
+export async function deleteClient(id: string) {
+  const result = await sql`DELETE FROM clients WHERE id=${id}`;
+  return result[0] ?? null;
+}

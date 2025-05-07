@@ -70,7 +70,7 @@ export default function ClientCard({
               >
                 <FaEdit />
               </Button>
-              <ClientDelete/>
+              <ClientDelete id={id}/>
             </div>
           </div>
         </div>
