@@ -30,7 +30,9 @@ export default function ClientCard({
           <div className="col-span-2 flex items-center gap-4">
             {/* client profile circle */}
             <div className="bg-blue-600 w-[30px] h-[30px] flex items-center justify-center rounded-[50%]">
-              <p className={`${poppins.className} text-sm text-white`}>F</p>
+              <p className={`${poppins.className} text-sm text-white`}>
+                {name?.charAt(0).toUpperCase() ?? ""}
+              </p>
             </div>
             {/* client name */}
             <p
