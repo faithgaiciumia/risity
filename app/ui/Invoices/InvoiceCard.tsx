@@ -45,36 +45,37 @@ export default function InvoiceCard({
           taskTitle={taskTitle}
         />
       ) : (
-        <div className="grid my-2 grid-cols-6 items-center justify-between gap-4 p-4 bg-white dark:bg-gray-900 shadow rounded-lg border border-gray-100 dark:border-gray-700 hover:border-green-600 hover:scale-[1.02] transition-transform duration-200 ease-in-out cursor-pointer w-full">
+        <div className="overflow-x-auto">
+          <div className="min-w-[800px] grid my-2 grid-cols-15 items-center justify-between gap-4 p-4 bg-white dark:bg-gray-900 shadow rounded-lg border border-gray-100 dark:border-gray-700 hover:border-green-600 hover:scale-[1.02] transition-transform duration-200 ease-in-out cursor-pointer w-full">
           {/* Invoice ID */}
           <p
-            className={`text-sm font-semibold text-gray-800 dark:text-white ${poppins.className} col-span-1`}
+            className={`text-sm font-semibold text-gray-800 dark:text-white ${poppins.className} col-span-3`}
           >
             {formattedID}
           </p>
 
           {/* Client Email */}
           <p
-            className={`text-sm font-semibold text-gray-700 dark:text-gray-300 ${poppins.className} col-span-1 break-words`}
+            className={`text-sm font-semibold text-gray-700 dark:text-gray-300 ${poppins.className} col-span-3 break-words`}
           >
             {clientEmail}
           </p>
 
           {/* Project Title */}
           <p
-            className={`text-sm text-gray-600 dark:text-gray-400 ${poppins.className} col-span-1`}
+            className={`text-sm text-gray-600 dark:text-gray-400 ${poppins.className} col-span-2`}
           >
             {taskTitle}
           </p>
 
           {/* Status Badge */}
-          <div className="col-span-1">
+          <div className="col-span-2">
             <StatusBadge status={status} />
           </div>
 
           {/* Invoice Date */}
           <p
-            className={`col-span-1 text-sm text-gray-600 dark:text-gray-400 ${poppins.className}`}
+            className={`col-span-3 text-sm text-gray-600 dark:text-gray-400 ${poppins.className}`}
           >
             {new Date(invoiceDate).toLocaleString("en-KE", {
               year: "numeric",
@@ -85,10 +86,11 @@ export default function InvoiceCard({
 
           {/* Amount */}
           <p
-            className={`col-span-1 text-sm font-semibold text-gray-800 dark:text-white ${poppins.className}`}
+            className={`col-span-2 text-sm font-semibold text-gray-800 dark:text-white ${poppins.className}`}
           >
             {formatter.format(totalAmount)}
           </p>
+        </div>
         </div>
       )}
     </>

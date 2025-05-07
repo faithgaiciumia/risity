@@ -26,7 +26,7 @@ export default function ClientCard({
           companyName={companyName}
         />
       ) : (
-        <div className="grid my-2 grid-cols-6 items-center justify-between gap-4 p-4 bg-white dark:bg-gray-900 shadow rounded-lg border border-gray-100 dark:border-gray-700 hover:border-green-600 hover:scale-[1.02] transition-transform duration-200 ease-in-out cursor-pointer w-full">
+        <div className="grid my-2 grid-cols-7 items-center justify-between gap-4 p-4 bg-white dark:bg-gray-900 shadow rounded-lg border border-gray-100 dark:border-gray-700 hover:border-green-600 hover:scale-[1.02] transition-transform duration-200 ease-in-out cursor-pointer w-full">
           <div className="col-span-2 flex items-center gap-4">
             {/* client profile circle */}
             <div className="bg-blue-600 w-[30px] h-[30px] flex items-center justify-center rounded-[50%]">
@@ -55,6 +55,15 @@ export default function ClientCard({
           >
             {companyName || "No company added yet."}
           </p>
+          {/* edit/delete buttons */}
+          <div className="flex gap-2 justify-end col-span-1">
+            <button className="text-sm text-blue-600 hover:underline">
+              Edit
+            </button>
+            <button className="text-sm text-red-600 hover:underline">
+              Delete
+            </button>
+          </div>
         </div>
       )}
     </>
