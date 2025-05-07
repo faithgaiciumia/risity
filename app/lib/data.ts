@@ -90,6 +90,20 @@ export async function getInvoices(limit?: number) {
   return result;
 }
 
+export async function getClientsList(limit?: number) {
+  //get email
+  const session = await auth();
+  if (!session || !session.user?.email) {
+    throw new Error("User is not logged in");
+  }
+  const user_email = session.user.email;
+  const result =
+    await sql`SELECT * FROM clients WHERE user_email = ${user_email} ORDER BY created_at DESC ${
+      limit ? sql`LIMIT ${limit}` : sql``
+    }`;
+  return result;
+}
+
 export async function getStatsOverviewData() {
   try {
     const avgResult =
