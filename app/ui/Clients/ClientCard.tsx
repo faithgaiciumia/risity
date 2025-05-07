@@ -30,7 +30,7 @@ export default function ClientCard({
         />
       ) : (
         <div className="overflow-x-auto">
-          <div className=" min-w-[800px] grid my-2 grid-cols-7 items-center justify-between gap-4 p-4 bg-white dark:bg-gray-900 shadow rounded-lg border border-gray-100 dark:border-gray-700 hover:border-green-600 hover:scale-[1.02] transition-transform duration-200 ease-in-out cursor-pointer w-full">
+          <div className=" min-w-[800px] grid my-2 grid-cols-7 items-center justify-between gap-4 p-4 bg-white dark:bg-gray-900 shadow rounded-lg border border-gray-100 dark:border-gray-700  w-full">
             <div className="col-span-2 flex items-center gap-4">
               {/* client profile circle */}
               <div className="bg-purple-600 w-[30px] h-[30px] flex items-center justify-center rounded-[50%]">
@@ -72,7 +72,7 @@ export default function ClientCard({
               <Button
                 variant="outline"
                 size="icon"
-                className="text-red-600 hover:text-red-800 "
+                className="text-red-600 hover:text-red-800"
                 title="Delete"
               >
                 <FaTrash />
