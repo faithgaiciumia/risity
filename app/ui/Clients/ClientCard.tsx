@@ -5,6 +5,7 @@ import ClientCardGrid from "./ClientCardGrid";
 import { Button } from "@/components/ui/button";
 import { FaEdit } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa6";
+import ClientDelete from "./ClientDelete";
 
 export default function ClientCard({
   id,
@@ -69,14 +70,7 @@ export default function ClientCard({
               >
                 <FaEdit />
               </Button>
-              <Button
-                variant="outline"
-                size="icon"
-                className="text-red-600 hover:text-red-800"
-                title="Delete"
-              >
-                <FaTrash />
-              </Button>
+              <ClientDelete/>
             </div>
           </div>
         </div>

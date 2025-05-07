@@ -38,11 +38,11 @@ export default function ClientCardGrid({
               <FaEllipsisVertical />
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuItem>
-                <FaEdit/> Edit
+              <DropdownMenuItem className="text-blue-600">
+                <FaEdit className="text-blue-600"/> Edit
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <FaTrash/> Delete
+              <DropdownMenuItem className="text-red-600">
+                <FaTrash className="text-red-600"/> Delete
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
