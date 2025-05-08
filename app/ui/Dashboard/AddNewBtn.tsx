@@ -9,7 +9,7 @@ import {
 import { poppins, workSans } from "../fonts";
 import { FaChevronDown, FaPlus } from "react-icons/fa6";
 import Link from "next/link";
-import { FileText, Users } from "lucide-react";
+import { BookCheck, FileText, Users } from "lucide-react";
 
 export default function AddNewBtn() {
   return (
@@ -30,6 +30,11 @@ export default function AddNewBtn() {
         <DropdownMenuItem>
           <Link href={"/clients/new"} className="flex items-center gap-2">
             <Users /> Client
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href={"/services/new"} className="flex items-center gap-2">
+            <BookCheck /> Service
           </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
