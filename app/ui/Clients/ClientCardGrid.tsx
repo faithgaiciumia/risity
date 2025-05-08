@@ -46,8 +46,8 @@ export default function ClientCardGrid({
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuItem
-                onClick={(e) => {
-                  e.preventDefault(); //prevent menu from closing onclick
+                onSelect={(e) => {
+                  e.preventDefault(); // stops dropdown from closing
                 }}
               >
                 <ClientEdit
