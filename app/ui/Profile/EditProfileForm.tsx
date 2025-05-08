@@ -65,7 +65,7 @@ export default function EditProfileForm({
 
         {/* user profile circle */}
         <div className="flex justify-center">
-          <UserProfileCircle />
+          <UserProfileCircle email={email} />
         </div>
 
         <div className="max-w-2xl mx-auto">

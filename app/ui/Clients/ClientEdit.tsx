@@ -29,10 +29,7 @@ export default function ClientEdit({
   clientCompanyName: string;
 }) {
   const router = useRouter();
-  const [message, formAction, isPending] = useActionState(
-    updateClient,
-    undefined
-  );
+  const [message, formAction, isPending] = useActionState(updateClient, "");
 
   // dialog open/close state
   const [open, setOpen] = useState(false);
@@ -43,10 +40,7 @@ export default function ClientEdit({
       toast.success(message);
       // close dialog
       setOpen(false);
-      // wait for toast to show before refreshing
-      setTimeout(() => {
-        router.refresh();
-      }, 1500);
+      router.refresh();
     } else if (message) {
       toast.error(message);
     }
