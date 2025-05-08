@@ -45,7 +45,11 @@ export default function ClientCardGrid({
               <FaEllipsisVertical />
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuItem className="text-blue-600">
+              <DropdownMenuItem
+                onClick={(e) => {
+                  e.preventDefault(); //prevent menu from closing onclick
+                }}
+              >
                 <ClientEdit
                   id={id}
                   clientName={name}
@@ -53,7 +57,11 @@ export default function ClientCardGrid({
                   clientCompanyName={companyName}
                 />
               </DropdownMenuItem>
-              <DropdownMenuItem className="text-red-600">
+              <DropdownMenuItem
+                onClick={(e) => {
+                  e.preventDefault(); //prevent menu from closing onclick
+                }}
+              >
                 <ClientDelete id={id} />
               </DropdownMenuItem>
             </DropdownMenuContent>
