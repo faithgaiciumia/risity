@@ -209,6 +209,31 @@ export async function createClient(data: {
   return result[0]; // Returns the inserted invoice
 }
 
+export async function createService(data: {
+  user_email: string;
+  name: string;
+  description: string;
+  price:number;
+}) {
+  const result = await sql`
+    INSERT INTO services (
+      user_email,
+      name,
+      description,
+      price
+    )
+    VALUES (
+      ${data.user_email},
+      ${data.name},
+      ${data.description},
+      ${data.price}
+    )
+    RETURNING *;
+  `;
+
+  return result[0]; // Returns the inserted invoice
+}
+
 // get amounts by month for dashboard chart
 export async function getRevenueTrends() {
   //get email

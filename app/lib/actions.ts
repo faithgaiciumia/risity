@@ -4,6 +4,7 @@ import { AuthError } from "next-auth";
 import {
   createClient,
   createInvoice,
+  createService,
   deleteClient,
   deleteInvoice,
   updateClientSQL,
@@ -203,6 +204,36 @@ export async function createNewClient(
   } catch (error) {
     console.error("createNewClient error:", error);
     return "Error creating client. Try again.";
+  }
+}
+
+export async function createNewService(
+  prevState: string | undefined,
+  formData: FormData
+) {
+  try {
+    //check if user is logged in and extract email
+    const session = await getSession();
+    if (!session || !session.user?.email) {
+      throw new Error("user not logged in");
+    }
+
+    // get the rest of the fields
+    const user_email = session.user.email;
+    const name = formData.get("serviceName") as string;
+    const description = formData.get("serviceDescription") as string;
+    const price = parseInt(formData.get("servicePrice") as string);
+
+    await createService({
+      user_email,
+      name,
+      description,
+      price,
+    });
+    return "Service created successfully.";
+  } catch (error) {
+    console.error("createNewService error:", error);
+    return "Error creating service. Try again.";
   }
 }
 
