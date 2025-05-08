@@ -4,7 +4,7 @@ import { useViewStore } from "@/app/store/viewStore";
 import GridListToggle from "../Invoices/GridListToggle";
 import { useEffect } from "react";
 
-export default function ClientHeader() {
+export default function ServiceHeader() {
   //get view type - either list or grid
   const { viewType, setViewType } = useViewStore();
   //run the initialize view type on load
@@ -20,7 +20,7 @@ export default function ClientHeader() {
         <h1
           className={`${poppins.className} text-lg font-semibold text-gray-800 dark:text-white`}
         >
-          Clients
+          Services
         </h1>
       </div>
 

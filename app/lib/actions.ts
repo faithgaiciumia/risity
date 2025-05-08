@@ -7,8 +7,10 @@ import {
   createService,
   deleteClient,
   deleteInvoice,
+  deleteService,
   updateClientSQL,
   updateInvoiceSQL,
+  updateServiceSQL,
   updateUserSQL,
 } from "./data";
 import { getSession } from "./getsession";
@@ -101,6 +103,38 @@ export async function updateClient(
   } catch (error) {
     console.error("updateClient error:", error);
     return "Error updating client. Try again.";
+  }
+}
+
+export async function updateService(
+  prevState: string | undefined,
+  formData: FormData
+) {
+  try {
+    //check if user is logged in and extract email
+    const session = await getSession();
+    if (!session || !session.user?.email) {
+      throw new Error("user not logged in");
+    }
+
+    // get the rest of the fields
+    const user_email = session.user.email;
+    const name = formData.get("serviceName") as string;
+    const description = formData.get("serviceDescription") as string;
+    const price = parseInt(formData.get("servicePrice") as string);
+    const id = formData.get("serviceID") as string;
+
+    await updateServiceSQL({
+      user_email,
+      name,
+      description,
+      price,
+      id,
+    });
+    return "Service updated successfully.";
+  } catch (error) {
+    console.error("updateService error:", error);
+    return "Error updating service. Try again.";
   }
 }
 
@@ -262,5 +296,19 @@ export async function deleteClientAction(
   } catch (error) {
     console.error("DeleteClient error:", error);
     return "Error deleting client. Try again";
+  }
+}
+
+export async function deleteServiceAction(
+  prevState: string | undefined,
+  formData: FormData
+) {
+  try {
+    const id = formData.get("serviceID") as string;
+    await deleteService(id);
+    return "Service Deleted Successfully";
+  } catch (error) {
+    console.error("DeleteService error:", error);
+    return "Error deleting service. Try again";
   }
 }

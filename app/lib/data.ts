@@ -78,6 +78,21 @@ export async function updateClientSQL(data: {
   return result[0];
 }
 
+export async function updateServiceSQL(data: {
+  id: string;
+  user_email: string;
+  name: string;
+  description: string;
+  price: number;
+}) {
+  const result = await sql`UPDATE services SET user_email = ${data.user_email},
+      name = ${data.name},
+      description = ${data.description},
+      price = ${data.price}
+       WHERE id=${data.id} RETURNING *;`;
+  return result[0];
+}
+
 export async function updateUserSQL(data: {
   email: string;
   firstName: string;
@@ -114,6 +129,20 @@ export async function getClientsList(limit?: number) {
   const user_email = session.user.email;
   const result =
     await sql`SELECT * FROM clients WHERE user_email = ${user_email} ORDER BY created_at DESC ${
+      limit ? sql`LIMIT ${limit}` : sql``
+    }`;
+  return result;
+}
+
+export async function getServicesList(limit?: number) {
+  //get email
+  const session = await auth();
+  if (!session || !session.user?.email) {
+    throw new Error("User is not logged in");
+  }
+  const user_email = session.user.email;
+  const result =
+    await sql`SELECT * FROM services WHERE user_email = ${user_email} ORDER BY name DESC ${
       limit ? sql`LIMIT ${limit}` : sql``
     }`;
   return result;
@@ -213,7 +242,7 @@ export async function createService(data: {
   user_email: string;
   name: string;
   description: string;
-  price:number;
+  price: number;
 }) {
   const result = await sql`
     INSERT INTO services (
@@ -272,5 +301,10 @@ export async function deleteInvoice(id: string) {
 
 export async function deleteClient(id: string) {
   const result = await sql`DELETE FROM clients WHERE id=${id}`;
+  return result[0] ?? null;
+}
+
+export async function deleteService(id: string) {
+  const result = await sql`DELETE FROM services WHERE id=${id}`;
   return result[0] ?? null;
 }

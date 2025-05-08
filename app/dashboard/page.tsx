@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import DashNav from "../ui/Dashboard/DashNav";
 import Loading from "./loading";
 import Link from "next/link";

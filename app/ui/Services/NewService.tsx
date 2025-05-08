@@ -1,26 +1,34 @@
 "use client";
 import { poppins } from "../fonts";
 import { useActionState, useEffect } from "react";
-import { createNewClient, createNewService } from "@/app/lib/actions";
+import { createNewService } from "@/app/lib/actions";
 import { toast, ToastContainer } from "react-toastify";
 import { FaSpinner } from "react-icons/fa6";
+import { useRouter } from "next/navigation";
 
 export default function NewService() {
+  const router = useRouter();
+
   const [message, formAction, isPending] = useActionState(
     createNewService,
     undefined
   );
   // listen for a message from the action
+
   useEffect(() => {
-    if (message) {
-      toast(message);
+    if (message === "Service created successfully.") {
+      toast.success(message);
+      //navigate to service list page
+      router.push("/services");
+    } else if (message) {
+      toast.error(message);
     }
   }, [message]);
   return (
     <form className="space-y-3" action={formAction}>
       <ToastContainer />
       <div className="mx-4">
-        {/* servie name */}
+        {/* service name */}
         <div>
           <div>
             <label className={`mb-4 font-bold ${poppins.className} text-sm`}>
@@ -57,7 +65,7 @@ export default function NewService() {
         <div>
           <div>
             <label className={`mb-4 font-bold ${poppins.className} text-sm`}>
-              Service Price 
+              Service Price
             </label>
           </div>
           <div>
