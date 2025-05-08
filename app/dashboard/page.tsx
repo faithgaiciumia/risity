@@ -1,4 +1,5 @@
-import { Suspense } from "react";
+"use client";
+import { Suspense, useEffect } from "react";
 import DashNav from "../ui/Dashboard/DashNav";
 import Loading from "./loading";
 import Link from "next/link";
@@ -7,8 +8,15 @@ import { FaAnchor } from "react-icons/fa6";
 import RecentInvoices from "../ui/Dashboard/RecentInvoices";
 import StatsOverview from "../ui/Dashboard/StatsOverview";
 import RevenueTrendsChart from "../ui/Dashboard/RevenueTrendsChart";
+import { useViewStore } from "../store/viewStore";
 
 export default function Dashboard() {
+  //run the initialize view type on load
+    const initializeViewType = useViewStore((state) => state.initializeViewType);
+  
+    useEffect(() => {
+      initializeViewType();
+    }, [initializeViewType]);
   return (
     <Suspense fallback={<Loading />}>
       <DashNav />

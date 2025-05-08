@@ -4,7 +4,7 @@ import { FaThLarge } from "react-icons/fa";
 import { poppins, workSans } from "../fonts";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GridListToggle from "./GridListToggle";
 import { useViewStore } from "@/app/store/viewStore";
 
@@ -15,6 +15,13 @@ export default function InvoiceHeader() {
   const searchParams = useSearchParams();
   const currentStatus = searchParams.get("status") || "all";
   const statuses = ["all", "paid", "pending", "overdue"];
+
+  //run the initialize view type on load
+    const initializeViewType = useViewStore((state) => state.initializeViewType);
+  
+    useEffect(() => {
+      initializeViewType();
+    }, [initializeViewType]);
 
   return (
     <div className="flex flex-col md:flex-row md:justify-between md:items-center p-4">
