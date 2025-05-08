@@ -1,4 +1,3 @@
-"use client";
 import { Suspense, useEffect } from "react";
 import DashNav from "../ui/Dashboard/DashNav";
 import Loading from "./loading";
@@ -11,23 +10,17 @@ import RevenueTrendsChart from "../ui/Dashboard/RevenueTrendsChart";
 import { useViewStore } from "../store/viewStore";
 
 export default function Dashboard() {
-  //run the initialize view type on load
-    const initializeViewType = useViewStore((state) => state.initializeViewType);
-  
-    useEffect(() => {
-      initializeViewType();
-    }, [initializeViewType]);
   return (
     <Suspense fallback={<Loading />}>
       <DashNav />
       <div className="my-2 p-4 flex flex-col md:flex-row gap-6">
         {/* recent invoices div */}
-        <RecentInvoices/>
+        <RecentInvoices />
         {/* stats div */}
-        <StatsOverview/>        
+        <StatsOverview />
       </div>
       <div className="my-2 p-4">
-        <RevenueTrendsChart/>
+        <RevenueTrendsChart />
       </div>
     </Suspense>
   );
