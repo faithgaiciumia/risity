@@ -39,7 +39,7 @@ export default function ClientEdit({
 
   // handle action response
   useEffect(() => {
-    if (message === "Invoice updated successfully.") {
+    if (message === "Client updated successfully.") {
       toast.success(message);
       // close dialog
       setOpen(false);
@@ -50,7 +50,7 @@ export default function ClientEdit({
     } else if (message) {
       toast.error(message);
     }
-  }, [message, router]);
+  }, [message]);
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <ToastContainer />

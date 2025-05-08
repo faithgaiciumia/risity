@@ -96,10 +96,10 @@ export async function updateClient(
       company_name,
       id,
     });
-    return "Invoice updated successfully.";
+    return "Client updated successfully.";
   } catch (error) {
-    console.error("updateInvoice error:", error);
-    return "Error updating invoice. Try again.";
+    console.error("updateClient error:", error);
+    return "Error updating client. Try again.";
   }
 }
 

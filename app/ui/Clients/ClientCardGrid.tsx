@@ -1,7 +1,14 @@
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { poppins } from "../fonts";
 import { FaEllipsisVertical, FaTrash } from "react-icons/fa6";
 import { FaEdit } from "react-icons/fa";
+import ClientEdit from "./ClientEdit";
+import ClientDelete from "./ClientDelete";
 
 export default function ClientCardGrid({
   id,
@@ -39,10 +46,15 @@ export default function ClientCardGrid({
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuItem className="text-blue-600">
-                <FaEdit className="text-blue-600"/> Edit
+                <ClientEdit
+                  id={id}
+                  clientName={name}
+                  clientEmail={email}
+                  clientCompanyName={companyName}
+                />
               </DropdownMenuItem>
               <DropdownMenuItem className="text-red-600">
-                <FaTrash className="text-red-600"/> Delete
+                <ClientDelete id={id} />
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
