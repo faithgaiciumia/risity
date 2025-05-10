@@ -4,6 +4,7 @@ import { AuthError } from "next-auth";
 import {
   createClient,
   createInvoice,
+  createInvoiceService,
   createService,
   deleteClient,
   deleteInvoice,
@@ -58,7 +59,11 @@ export async function createNewInvoice(
 
     const task_title = formData.get("title") as string;
 
-    await createInvoice({
+    const service_id = formData.get("serviceID") as string;
+
+    // create invoice so as to extract the invoice id
+
+    const createdInvoice = await createInvoice({
       user_email,
       status,
       invoice_date,
@@ -67,6 +72,14 @@ export async function createNewInvoice(
       total_amount,
       task_title,
     });
+    const invoice_id = createdInvoice.id;
+
+    //add service to invoice_services table
+    await createInvoiceService({
+      invoice_id,
+      service_id,
+    });
+
     return "Invoice created successfully.";
   } catch (error) {
     console.error("createNewInvoice error:", error);

@@ -10,6 +10,8 @@ import {
 import { useServiceStore } from "@/app/store/serviceStore";
 import NewService from "../Services/NewService";
 
+
+
 export default function ServicesSelect() {
   const { services, loading, error, fetchServices } = useServiceStore();
 
@@ -24,7 +26,7 @@ export default function ServicesSelect() {
     <>
       <select
         required
-        name="serviceName"
+        name="serviceID"
         className={`w-full border px-2 py-4 mt-2 border-gray-700 text-sm ${poppins.className}`}
         defaultValue={""}
       >
@@ -32,7 +34,7 @@ export default function ServicesSelect() {
           Select service
         </option>
         {services.map((service) => (
-          <option key={service.id} value={service.name}>
+          <option key={service.id} value={service.id}>
             {service.name} - {service.price}
           </option>
         ))}

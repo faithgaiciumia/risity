@@ -41,6 +41,25 @@ export async function createInvoice(data: {
   return result[0]; // Returns the inserted invoice
 }
 
+export async function createInvoiceService(data: {
+  invoice_id:string,
+  service_id:string
+}) {
+  const result = await sql`
+    INSERT INTO invoice_services (
+      invoice_id,
+      service_id
+    )
+    VALUES (
+      ${data.invoice_id},      
+      ${data.service_id}      
+    )
+    RETURNING *;
+  `;
+
+  return result[0]; // Returns the inserted invoice service
+}
+
 export async function updateInvoiceSQL(
   invoiceID: string,
   data: {
