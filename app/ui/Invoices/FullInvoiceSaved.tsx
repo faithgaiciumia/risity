@@ -122,9 +122,9 @@ export default function FullInvoiceSaved({
 
         {/* Services List */}
         <div className="space-y-2">
-          {invoiceServices.map((invoiceService) => (
+          {invoiceServices.map((invoiceService, index) => (
             <InvoiceService
-              key={invoiceService.id}
+              key={index}
               serviceName={invoiceService.name}
               serviceDescription={invoiceService.description}
               servicePrice={invoiceService.price}
