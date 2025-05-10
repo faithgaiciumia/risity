@@ -1,3 +1,4 @@
+import { formatAmount } from "@/app/lib/helpers";
 import { workSans } from "../fonts";
 
 export default function InvoiceService({
@@ -19,7 +20,7 @@ export default function InvoiceService({
       <h2
         className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}
       >
-        {servicePrice}
+        {formatAmount(servicePrice)}
       </h2>
     </div>
   );
