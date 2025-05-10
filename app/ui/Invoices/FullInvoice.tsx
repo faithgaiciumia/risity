@@ -17,6 +17,7 @@ export default function FullInvoice({
   clientEmail,
   totalAmount,
   rawTotalAmount,
+  invoiceServices
 }: {
   rawInvoiceID: string;
   dateIssued: string;
@@ -28,6 +29,7 @@ export default function FullInvoice({
   clientEmail: string;
   totalAmount: string;
   rawTotalAmount: number;
+  invoiceServices:any[];
 }) {
   //state to toggle between edit and save mode
   const [isEditing, setIsEditing] = useState(false);
@@ -66,6 +68,7 @@ export default function FullInvoice({
             userEmail={userEmail}
             clientEmail={clientEmail}
             totalAmount={totalAmount}
+            invoiceServices={invoiceServices}
           />
         )}
       </div>

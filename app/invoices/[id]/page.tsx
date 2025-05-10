@@ -13,7 +13,7 @@ export default async function InvoiceDetail(props: {
   const currentInvoice = await getInvoiceById(id);
   //get invoice services 
   const invoiceServices = await getInvoiceServices(id);
-  console.log("invoice services include:", invoiceServices);
+  
   return (
     <>
       <DashNav />       
@@ -31,6 +31,7 @@ export default async function InvoiceDetail(props: {
         clientEmail={currentInvoice.client_email}
         totalAmount={formatAmount(currentInvoice.total_amount)}
         rawTotalAmount={currentInvoice.total_amount}
+        invoiceServices={invoiceServices}
       />
     </>
   );

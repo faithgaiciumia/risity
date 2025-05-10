@@ -1,4 +1,5 @@
 import { poppins, workSans } from "../fonts";
+import InvoiceService from "./InvoiceService";
 import StatusBadge from "./StatusBadge";
 
 export default function FullInvoiceSaved({
@@ -10,6 +11,7 @@ export default function FullInvoiceSaved({
   userEmail,
   clientEmail,
   totalAmount,
+  invoiceServices,
 }: {
   dateIssued: string;
   invoiceID: string;
@@ -19,6 +21,7 @@ export default function FullInvoiceSaved({
   userEmail: string;
   clientEmail: string;
   totalAmount: string;
+  invoiceServices: any[];
 }) {
   return (
     <div className="p-4 max-w-screen-md mx-auto" id="invoice-content">
@@ -119,30 +122,14 @@ export default function FullInvoiceSaved({
 
         {/* Services List */}
         <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <h2
-              className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}
-            >
-              Website Design
-            </h2>
-            <h2
-              className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}
-            >
-              Ksh 10,000
-            </h2>
-          </div>
-          <div className="flex items-center justify-between">
-            <h2
-              className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}
-            >
-              Website Hosting
-            </h2>
-            <h2
-              className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}
-            >
-              Ksh 15,000
-            </h2>
-          </div>
+          {invoiceServices.map((invoiceService) => (
+            <InvoiceService
+              key={invoiceService.id}
+              serviceName={invoiceService.name}
+              serviceDescription={invoiceService.description}
+              servicePrice={invoiceService.price}
+            />
+          ))}
         </div>
 
         {/* Totals */}
