@@ -1,4 +1,4 @@
-import { getInvoiceById } from "@/app/lib/data";
+import { getInvoiceById, getInvoiceServices } from "@/app/lib/data";
 import { formatAmount, formatDate, formatInvoiceID } from "@/app/lib/helpers";
 import DashNav from "@/app/ui/Dashboard/DashNav";
 import FullInvoice from "@/app/ui/Invoices/FullInvoice";
@@ -11,6 +11,9 @@ export default async function InvoiceDetail(props: {
   const id = params.id;
   //get the invoice
   const currentInvoice = await getInvoiceById(id);
+  //get invoice services 
+  const invoiceServices = await getInvoiceServices(id);
+  console.log("invoice services include:", invoiceServices);
   return (
     <>
       <DashNav />       

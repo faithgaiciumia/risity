@@ -42,8 +42,8 @@ export async function createInvoice(data: {
 }
 
 export async function createInvoiceService(data: {
-  invoice_id:string,
-  service_id:string
+  invoice_id: string;
+  service_id: string;
 }) {
   const result = await sql`
     INSERT INTO invoice_services (
@@ -139,6 +139,17 @@ export async function getInvoices(limit?: number) {
   return result;
 }
 
+export async function getInvoiceServices(invoiceID: string) {
+  //get email
+  const session = await auth();
+  if (!session || !session.user?.email) {
+    throw new Error("User is not logged in");
+  }
+  const user_email = session.user.email;
+  const result =
+    await sql`SELECT s.name, s.description, s.price FROM services s JOIN invoice_services isv ON s.id = isv.service_id WHERE isv.invoice_id = ${invoiceID};`;
+  return result;
+}
 export async function getClientsList(limit?: number) {
   //get email
   const session = await auth();
