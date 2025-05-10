@@ -1,7 +1,7 @@
 "use server";
 import { auth } from "@/auth";
 import { neon } from "@neondatabase/serverless";
-import { Client } from "./definitions";
+import { Client, Service } from "./definitions";
 import { generateLastSixMonths } from "./helpers";
 
 // Initialize Neon SQL client
@@ -214,6 +214,20 @@ export async function getClients(limit?: number) {
       limit ? sql`LIMIT ${limit}` : sql``
     }`;
   return result as Client[];
+}
+
+export async function getServices(limit?: number) {
+  //get email
+  const session = await auth();
+  if (!session || !session.user?.email) {
+    throw new Error("User is not logged in");
+  }
+  const user_email = session.user.email;
+  const result =
+    await sql`SELECT * FROM services WHERE user_email = ${user_email} ORDER BY name DESC ${
+      limit ? sql`LIMIT ${limit}` : sql``
+    }`;
+  return result as Service[];
 }
 
 export async function createClient(data: {

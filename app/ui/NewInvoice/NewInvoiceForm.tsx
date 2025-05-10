@@ -7,6 +7,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { useEffect } from "react";
 import ClientsSelect from "./ClientsSelect";
 import { useRouter } from "next/navigation";
+import ServicesSelect from "./ServicesSelect";
 
 export default function NewInvoiceForm() {
   //router for rerouting after successful delete
@@ -62,6 +63,21 @@ export default function NewInvoiceForm() {
         <div>
           <Suspense>
             <ClientsSelect />
+          </Suspense>
+        </div>
+      </div>
+
+      {/* service name, desc, and amount */}
+      {/* client name and email input group */}
+      <div>
+        <div>
+          <label className={`mb-4 font-bold ${poppins.className}`}>
+            Client
+          </label>
+        </div>
+        <div>
+          <Suspense>
+            <ServicesSelect />
           </Suspense>
         </div>
       </div>

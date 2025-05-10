@@ -12,3 +12,9 @@ export type Invoice = {
   status: string;
   task_title: string;
 };
+export type Service = {
+  id: string;
+  name:string;
+  description:string;
+  price:number;
+};
