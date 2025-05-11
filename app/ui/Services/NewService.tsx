@@ -25,68 +25,73 @@ export default function NewService() {
     }
   }, [message]);
   return (
-    <form className="space-y-3" action={formAction}>
+    <form className={`space-y-6 ${poppins.className}`} action={formAction}>
       <ToastContainer />
-      <div className="mx-4">
-        {/* service name */}
+      <div className="mx-4 space-y-4">
+        {/* Service Name */}
         <div>
-          <div>
-            <label className={`mb-4 font-bold ${poppins.className} text-sm`}>
-              Service Name
-            </label>
-          </div>
-          <div>
-            <input
-              type="text"
-              required
-              name="serviceName"
-              placeholder="eg. Website Development"
-              className={`w-full border p-2 mt-2 border-gray-700 text-sm ${poppins.className}`}
-            />
-          </div>
+          <label
+            htmlFor="serviceName"
+            className="block text-sm font-semibold mb-1 text-gray-700 dark:text-gray-300"
+          >
+            Service Name
+          </label>
+          <input
+            type="text"
+            required
+            name="serviceName"
+            id="serviceName"
+            placeholder="e.g. Website Development"
+            className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white p-2 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-400"
+          />
         </div>
-        {/* service descriptio */}
+
+        {/* Service Description */}
         <div>
-          <div>
-            <label className={`mb-4 font-bold ${poppins.className} text-sm`}>
-              Service Description (optional)
-            </label>
-          </div>
-          <div>
-            <input
-              type="text"
-              name="serviceDescription"
-              placeholder="eg. Develop website from designs"
-              className={`w-full border p-2 mt-2 border-gray-700 text-sm ${poppins.className}`}
-            />
-          </div>
+          <label
+            htmlFor="serviceDescription"
+            className="block text-sm font-semibold mb-1 text-gray-700 dark:text-gray-300"
+          >
+            Service Description{" "}
+            <span className="text-gray-400 text-xs">(optional)</span>
+          </label>
+          <input
+            type="text"
+            name="serviceDescription"
+            id="serviceDescription"
+            placeholder="e.g. Develop website from designs"
+            className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white p-2 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-400"
+          />
         </div>
-        {/* service price */}
+
+        {/* Service Price */}
         <div>
-          <div>
-            <label className={`mb-4 font-bold ${poppins.className} text-sm`}>
-              Service Price
-            </label>
-          </div>
-          <div>
-            <input
-              type="number"
-              required
-              name="servicePrice"
-              placeholder="eg. 10000"
-              className={`w-full border p-2 mt-2 border-gray-700 text-sm ${poppins.className}`}
-            />
-          </div>
+          <label
+            htmlFor="servicePrice"
+            className="block text-sm font-semibold mb-1 text-gray-700 dark:text-gray-300"
+          >
+            Service Price
+          </label>
+          <input
+            type="number"
+            required
+            name="servicePrice"
+            id="servicePrice"
+            placeholder="e.g. 10000"
+            className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white p-2 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-400"
+          />
         </div>
-        <div className="w-full flex justify-end">
+
+        {/* Submit Button */}
+        <div className="flex justify-end">
           <button
             disabled={isPending}
-            className="mt-2 border bg-green-400 text-white px-2 py-2 rounded text-sm"
+            className="bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded-md text-sm transition-colors duration-150 disabled:opacity-50 flex items-center gap-2"
           >
             {isPending ? (
-              <span className="flex items-center gap-2">
-                <FaSpinner className="animate-spin" /> Saving ...
-              </span>
+              <>
+                <FaSpinner className="animate-spin" /> Saving...
+              </>
             ) : (
               "Save"
             )}
