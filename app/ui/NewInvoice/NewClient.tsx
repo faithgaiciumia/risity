@@ -10,64 +10,60 @@ export default function NewClient() {
     createNewClient,
     undefined
   );
-  // listen for a message from the action
+
   useEffect(() => {
     if (message) {
       toast(message);
     }
   }, [message]);
+
   return (
-    <form className="space-y-3" action={formAction}>
+    <form className="w-full max-w-md mx-auto space-y-6 p-4 bg-white dark:bg-gray-900" action={formAction}>
       <ToastContainer />
-      <div className="mx-4">
-        {/* client name */}
-        <div>
-          <div>
-            <label className={`mb-4 font-bold ${poppins.className} text-sm`}>
-              Client Name
-            </label>
-          </div>
-          <div>
-            <input
-              type="text"
-              required
-              name="clientName"
-              placeholder="eg. Tom Baraka"
-              className={`w-full border p-2 mt-2 border-gray-700 text-sm ${poppins.className}`}
-            />
-          </div>
-        </div>
-        {/* client email */}
-        <div>
-          <div>
-            <label className={`mb-4 font-bold ${poppins.className} text-sm`}>
-              Client Email
-            </label>
-          </div>
-          <div>
-            <input
-              type="email"
-              required
-              name="clientEmail"
-              placeholder="eg. baraka@gmail.com"
-              className={`w-full border p-2 mt-2 border-gray-700 text-sm ${poppins.className}`}
-            />
-          </div>
-        </div>
-        <div className="w-full flex justify-end">
-          <button
-            disabled={isPending}
-            className="mt-2 border bg-green-400 text-white px-2 py-2 rounded text-sm"
-          >
-            {isPending ? (
-              <span className="flex items-center gap-2">
-                <FaSpinner className="animate-spin" /> Saving ...
-              </span>
-            ) : (
-              "Save"
-            )}
-          </button>
-        </div>
+
+      {/* Client Name */}
+      <div>
+        <label className={`block mb-2 font-semibold text-sm text-gray-700 dark:text-gray-200 ${poppins.className}`}>
+          Client Name
+        </label>
+        <input
+          type="text"
+          name="clientName"
+          required
+          placeholder="e.g. Tom Baraka"
+          className={`w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm text-gray-800 dark:text-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 transition ${poppins.className}`}
+        />
+      </div>
+
+      {/* Client Email */}
+      <div>
+        <label className={`block mb-2 font-semibold text-sm text-gray-700 dark:text-gray-200 ${poppins.className}`}>
+          Client Email
+        </label>
+        <input
+          type="email"
+          name="clientEmail"
+          required
+          placeholder="e.g. baraka@gmail.com"
+          className={`w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm text-gray-800 dark:text-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 transition ${poppins.className}`}
+        />
+      </div>
+
+      {/* Save Button */}
+      <div className="flex justify-end">
+        <button
+          disabled={isPending}
+          className="flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium bg-green-500 hover:bg-green-600 text-white disabled:opacity-50 disabled:cursor-not-allowed transition"
+        >
+          {isPending ? (
+            <>
+              <FaSpinner className="animate-spin" />
+              Saving...
+            </>
+          ) : (
+            "Save"
+          )}
+        </button>
       </div>
     </form>
   );
