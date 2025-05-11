@@ -15,7 +15,7 @@ export default function UserProfile() {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger
-          className={`${workSans.className} flex items-center gap-1 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200 text-sm `}
+         title="Profile" className={`${workSans.className} flex items-center gap-1 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200 text-sm `}
         >
           <FaUser />
         </DropdownMenuTrigger>

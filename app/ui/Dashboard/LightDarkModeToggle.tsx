@@ -27,7 +27,7 @@ export default function LightDarkModeToggle() {
   };
   return (
     <div>
-      <Button variant="outline" size="icon" onClick={toggle}>
+      <Button variant="outline" size="icon" onClick={toggle} title="Light-Dark mode toggle">
         {isDarkMode ? <Sun /> : <Moon />}
       </Button>
     </div>

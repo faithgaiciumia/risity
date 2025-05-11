@@ -15,9 +15,10 @@ export default function AddNewBtn() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
+      title="Create New"
         className={`${poppins.className} flex items-center gap-2 font-bold text-sm px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition`}
       >
-        New <FaChevronDown />
+       <FaPlus className="md:hidden"/> <span className="hidden md:inline">New</span> <FaChevronDown className="hidden md:inline"/>
       </DropdownMenuTrigger>
       <DropdownMenuContent className={workSans.className}>
         <DropdownMenuLabel>Create New: </DropdownMenuLabel>

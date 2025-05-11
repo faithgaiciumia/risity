@@ -18,16 +18,16 @@ export default function DashNav() {
             <div className="h-6 border-l border-gray-300 dark:border-gray-600"></div>
             <Link href={"/dashboard"} className="hover:underline">
               <div className="flex items-center space-x-2">
-                <BiCalculator className="text-green-500 text-2xl" />
+                <BiCalculator className="text-green-500 text-lg md:text-2xl" />
                 <h1
-                  className={`${poppins.className} text-xl font-semibold text-gray-800 dark:text-white`}
+                  className={`${poppins.className} text-xl font-semibold text-gray-800 dark:text-white hidden md:inline`}
                 >
                   Risity
                 </h1>
               </div>
             </Link>
           </div>
-          <div className="flex space-x-4">
+          <div className="flex space-x-2">
             <AddNewBtn />
             <LightDarkModeToggle />
             <UserProfile />
