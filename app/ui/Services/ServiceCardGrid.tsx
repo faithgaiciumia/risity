@@ -22,8 +22,7 @@ export default function ServiceCardGrid({
   price: number;
 }) {
   return (
-    <div className="min-h-[180px] flex flex-col justify-between p-5 bg-white dark:bg-gray-900 shadow rounded-xl border border-gray-200 dark:border-gray-700 hover:border-green-600 hover:scale-[1.02] transition-transform duration-200 ease-in-out cursor-pointer">
-
+    <div className="min-h-[180px] flex flex-col justify-between p-5 bg-white dark:bg-gray-900 shadow rounded-xl border border-gray-200 dark:border-gray-700">
       {/* Top section: name and menu */}
       <div className="flex items-start justify-between">
         <p
@@ -38,7 +37,7 @@ export default function ServiceCardGrid({
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem
-            className="text-blue-600"
+              className="text-blue-600"
               onSelect={(e) => e.preventDefault()}
             >
               <ServiceEdit
@@ -46,10 +45,11 @@ export default function ServiceCardGrid({
                 description={description}
                 name={name}
                 price={price}
-              /> Edit
+              />{" "}
+              Edit
             </DropdownMenuItem>
             <DropdownMenuItem
-            className="text-red-600"
+              className="text-red-600"
               onClick={(e) => e.preventDefault()}
             >
               <ServiceDelete id={id} /> Delete
