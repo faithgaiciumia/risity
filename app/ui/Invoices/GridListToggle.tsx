@@ -16,7 +16,7 @@ export default function GridListToggle({
     <div className="flex items-center gap-2 mt-4 md:mt-0">
       <button
         onClick={() => setViewType("list")}
-        className={`${workSans.className} flex items-center gap-1 border ${
+        className={`${workSans.className} flex items-center gap-1 border text-sm ${
           viewType === "list"
             ? "border-green-400"
             : "border-gray-300 dark:border-gray-700"

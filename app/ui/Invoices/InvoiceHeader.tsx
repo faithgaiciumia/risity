@@ -17,23 +17,23 @@ export default function InvoiceHeader() {
   const statuses = ["all", "paid", "pending", "overdue"];
 
   //run the initialize view type on load
-    const initializeViewType = useViewStore((state) => state.initializeViewType);
-  
-    useEffect(() => {
-      initializeViewType();
-    }, [initializeViewType]);
+  const initializeViewType = useViewStore((state) => state.initializeViewType);
+
+  useEffect(() => {
+    initializeViewType();
+  }, [initializeViewType]);
 
   return (
     <div className="flex flex-col md:flex-row md:justify-between md:items-center p-4">
       {/* heading */}
       <div>
         <h1
-          className={`${poppins.className} text-lg font-semibold text-gray-800 dark:text-white`}
+          className={`${poppins.className} text-md md:text-lg font-semibold text-gray-800 dark:text-white`}
         >
           Invoices
         </h1>
       </div>
-
+      <hr className="my-4 md:hidden" />
       {/* filters */}
       <div>
         <ul className="flex flex-wrap items-center gap-2 text-sm font-medium">
@@ -43,7 +43,7 @@ export default function InvoiceHeader() {
                 href={`/invoices?status=${status}`}
                 className={`${
                   workSans.className
-                } px-3 py-1 rounded-md hover:bg-green-100 dark:hover:bg-green-900 ${
+                } px-3 py-1 rounded-md hover:bg-green-100 dark:hover:bg-green-900 text-sm ${
                   currentStatus === status
                     ? "bg-green-200 text-green-800 dark:bg-green-700 dark:text-white"
                     : "text-gray-700 dark:text-gray-300"
@@ -55,9 +55,11 @@ export default function InvoiceHeader() {
           ))}
         </ul>
       </div>
-
+      <hr className="mt-4 md:hidden" />
       {/* toggle view buttons */}
-      <GridListToggle viewType={viewType} setViewType={setViewType} />
+      <div className="flex justify-end">
+        <GridListToggle viewType={viewType} setViewType={setViewType} />
+      </div>
     </div>
   );
 }
