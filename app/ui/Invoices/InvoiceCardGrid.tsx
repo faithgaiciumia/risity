@@ -27,36 +27,44 @@ export default function InvoiceCardGrid({
     .replace(/-/g, "")}-${id.slice(0, 4)}`;
 
   return (
-    <div className="min-h-[180px] h-full flex flex-col justify-between p-4 bg-white dark:bg-gray-900 shadow rounded-lg border border-gray-100 dark:border-gray-700 hover:border-green-600 hover:scale-[1.02] transition-transform duration-200 ease-in-out cursor-pointer">
+    <div className="min-h-[200px] flex flex-col justify-between p-5 bg-white dark:bg-gray-900 shadow rounded-xl border border-gray-200 dark:border-gray-700 hover:border-green-600 hover:scale-[1.02] transition-transform duration-200 ease-in-out cursor-pointer">
+      
+      {/* Header: Status and Amount */}
       <div className="flex items-center justify-between">
         <StatusBadge status={status} />
-        <p className={`text-sm font-semibold text-gray-800 dark:text-white ${poppins.className}`}>
+        <p className={`text-md font-bold text-gray-900 dark:text-white ${poppins.className}`}>
           {formatter.format(totalAmount)}
         </p>
       </div>
 
-      <hr className="my-4 border-gray-300 dark:border-gray-700" />
+      {/* Divider */}
+      <hr className="my-4 border-gray-200 dark:border-gray-700" />
 
-      <div className="space-y-4">
+      {/* Content: Title and Metadata */}
+      <div className="space-y-2">
+        {/* Task Title */}
         <p className={`text-sm text-gray-600 dark:text-gray-400 ${poppins.className}`}>
           {taskTitle}
         </p>
-        <p className={`text-md font-semibold text-gray-800 dark:text-white ${poppins.className}`}>
+
+        {/* Invoice ID */}
+        <p className={`text-sm font-medium text-gray-800 dark:text-white ${poppins.className}`}>
           {formattedID}
         </p>
 
-        <div className="flex items-center justify-between">
-          <p className={`text-sm font-semibold text-gray-700 dark:text-gray-300 break-words ${poppins.className}`}>
-            {clientEmail}
-          </p>
-          <p className={`text-sm text-gray-600 dark:text-gray-400 ${poppins.className}`}>
-            {new Date(invoiceDate).toLocaleString("en-KE", {
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-            })}
-          </p>
-        </div>
+        {/* Client Email */}
+        <p className={`text-sm text-gray-700 dark:text-gray-300 break-words ${poppins.className}`}>
+          {clientEmail}
+        </p>
+
+        {/* Invoice Date */}
+        <p className={`text-xs text-gray-500 dark:text-gray-400 ${poppins.className}`}>
+          {new Date(invoiceDate).toLocaleDateString("en-KE", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })}
+        </p>
       </div>
     </div>
   );

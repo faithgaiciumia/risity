@@ -18,14 +18,17 @@ export default function ClientHeader() {
       {/* heading */}
       <div>
         <h1
-          className={`${poppins.className} text-lg font-semibold text-gray-800 dark:text-white`}
+          className={`${poppins.className} text-md md:text-lg font-semibold text-gray-800 dark:text-white`}
         >
           Clients
         </h1>
       </div>
-
+      <hr className="mt-4 md:hidden" />
       {/* toggle view buttons */}
-      <GridListToggle viewType={viewType} setViewType={setViewType} />
+      <div className="flex justify-end">
+        <GridListToggle viewType={viewType} setViewType={setViewType} />
+      </div>
+      <hr className="my-4 md:hidden" />
     </div>
   );
 }
