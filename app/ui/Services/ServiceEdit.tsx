@@ -57,7 +57,7 @@ export default function ServiceEdit({
           className="text-blue-600 hover:text-blue-800"
           title="Edit"
         >
-          {isPending ? <FaSpinner /> : <FaEdit />}
+          {isPending ? <FaSpinner /> : <FaEdit />} 
         </Button>
       </DialogTrigger>
       <DialogContent>

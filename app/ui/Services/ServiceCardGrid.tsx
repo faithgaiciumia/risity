@@ -38,6 +38,7 @@ export default function ServiceCardGrid({
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem
+            className="text-blue-600"
               onSelect={(e) => e.preventDefault()}
             >
               <ServiceEdit
@@ -45,12 +46,13 @@ export default function ServiceCardGrid({
                 description={description}
                 name={name}
                 price={price}
-              />
+              /> Edit
             </DropdownMenuItem>
             <DropdownMenuItem
+            className="text-red-600"
               onClick={(e) => e.preventDefault()}
             >
-              <ServiceDelete id={id} />
+              <ServiceDelete id={id} /> Delete
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
