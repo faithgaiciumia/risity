@@ -15,6 +15,7 @@ export default function DashNav() {
         <div className="flex justify-between items-center h-16">
           <div className="flex gap-4 items-center">
             <SidebarTrigger />
+            {/* divider */}
             <div className="h-6 border-l border-gray-300 dark:border-gray-600"></div>
             <Link href={"/dashboard"} className="hover:underline">
               <div className="flex items-center space-x-2">

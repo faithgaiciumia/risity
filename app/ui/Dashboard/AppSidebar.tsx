@@ -1,4 +1,5 @@
 "use client";
+
 import {
   FileText,
   LayoutDashboard,
@@ -12,7 +13,6 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -54,35 +54,48 @@ const items = [
 
 export function AppSidebar() {
   const currentPath = usePathname();
+
   return (
-    <Sidebar>
+    <Sidebar className="bg-white dark:bg-gray-950 border-r border-gray-200 dark:border-gray-800 shadow-sm">
+      {/* Logo / Brand */}
       <SidebarHeader className="my-6 flex flex-col items-center justify-center">
-        <div className="flex items-center justify-center bg-blue-100">
-          <BiCalculator className="text-green-500 text-2xl hidden" />
-        </div>
+        <Link href="/dashboard" className="flex items-center space-x-2 hover:opacity-80 transition">
+          <BiCalculator className="text-green-500 text-2xl" />
+          <h1
+            className={`${poppins.className} text-md md:text-xl font-semibold text-gray-800 dark:text-white`}
+          >
+            Risity
+          </h1>
+        </Link>
       </SidebarHeader>
+
+      {/* Menu Items */}
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <Link
-                      href={item.url}
-                      className={`${poppins.className} hover:text-green-600 ${
-                        currentPath === item.url ||
-                        currentPath.startsWith(item.url + "/")
-                          ? "text-green-600"
-                          : ""
-                      }`}
-                    >
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              {items.map((item) => {
+                const isActive =
+                  currentPath === item.url || currentPath.startsWith(item.url + "/");
+
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton asChild>
+                      <Link
+                        href={item.url}
+                        className={`
+                          ${poppins.className} flex items-center w-full px-3 py-2 rounded-md transition
+                          ${isActive ? "bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-400" : "text-gray-700 dark:text-gray-300"}
+                          hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-green-600 dark:hover:text-green-400
+                        `}
+                      >
+                        <item.icon className="mr-2 h-5 w-5" />
+                        <span>{item.title}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
