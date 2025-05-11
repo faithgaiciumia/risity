@@ -25,7 +25,7 @@ export default function ServiceEdit({
   id: string;
   name: string;
   description: string;
-  price: string;
+  price: number;
 }) {
   const router = useRouter();
   const [message, formAction, isPending] = useActionState(

@@ -5,6 +5,7 @@ import { poppins } from "../fonts";
 import ServiceCardGrid from "./ServiceCardGrid";
 import ServiceEdit from "./ServiceEdit";
 import ServiceDelete from "./ServiceDelete";
+import { formatAmount } from "@/app/lib/helpers";
 
 export default function ServiceCard({
   id,
@@ -15,7 +16,7 @@ export default function ServiceCard({
   id: string;
   name: string;
   description: string;
-  price: string;
+  price: number;
 }) {
   const { viewType } = useViewStore();
 
@@ -30,37 +31,27 @@ export default function ServiceCard({
         />
       ) : (
         <div className="overflow-x-auto">
-          <div className=" min-w-[800px] grid my-2 grid-cols-7 items-center justify-between gap-4 p-4 bg-white dark:bg-gray-900 shadow rounded-lg border border-gray-100 dark:border-gray-700  w-full">
-            <div className="col-span-2 flex items-center gap-4">
-              {/* client profile circle */}
-              <div className="bg-purple-600 w-[30px] h-[30px] flex items-center justify-center rounded-[50%]">
-                <p className={`${poppins.className} text-sm text-white`}>
-                  {name?.charAt(0).toUpperCase() ?? ""}
-                </p>
-              </div>
-              {/* client name */}
-              <p
-                className={`text-sm font-semibold text-gray-800 dark:text-white ${poppins.className}`}
-              >
+          <div className="min-w-[800px] grid grid-cols-7 items-center gap-4 px-6 py-4 my-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm hover:border-green-600 transition duration-200">
+            
+            {/* Name */}
+            <div className="col-span-2">
+              <p className={`text-base font-semibold text-gray-900 dark:text-white ${poppins.className}`}>
                 {name}
               </p>
             </div>
 
-            {/* Client Email */}
-            <p
-              className={`text-sm font-semibold text-gray-700 dark:text-gray-300 ${poppins.className} col-span-2 break-words`}
-            >
-              {price}
+            {/* Price */}
+            <p className={`col-span-1 text-sm font-medium text-gray-800 dark:text-gray-300 ${poppins.className}`}>
+              {formatAmount(price)}
             </p>
 
-            {/* client company */}
-            <p
-              className={`text-sm text-gray-600 dark:text-gray-400 ${poppins.className} col-span-2`}
-            >
+            {/* Description */}
+            <p className={`col-span-3 text-sm text-gray-600 dark:text-gray-400 truncate ${poppins.className}`}>
               {description || "No description added yet."}
             </p>
-            {/* edit/delete buttons */}
-            <div className="flex gap-2 justify-end col-span-1">
+
+            {/* Actions */}
+            <div className="col-span-1 flex justify-end gap-2">
               <ServiceEdit
                 id={id}
                 name={name}

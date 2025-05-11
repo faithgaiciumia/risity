@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  BookCheck,
   FileText,
   LayoutDashboard,
   Settings2,
@@ -39,6 +40,11 @@ const items = [
     title: "Clients",
     url: "/clients",
     icon: Users,
+  },
+  {
+    title: "Services",
+    url: "/services",
+    icon: BookCheck,
   },
   {
     title: "Profile",
