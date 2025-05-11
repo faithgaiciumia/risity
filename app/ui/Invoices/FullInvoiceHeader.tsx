@@ -1,5 +1,5 @@
 "use client";
-import { FaPen, FaTrash, FaShare, FaPrint } from "react-icons/fa6";
+import { FaPen, FaTrash, FaShare, FaPrint, FaSpinner } from "react-icons/fa6";
 import { poppins, workSans } from "../fonts";
 import Link from "next/link";
 import { useActionState, useEffect } from "react";
@@ -68,7 +68,7 @@ export default function FullInvoiceHeader({
       {/* heading */}
       <div>
         <h1
-          className={`${poppins.className} text-lg font-semibold text-gray-800 dark:text-white`}
+          className={`${poppins.className} text-md md:text-lg font-semibold text-gray-800 dark:text-white`}
         >
           Full Invoice
         </h1>
@@ -78,20 +78,22 @@ export default function FullInvoiceHeader({
       <div className="flex flex-wrap items-center gap-2 mt-4 md:mt-0">
         {/* User actions */}
         <button
+        title="Print"
           disabled={isEditing}
           onClick={() => window.print()}
           className={`${
             workSans.className
-          } flex items-center gap-1 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200 text-sm ${
+          } flex items-center gap-1 px-4 py-2  border border-gray-300 dark:border-gray-700 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200 text-sm ${
             isEditing ? "opacity-50 cursor-not-allowed hover:bg-blue-600" : ""
           }`}
         >
-          <FaPrint /> Print
+          <FaPrint /> <span className="hidden md:inline">Print</span>
         </button>
         <InvoiceShareButton isEditing={isEditing} invoiceID={invoiceID} />
 
         {/* CRUD actions */}
         <button
+        title="Edit"
           disabled={isEditing}
           className={`${
             workSans.className
@@ -100,18 +102,22 @@ export default function FullInvoiceHeader({
           }`}
           onClick={() => setIsEditing(true)}
         >
-          <FaPen /> Edit
+          <FaPen /> <span className="hidden md:inline">Edit</span>
         </button>
         <form action={formAction}>
           <input name="invoiceID" type="hidden" defaultValue={invoiceID} />
           <button
+          title="Delete"
             className={`${
               workSans.className
             } flex items-center gap-1 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm ${
               isEditing ? "opacity-50 cursor-not-allowed hover:bg-blue-600" : ""
             }`}
           >
-            <FaTrash /> {isPending ? "Deleting..." : "Delete"}
+            {isPending ? <FaSpinner /> : <FaTrash />}
+            <span className="hidden md:inline">
+              {isPending ? "Deleting..." : "Delete"}
+            </span>
           </button>
         </form>
       </div>

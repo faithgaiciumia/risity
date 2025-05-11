@@ -42,6 +42,7 @@ export default function InvoiceShareButton({
     <>
       <DropdownMenu>
         <DropdownMenuTrigger
+        title="share"
           disabled={isEditing}
           className={`${
             workSans.className
@@ -49,7 +50,7 @@ export default function InvoiceShareButton({
             isEditing ? "opacity-50 cursor-not-allowed hover:bg-blue-600" : ""
           }`}
         >
-          <FaShare /> Share
+          <FaShare /> <span className="hidden md:inline">Share</span>
         </DropdownMenuTrigger>
         <DropdownMenuContent className={workSans.className}>
           <DropdownMenuLabel>Share via</DropdownMenuLabel>
