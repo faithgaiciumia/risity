@@ -11,6 +11,7 @@ import ServicesSelect from "./ServicesSelect";
 import ProjectTitleServices from "./ProjectTitleServices";
 import InvoiceClientDetails from "./InvoiceClientDetails";
 import InvoiceDueDates from "./InvoiceDueDates";
+import { useForm } from "react-hook-form";
 
 export default function NewInvoiceForm() {
   //manage step by step form
@@ -22,6 +23,8 @@ export default function NewInvoiceForm() {
     createNewInvoice,
     undefined
   );
+  //useform to manage form input state
+  const { register, handleSubmit } = useForm();
 
   // listen for a message from the action
   useEffect(() => {
