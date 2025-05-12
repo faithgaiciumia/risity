@@ -9,18 +9,39 @@ import {
 } from "@/components/ui/dialog";
 import { useServiceStore } from "@/app/store/serviceStore";
 import NewService from "../Services/NewService";
+import { formatAmount } from "@/app/lib/helpers";
 
-
-
-export default function ServicesSelect() {
+export default function ServicesSelect({
+  amount,
+  setAmount,
+}: {
+  amount: number;
+  setAmount: (value: number) => void;
+}) {
+  //get services
   const { services, loading, error, fetchServices } = useServiceStore();
 
   useEffect(() => {
     fetchServices();
   }, [fetchServices]);
 
-  if (loading) return <option className="text-sm text-green-600">Loading services...</option>;
-  if (error) return <option className="text-sm text-red-600">Error loading services</option>;
+  if (loading)
+    return (
+      <option className="text-sm text-green-600">Loading services...</option>
+    );
+  if (error)
+    return (
+      <option className="text-sm text-red-600">Error loading services</option>
+    );
+
+  //compute amount
+  const computeAmount = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedServiceID = e.target.value;
+    const selectedService = services.find((s) => s.id === selectedServiceID);
+    if (selectedService) {
+      setAmount(amount + selectedService.price);
+    }
+  };
 
   return (
     <>
@@ -29,13 +50,14 @@ export default function ServicesSelect() {
         name="serviceID"
         className={`w-full border px-2 py-4 mt-2 border-gray-700 text-sm ${poppins.className}`}
         defaultValue={""}
+        onChange={computeAmount}
       >
         <option value="" disabled>
           Select service
         </option>
         {services.map((service) => (
           <option key={service.id} value={service.id}>
-            {service.name} - {service.price}
+            {service.name} - {formatAmount(service.price)}
           </option>
         ))}
       </select>
@@ -55,7 +77,7 @@ export default function ServicesSelect() {
           <DialogHeader>
             <DialogTitle>Add Service</DialogTitle>
           </DialogHeader>
-          <NewService/>
+          <NewService />
         </DialogContent>
       </Dialog>
     </>

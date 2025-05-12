@@ -23,8 +23,7 @@ export default function NewInvoiceForm() {
     createNewInvoice,
     undefined
   );
-  //useform to manage form input state
-  const { register, handleSubmit } = useForm();
+  
 
   // listen for a message from the action
   useEffect(() => {

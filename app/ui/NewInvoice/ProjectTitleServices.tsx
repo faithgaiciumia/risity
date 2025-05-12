@@ -1,8 +1,11 @@
+"use client";
 import { Suspense } from "react";
 import { poppins } from "../fonts";
 import ServicesSelect from "./ServicesSelect";
+import { useState } from "react";
 
 export default function ProjectTitleServices() {
+  const [amount, setAmount] = useState(0);
   return (
     <>
       {/* task title */}
@@ -31,11 +34,11 @@ export default function ProjectTitleServices() {
         </div>
         <div>
           <Suspense>
-            <ServicesSelect />
+            <ServicesSelect amount={amount} setAmount={setAmount} />
           </Suspense>
         </div>
       </div>
-      
+
       {/* invoice amount input group */}
       <div>
         <div>
@@ -46,6 +49,7 @@ export default function ProjectTitleServices() {
         <div>
           <input
             type="text"
+            defaultValue={amount}
             name="amount"
             required
             placeholder="2,000"
