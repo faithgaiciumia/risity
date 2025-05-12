@@ -14,6 +14,7 @@ export default function FullInvoiceSaved({
   totalAmount,
   invoiceServices,
   rawTotalAmount,
+  clientName
 }: {
   dateIssued: string;
   invoiceID: string;
@@ -25,6 +26,7 @@ export default function FullInvoiceSaved({
   totalAmount: string;
   invoiceServices: any[];
   rawTotalAmount: number;
+  clientName:string
 }) {
   return (
     <div className="p-4 max-w-screen-md mx-auto" id="invoice-content">
@@ -98,7 +100,7 @@ export default function FullInvoiceSaved({
               TO
             </p>
             <h2 className={`text-md ${poppins.className} dark:text-white`}>
-              Tom Baraka
+              {clientName}
             </h2>
             <p className={`text-sm ${workSans.className} dark:text-gray-400`}>
               {clientEmail}

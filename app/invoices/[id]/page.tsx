@@ -1,4 +1,4 @@
-import { getInvoiceById, getInvoiceServices } from "@/app/lib/data";
+import { getClientByEmail, getInvoiceById, getInvoiceServices } from "@/app/lib/data";
 import { formatAmount, formatDate, formatInvoiceID } from "@/app/lib/helpers";
 import DashNav from "@/app/ui/Dashboard/DashNav";
 import FullInvoice from "@/app/ui/Invoices/FullInvoice";
@@ -13,6 +13,9 @@ export default async function InvoiceDetail(props: {
   const currentInvoice = await getInvoiceById(id);
   //get invoice services 
   const invoiceServices = await getInvoiceServices(id);
+  //get client
+  const client = await getClientByEmail(currentInvoice.client_email);
+  const clientName = client.name;
   
   return (
     <>
@@ -32,6 +35,7 @@ export default async function InvoiceDetail(props: {
         totalAmount={formatAmount(currentInvoice.total_amount)}
         rawTotalAmount={currentInvoice.total_amount}
         invoiceServices={invoiceServices}
+        clientName={clientName}
       />
     </>
   );

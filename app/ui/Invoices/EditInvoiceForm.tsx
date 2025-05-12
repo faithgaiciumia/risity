@@ -18,6 +18,7 @@ export default function EditInvoiceForm({
   totalAmount,
   rawTotalAmount,
   setIsEditing,
+  clientName
 }: {
   rawInvoiceID: string;
   dateIssued: string;
@@ -30,6 +31,7 @@ export default function EditInvoiceForm({
   totalAmount: string;
   rawTotalAmount: number;
   setIsEditing: (value: boolean) => void;
+  clientName:string;
 }) {
   //router for rerouting after successful delete
   const router = useRouter();
@@ -153,7 +155,7 @@ export default function EditInvoiceForm({
                 TO
               </p>
               <h2 className={`text-md ${poppins.className} dark:text-white`}>
-                Tom Baraka
+                {clientName}
               </h2>
               <input
                 type="email"

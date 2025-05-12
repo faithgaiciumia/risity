@@ -246,6 +246,19 @@ export async function getClients(limit?: number) {
   return result as Client[];
 }
 
+export async function getClientByEmail(clientEmail:string) {
+  
+  //get email
+  const session = await auth();
+  if (!session || !session.user?.email) {
+    throw new Error("User is not logged in");
+  }
+  const user_email = session.user.email;
+  const result =
+    await sql`SELECT * FROM clients WHERE user_email = ${user_email} AND email=${clientEmail}`;
+  return result[0];
+}
+
 export async function getServices(limit?: number) {
   //get email
   const session = await auth();
