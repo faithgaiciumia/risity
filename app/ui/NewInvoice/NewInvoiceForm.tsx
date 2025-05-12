@@ -1,15 +1,20 @@
 "use client";
 import { FaSpinner } from "react-icons/fa6";
 import { poppins } from "../fonts";
-import { Suspense, useActionState } from "react";
+import { Suspense, useActionState, useState } from "react";
 import { createNewInvoice } from "@/app/lib/actions";
 import { toast, ToastContainer } from "react-toastify";
 import { useEffect } from "react";
 import ClientsSelect from "./ClientsSelect";
 import { useRouter } from "next/navigation";
 import ServicesSelect from "./ServicesSelect";
+import ProjectTitleServices from "./ProjectTitleServices";
+import InvoiceClientDetails from "./InvoiceClientDetails";
+import InvoiceDueDates from "./InvoiceDueDates";
 
 export default function NewInvoiceForm() {
+  //manage step by step form
+  const [step, setStep] = useState(0);
   //router for rerouting after successful delete
   const router = useRouter();
   //handle form submission
@@ -34,144 +39,44 @@ export default function NewInvoiceForm() {
   return (
     <form className="space-y-3" action={formAction}>
       <ToastContainer />
+      {step === 0 && <ProjectTitleServices />}
+      {step === 1 && <InvoiceClientDetails />}
+      {step === 2 && <InvoiceDueDates />}
 
-      {/* task title */}
-      <div>
-        <div>
-          <label className={`mb-4 font-bold ${poppins.className}`}>
-            Task Title
-          </label>
-        </div>
-        <div>
-          <input
-            type="text"
-            required
-            name="title"
-            placeholder="eg. Baraka Website"
-            className={`w-full border px-2 py-4 mt-2 border-gray-700 dark:border-gray-300 dark:bg-gray-800 dark:text-white text-sm ${poppins.className}`}
-          />
-        </div>
-      </div>
-
-      {/* client name and email input group */}
-      <div>
-        <div>
-          <label className={`mb-4 font-bold ${poppins.className}`}>
-            Client
-          </label>
-        </div>
-        <div>
-          <Suspense>
-            <ClientsSelect />
-          </Suspense>
-        </div>
-      </div>
-
-      {/* service name, desc, and amount */}
-      {/* client name and email input group */}
-      <div>
-        <div>
-          <label className={`mb-4 font-bold ${poppins.className}`}>
-            Client
-          </label>
-        </div>
-        <div>
-          <Suspense>
-            <ServicesSelect />
-          </Suspense>
-        </div>
-      </div>
-
-      {/* invoice amount input group */}
-      <div>
-        <div>
-          <label className={`mb-4 font-bold ${poppins.className}`}>
-            Amount
-          </label>
-        </div>
-        <div>
-          <input
-            type="text"
-            name="amount"
-            required
-            placeholder="2,000"
-            className={`w-full border px-2 py-4 mt-2 border-gray-700 dark:border-gray-300 dark:bg-gray-800 dark:text-white text-sm ${poppins.className}`}
-          />
-        </div>
-      </div>
-
-      {/* invoice status input group */}
-      <div>
-        <div>
-          <label className={`mb-4 font-bold ${poppins.className}`}>
-            Invoice Status
-          </label>
-        </div>
-        <div>
-          <select
-            required
-            name="status"
-            className={`w-full border px-2 py-4 mt-2 border-gray-700 dark:border-gray-300 dark:bg-gray-800 dark:text-white text-sm ${poppins.className}`}
-            defaultValue={""}
+      {/*next, back, and save buttons */}
+      <div className="flex justify-between mt-6">
+        {step > 0 && (
+          <button
+            type="button"
+            onClick={() => setStep((prev) => prev - 1)}
+            className="px-4 py-2 bg-gray-300 dark:bg-gray-700 text-sm rounded hover:bg-gray-400"
           >
-            <option value="" disabled>
-              Select status
-            </option>
-            <option value="Paid">Paid</option>
-            <option value="Pending">Pending</option>
-            <option value="Overdue">Overdue</option>
-          </select>
-        </div>
-      </div>
-
-      {/* invoice date input group */}
-      <div>
-        <div>
-          <label className={`mb-4 font-bold ${poppins.className}`}>Date</label>
-        </div>
-        <div>
-          <input
-            type="date"
-            name="invoiceDate"
-            required
-            defaultValue={new Date().toISOString().split("T")[0]}
-            className={`w-full border px-2 py-4 mt-2 border-gray-700 dark:border-gray-300 dark:bg-gray-800 dark:text-white text-sm ${poppins.className}`}
-          />
-        </div>
-      </div>
-
-      {/* due date input group */}
-      <div>
-        <div>
-          <label className={`mb-4 font-bold ${poppins.className}`}>
-            Due Date
-          </label>
-        </div>
-        <div>
-          <input
-            type="date"
-            name="dueDate"
-            required
-            className={`w-full border px-2 py-4 mt-2 border-gray-700 dark:border-gray-300 dark:bg-gray-800 dark:text-white text-sm ${poppins.className}`}
-          />
-        </div>
-      </div>
-
-      {/* create button */}
-      <div className="w-full flex justify-center">
-        <button
-          type="submit"
-          disabled={isPending}
-          className="mt-6 w-[300px] flex items-center justify-center gap-2 rounded-lg border border-gray-300 dark:border-gray-500 bg-green-600 text-white px-6 py-4 text-sm font-medium shadow-sm hover:bg-green-900 hover:text-white transition"
-        >
-          {isPending ? (
-            <span className="flex items-center gap-2">
-              <FaSpinner className="animate-spin" /> Creating ...
-            </span>
-          ) : (
-            "Create"
-          )}
-        </button>
+            Back
+          </button>
+        )}
+        {step < 2 ? (
+          <button
+            type="button"
+            onClick={() => setStep((prev) => prev + 1)}
+            className="px-4 py-2 bg-green-500 text-white text-sm rounded hover:bg-green-700"
+          >
+            Next
+          </button>
+        ) : (
+          <button
+            type="submit"
+            disabled={isPending}
+            className="w-[300px] flex items-center justify-center gap-2 rounded-lg bg-green-600 text-white px-6 py-4 text-sm font-medium shadow-sm hover:bg-green-900 transition"
+          >
+            {isPending ? (
+              <>
+                <FaSpinner className="animate-spin" /> Creating ...
+              </>
+            ) : (
+              "Create"
+            )}
+          </button>
+        )}
       </div>
     </form>
   );
