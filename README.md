@@ -46,7 +46,7 @@
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/risity.git
+git clone https://github.com/faithgaiciumia/risity.git
 cd risity
 npm install
 ```
