@@ -1,3 +1,4 @@
+import { formatAmount } from "@/app/lib/helpers";
 import { poppins, workSans } from "../fonts";
 import InvoiceService from "./InvoiceService";
 import StatusBadge from "./StatusBadge";
@@ -12,6 +13,7 @@ export default function FullInvoiceSaved({
   clientEmail,
   totalAmount,
   invoiceServices,
+  rawTotalAmount,
 }: {
   dateIssued: string;
   invoiceID: string;
@@ -22,6 +24,7 @@ export default function FullInvoiceSaved({
   clientEmail: string;
   totalAmount: string;
   invoiceServices: any[];
+  rawTotalAmount: number;
 }) {
   return (
     <div className="p-4 max-w-screen-md mx-auto" id="invoice-content">
@@ -143,7 +146,7 @@ export default function FullInvoiceSaved({
             <h2
               className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}
             >
-              Ksh. 25,000
+              {totalAmount}
             </h2>
           </div>
           <div className="flex items-center justify-between">
@@ -155,7 +158,7 @@ export default function FullInvoiceSaved({
             <h2
               className={`${workSans.className} text-sm font-semibold dark:text-gray-300`}
             >
-              Ksh. 2,500
+              {formatAmount(rawTotalAmount * 0.1)}
             </h2>
           </div>
         </div>
@@ -166,7 +169,7 @@ export default function FullInvoiceSaved({
             Total
           </h2>
           <h2 className={`${poppins.className} text-md font-semibold`}>
-            {totalAmount}
+            {formatAmount(Number(rawTotalAmount) * 1.1)}
           </h2>
         </div>
       </div>

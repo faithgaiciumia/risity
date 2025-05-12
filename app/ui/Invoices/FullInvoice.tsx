@@ -69,6 +69,7 @@ export default function FullInvoice({
             clientEmail={clientEmail}
             totalAmount={totalAmount}
             invoiceServices={invoiceServices}
+            rawTotalAmount={rawTotalAmount}
           />
         )}
       </div>
