@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Risity 
 
-## Getting Started
+**Risity** is a modern, mobile-friendly invoicing management app with a secure login system and an intuitive dashboard. It helps the user manage invoices, clients, and services efficiently.
 
-First, run the development server:
+---
+
+## 🌟 Features
+
+- **Secure Authentication**: Email-based login powered by [Auth.js](https://authjs.dev/) and [Resend](https://resend.com/)
+- **Invoice Management**: Create, view, edit, delete, share, and print invoices
+- **Client & Service Management**: Easily manage clients
+- **Dashboard Overview**: Get a visual and list-based overview of invoices and client data
+- **Dark & Light Mode**: Toggle between dark and light themes
+- **Mobile Responsive**: Optimized for all devices
+- **List & Grid Views**: Switch between different layout views
+- **Export & Print**: Export invoices to PDF or print them directly
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 15](https://nextjs.org/) with Turbopack
+- **Authentication**: [Auth.js](https://authjs.dev/) + [Resend](https://resend.com/)
+- **Database**: PostgreSQL via [Neon](https://neon.tech/)
+- **State Management**: [Zustand](https://zustand-demo.pmnd.rs/)
+- **UI Components**: [Radix UI](https://www.radix-ui.com/), [Lucide Icons](https://lucide.dev/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **PDF Export**: `html2canvas`, `html2pdf.js`, `jsPDF`
+- **Charts**: [Recharts](https://recharts.org/)
+- **Forms**: [React Hook Form](https://react-hook-form.com/)
+- **Notifications**: [React Toastify](https://fkhadra.github.io/react-toastify/)
+
+> ⚠️ **Note:** Risity is still undergoing testing and potential fixes. Features and performance may improve in future updates.
+
+---
+
+---
+
+##  Getting Started
+
+### Prerequisites
+
+- Node.js v18+
+- PostgreSQL (e.g., Neon or local setup)
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/risity.git
+cd risity
+npm install
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
