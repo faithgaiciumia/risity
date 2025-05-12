@@ -10,13 +10,16 @@ import {
 import { useServiceStore } from "@/app/store/serviceStore";
 import NewService from "../Services/NewService";
 import { formatAmount } from "@/app/lib/helpers";
+import { useForm } from "react-hook-form";
 
 export default function ServicesSelect({
   amount,
   setAmount,
+  register,
 }: {
   amount: number;
   setAmount: (value: number) => void;
+  register: any;
 }) {
   //get services
   const { services, loading, error, fetchServices } = useServiceStore();
@@ -39,7 +42,7 @@ export default function ServicesSelect({
     const selectedServiceID = e.target.value;
     const selectedService = services.find((s) => s.id === selectedServiceID);
     if (selectedService) {
-      setAmount(amount + selectedService.price);
+      setAmount(selectedService.price);
     }
   };
 
@@ -47,7 +50,7 @@ export default function ServicesSelect({
     <>
       <select
         required
-        name="serviceID"
+        {...register("serviceID")}
         className={`w-full border px-2 py-4 mt-2 border-gray-700 text-sm ${poppins.className}`}
         defaultValue={""}
         onChange={computeAmount}

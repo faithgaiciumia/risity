@@ -1,6 +1,8 @@
+import { useForm } from "react-hook-form";
 import { poppins } from "../fonts";
 
-export default function InvoiceDueDates() {
+export default function InvoiceDueDates({register}:{register:any}) {
+  
   return (
     <>
       {/* invoice status input group */}
@@ -13,7 +15,7 @@ export default function InvoiceDueDates() {
         <div>
           <select
             required
-            name="status"
+            {...register("status")}
             className={`w-full border px-2 py-4 mt-2 border-gray-700 dark:border-gray-300 dark:bg-gray-800 dark:text-white text-sm ${poppins.className}`}
             defaultValue={""}
           >
@@ -35,6 +37,7 @@ export default function InvoiceDueDates() {
         <div>
           <input
             type="date"
+            {...register("invoiceDate")}
             name="invoiceDate"
             required
             defaultValue={new Date().toISOString().split("T")[0]}
@@ -53,6 +56,7 @@ export default function InvoiceDueDates() {
         <div>
           <input
             type="date"
+            {...register("dueDate")}
             name="dueDate"
             required
             className={`w-full border px-2 py-4 mt-2 border-gray-700 dark:border-gray-300 dark:bg-gray-800 dark:text-white text-sm ${poppins.className}`}

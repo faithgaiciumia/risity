@@ -3,9 +3,11 @@ import { Suspense } from "react";
 import { poppins } from "../fonts";
 import ServicesSelect from "./ServicesSelect";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 
-export default function ProjectTitleServices() {
+export default function ProjectTitleServices({register}:{register:any}) {
   const [amount, setAmount] = useState(0);
+  
   return (
     <>
       {/* task title */}
@@ -19,6 +21,7 @@ export default function ProjectTitleServices() {
           <input
             type="text"
             required
+            {...register("title")}
             name="title"
             placeholder="eg. Baraka Website"
             className={`w-full border px-2 py-4 mt-2 border-gray-700 dark:border-gray-300 dark:bg-gray-800 dark:text-white text-sm ${poppins.className}`}
@@ -34,7 +37,7 @@ export default function ProjectTitleServices() {
         </div>
         <div>
           <Suspense>
-            <ServicesSelect amount={amount} setAmount={setAmount} />
+            <ServicesSelect amount={amount} setAmount={setAmount} register={register}/>
           </Suspense>
         </div>
       </div>
@@ -50,6 +53,7 @@ export default function ProjectTitleServices() {
           <input
             type="text"
             defaultValue={amount}
+            {...register("amount")}
             name="amount"
             required
             placeholder="2,000"

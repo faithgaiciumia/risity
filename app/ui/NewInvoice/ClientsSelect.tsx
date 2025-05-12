@@ -11,22 +11,29 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { useForm } from "react-hook-form";
 
-export default function ClientsSelect() {
+export default function ClientsSelect({ register }: { register: any }) {
   const { clients, loading, error, fetchClients } = useClientStore();
 
   useEffect(() => {
     fetchClients();
   }, [fetchClients]);
 
-  if (loading) return <option className="text-sm text-green-600">Loading clients...</option>;
-  if (error) return <option className="text-sm text-red-600">Error loading clients</option>;
+  if (loading)
+    return (
+      <option className="text-sm text-green-600">Loading clients...</option>
+    );
+  if (error)
+    return (
+      <option className="text-sm text-red-600">Error loading clients</option>
+    );
 
   return (
     <>
       <select
         required
-        name="clientEmail"
+        {...register("clientEmail")}
         className={`w-full border px-2 py-4 mt-2 border-gray-700 text-sm ${poppins.className}`}
         defaultValue={""}
       >

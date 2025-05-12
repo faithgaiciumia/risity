@@ -23,7 +23,11 @@ export default function NewInvoiceForm() {
     createNewInvoice,
     undefined
   );
-  
+  //react hook for managing form state
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
 
   // listen for a message from the action
   useEffect(() => {
@@ -39,11 +43,11 @@ export default function NewInvoiceForm() {
   }, [message]);
 
   return (
-    <form className="space-y-3" action={formAction}>
+    <form className="space-y-3" onSubmit={()=> handleSubmit(onSubmit)}>
       <ToastContainer />
-      {step === 0 && <ProjectTitleServices />}
-      {step === 1 && <InvoiceClientDetails />}
-      {step === 2 && <InvoiceDueDates />}
+      {step === 0 && <ProjectTitleServices register={register} />}
+      {step === 1 && <InvoiceClientDetails register={register} />}
+      {step === 2 && <InvoiceDueDates register={register}/>}
 
       {/*next, back, and save buttons */}
       <div className="flex justify-between mt-6">

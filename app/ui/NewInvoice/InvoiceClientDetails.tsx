@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import ClientsSelect from "./ClientsSelect";
 import { poppins } from "../fonts";
 
-export default function InvoiceClientDetails() {
+export default function InvoiceClientDetails({register}:{register:any}) {
   return (
     <>
       {/* client name and email input group */}
@@ -14,7 +14,7 @@ export default function InvoiceClientDetails() {
         </div>
         <div>
           <Suspense>
-            <ClientsSelect />
+            <ClientsSelect register={register} />
           </Suspense>
         </div>
       </div>
