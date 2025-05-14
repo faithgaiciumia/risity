@@ -1,10 +1,9 @@
 import { poppins, workSans } from "../fonts";
 import Link from "next/link";
 import { getSession } from "@/app/lib/getsession";
+import MainActionButton from "./MainActionButton";
 
-export default  function Hero() {
-  // const session = await getSession();
-
+export default function Hero() {
   return (
     <section className="flex flex-col items-center justify-center text-center px-4 py-20 md:py-32 gap-6 bg-white dark:bg-gray-900">
       <span className="text-sm text-gray-500 tracking-wide dark:text-gray-300">
@@ -24,11 +23,7 @@ export default  function Hero() {
         professionally with your clients.
       </h2>
 
-      {/* <Link href="/dashboard">
-        <button className="mt-4 px-6 py-3 bg-green-500 hover:bg-green-600 transition text-white text-sm rounded-lg shadow dark:bg-green-600 dark:hover:bg-green-700">
-          {session?.user?.email ? "To Dashboard" : "Get Started (free)"}
-        </button>
-      </Link> */}
+      <MainActionButton />
     </section>
   );
 }
