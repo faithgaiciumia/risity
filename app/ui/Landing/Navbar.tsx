@@ -6,8 +6,7 @@ import LogoutButton from "./LogoutButton";
 import MobileMenu from "./MobileMenu";
 import LightDarkModeToggle from "../Dashboard/LightDarkModeToggle";
 
-export default async function Navbar() {
-  const session = await getSession();
+export default function Navbar() {
   return (
     <nav className="w-full border-b border-gray-200 fixed top-0 left-0 z-50 bg-white dark:bg-gray-900 shadow dark:border-gray-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,7 +15,9 @@ export default async function Navbar() {
           <Link href={"/"} className="hover:underline">
             <div className="flex items-center space-x-2">
               <BiCalculator className="text-green-500 text-2xl" />
-              <h1 className={`${poppins.className} text-xl font-semibold text-gray-800 dark:text-gray-200`}>
+              <h1
+                className={`${poppins.className} text-xl font-semibold text-gray-800 dark:text-gray-200`}
+              >
                 Risity
               </h1>
             </div>
@@ -46,7 +47,7 @@ export default async function Navbar() {
                 <LightDarkModeToggle />
               </li>
             </ul>
-            <div className="flex space-x-4">
+            {/* <div className="flex space-x-4">
               {session?.user ? (
                 <LogoutButton />
               ) : (
@@ -56,7 +57,7 @@ export default async function Navbar() {
                   </button>
                 </Link>
               )}
-            </div>
+            </div> */}
           </div>
 
           {/* Mobile Toggle */}
