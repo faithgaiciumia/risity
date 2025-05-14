@@ -1,44 +1,48 @@
 "use client";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  DropdownMenuItem,
+  DropdownMenuLabel,
+} from "@radix-ui/react-dropdown-menu";
 import Link from "next/link";
-import { useState } from "react";
 import { BiMenu } from "react-icons/bi";
+import { poppins } from "../fonts";
+import { Key } from "lucide-react";
+import { FaGithub, FaToolbox } from "react-icons/fa6";
 
 export default function MobileMenu() {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <div>
-      <button onClick={() => setIsOpen(!isOpen)}>
-        <BiMenu className="text-2xl text-green-600" />
-      </button>
-      {isOpen && (
-        <div className="md:hidden px-4 pb-4 space-y-4">
-          <ul className="space-y-2 text-gray-700">
-            <li>
-              <Link href="#features" className="block hover:text-green-500">
-                Features
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="https://github.com/your-repo"
-                target="_blank"
-                className="block hover:text-green-500"
-              >
-                View Source
-              </Link>
-            </li>
-          </ul>
-          <div className="flex flex-col gap-2">
-            <button className="w-full px-4 py-2 border border-green-500 text-green-500 rounded-lg hover:bg-green-50 transition">
-              Log in
-            </button>
-            {/* <button className="w-full px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition">
-              Sign up
-            </button> */}
-          </div>
-        </div>
-      )}
+      <DropdownMenu>
+        <DropdownMenuTrigger>
+          <BiMenu className="text-2xl text-green-600" />
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="space-y-2">
+          <DropdownMenuLabel className={`text-sm ${poppins.className}`}>
+            Menu
+          </DropdownMenuLabel>
+          <DropdownMenuSeparator/>
+          <DropdownMenuItem>
+            <Link href="#features" className="flex py-2 gap-2 items-center hover:text-green-500 text-sm">
+             <FaToolbox/> Features
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link
+              href="https://github.com/your-repo"
+              target="_blank"
+              className="hover:text-green-500 py-2 text-sm flex items-center gap-2"
+            >
+              <FaGithub/> View Source
+            </Link>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </div>
   );
 }
