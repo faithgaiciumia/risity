@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { poppins, workSans } from "../ui/fonts";
 import TopBar from "../ui/Login/TopBar";
@@ -5,10 +6,28 @@ import EmailSignIn from "../ui/Login/EmailSignIn";
 import GoogleSignIn from "../ui/Login/GoogleSignIn";
 import FacebookSignIn from "../ui/Login/FacebookSignin";
 import { FaEnvelope } from "react-icons/fa6";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function Login() {
+  //check if there is an error while the user is logging in
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const error = searchParams.get("error");
+
+    if (error === "OAuthAccountNotLinked") {
+      toast.error(
+        "This email is already linked with a different sign-in method. Please use the same method you originally used to sign in."
+      );
+    } else if (error) {
+      toast.error("An error occurred during sign in. Please try again.");
+    }
+  }, [searchParams]);
   return (
     <>
+      <ToastContainer />
       {/* Login Buttons */}
       <div className="w-full space-y-3">
         <Link href={"/login/email"}>
