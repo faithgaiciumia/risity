@@ -16,14 +16,8 @@ export default function Login() {
 
   useEffect(() => {
     const error = searchParams.get("error");
-
-    if (error === "OAuthAccountNotLinked") {
-      toast.error(
-        "This email is already linked with a different sign-in method. Please use the same method you originally used to sign in."
-      );
-    } else if (error) {
-      toast.error("An error occurred during sign in. Please try again.");
-    }
+    // toast.error(error);
+    console.log("Error query param:", error);
   }, [searchParams]);
   return (
     <>
