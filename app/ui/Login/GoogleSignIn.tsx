@@ -1,8 +1,16 @@
+"use client";
+import { signInWithGoogle } from "@/app/lib/actions";
+import { signIn } from "@/auth";
+import { useActionState } from "react";
 import { FaGoogle } from "react-icons/fa6";
 
 export default function GoogleSignIn() {
+  const [errorMessage, formAction, isPending] = useActionState(
+      signInWithGoogle,
+      undefined
+    );
   return (
-    <form>
+    <form action={formAction}>
       <button
         type="submit"
         className="mt-6 w-[90%] mx-auto flex items-center justify-center gap-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-6 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 shadow-sm hover:border-green-400 dark:hover:border-green-400 transition"

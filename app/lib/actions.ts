@@ -29,6 +29,19 @@ export async function signInWithResend(
     throw error;
   }
 }
+export async function signInWithGoogle(
+  prevState: string | undefined,
+  formData: FormData
+) {
+  try {
+    await signIn("google");
+  } catch (error) {
+    if (error instanceof AuthError) {
+      return "Something went wrong.";
+    }
+    throw error;
+  }
+}
 export async function handleSignOut() {
   await signOut({ redirectTo: "/" });
 }

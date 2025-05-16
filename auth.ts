@@ -3,6 +3,7 @@ import { Pool } from "@neondatabase/serverless";
 import next from "next";
 import NextAuth from "next-auth";
 import Resend from "next-auth/providers/resend";
+import Google from "next-auth/providers/google";
 import { getSession } from "./app/lib/getsession";
 import { authConfig } from "./auth.config";
 
@@ -12,7 +13,13 @@ export const { handlers, auth, signIn, signOut } = NextAuth(() => {
     ...authConfig,
     pages: { signIn: "/login" },
     adapter: NeonAdapter(pool),
-    providers: [Resend({ from: "Risity@login.gaiciumiafaith.com" })],
+    providers: [
+      Resend({ from: "Risity@login.gaiciumiafaith.com" }),
+      Google({
+        clientId: process.env.GOOGLE_CLIENT_ID!,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      }),
+    ],
     callbacks: {
       async jwt({ token, account, user }) {
         if (account?.provider === "resend" && user) {
