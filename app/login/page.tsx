@@ -6,19 +6,26 @@ import EmailSignIn from "../ui/Login/EmailSignIn";
 import GoogleSignIn from "../ui/Login/GoogleSignIn";
 import FacebookSignIn from "../ui/Login/FacebookSignin";
 import { FaEnvelope } from "react-icons/fa6";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
 export default function Login() {
   //check if there is an error while the user is logging in
   const searchParams = useSearchParams();
+  const router = useRouter();
 
   useEffect(() => {
     const error = searchParams.get("error");
-    // toast.error(error);
-    console.log("Error query param:", error);
-  }, [searchParams]);
+    if (error === "OAuthAccountNotLinked") {
+      toast.error("This email is already linked to a different account.");
+      // Clean the URL after showing error
+      const newParams = new URLSearchParams(searchParams.toString());
+      newParams.delete("error");
+      router.replace(`/login?${newParams.toString()}`);
+    }
+  }, [searchParams, router]);
+
   return (
     <>
       <ToastContainer />
@@ -33,8 +40,8 @@ export default function Login() {
             Continue with Email
           </button>
         </Link>
-        <GoogleSignIn />
-        <FacebookSignIn />
+        {/* <GoogleSignIn />
+        <FacebookSignIn /> */}
       </div>
     </>
   );
