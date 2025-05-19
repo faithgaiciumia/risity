@@ -1,8 +1,11 @@
+"use client";
+import { useAuthStore } from "@/app/store/useAuthStore";
 import { poppins, workSans } from "@/app/ui/fonts";
 import TopBar from "@/app/ui/Login/TopBar";
 import Link from "next/link";
 
 export default function VerifyRequest() {
+  const email = useAuthStore((state) => state.email);
   return (
     <main>
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900">

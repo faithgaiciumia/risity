@@ -3,10 +3,17 @@ import { FaEnvelope, FaSpinner } from "react-icons/fa6";
 import { poppins } from "../fonts";
 import { useActionState } from "react";
 import { signInWithResend } from "@/app/lib/actions";
+import { useAuthStore } from "@/app/store/useAuthStore";
 
 export default function EmailSignIn() {
+  const setEmail = useAuthStore((state) => state.setEmail);
   const [errorMessage, formAction, isPending] = useActionState(
-    signInWithResend,
+    async (prevState: string | undefined, formData: FormData) => {
+      // Extract email before sending
+      const email = formData.get("email")?.toString();
+      if (email) setEmail(email);
+      return await signInWithResend(prevState, formData);
+    },
     undefined
   );
 
