@@ -1,8 +1,7 @@
 export default function FeatureOne() {
   return (
     <section className="py-12 px-6">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">        
         {/* Text Section */}
         <div>
           <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 dark:text-white mb-4">
@@ -23,7 +22,7 @@ export default function FeatureOne() {
           <img
             src="/img/InsightsFeature.png"
             alt="Dashboard Insights"
-            className="w-full rounded-xl shadow-lg border border-gray-200 dark:border-gray-700"
+            className="w-full rounded-xl"
           />
         </div>
       </div>
