@@ -1,9 +1,11 @@
 import { poppins } from "../fonts";
 import { BiFile, BiFilterAlt, BiMoon } from "react-icons/bi";
+import FeatureOne from "./FeatureOne";
 
 export default function KeyFeatures() {
   return (
     <section className="py-16 px-4 bg-gray-50 dark:bg-gray-900" id="features">
+      <FeatureOne/>
       <div className="max-w-6xl mx-auto text-center">
         <h2
           className={`text-2xl sm:text-3xl font-bold text-gray-800 dark:text-gray-200 mb-12 ${poppins.className}`}
