@@ -52,14 +52,15 @@ export default function VerifyRequest() {
               <p
                 className={`${workSans.className} text-sm text-gray-600 dark:text-gray-400 my-2`}
               >
-                A login link has been sent to your email address. Please check
-                your inbox and click the link to proceed.
+                We’ve sent a login link to your email. It should arrive
+                within 10–15 seconds. Please check your inbox and spam/junk
+                folder.Click the link to proceed. 
               </p>
             </div>
 
             {/* Signup Prompt */}
             <form action={formAction}>
-              <input hidden defaultValue={email || ""} name="email"  />
+              <input hidden defaultValue={email || ""} name="email" />
               <p
                 className={`${workSans.className} text-sm text-gray-500 dark:text-gray-300`}
               >
