@@ -1,6 +1,6 @@
 export default function FeatureTwo() {
   return (
-    <section className="py-12 px-6 bg-gray-50 dark:bg-gray-800">
+    <section className="py-12 px-6 bg-white dark:bg-gray-800">
       <div className="max-w-6xl mx-auto">
         {/* Text on top */}
         <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 dark:text-white mb-6">
